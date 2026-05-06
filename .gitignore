@@ -216,3 +216,30 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project data - do not commit
+/data/
+/outputs/
+
+# Large/raw dataset files
+*.csv
+*.tsv
+*.xlsx
+*.tar.gz
+*.zip
+*.wav
+*.mp4
+*.mat
+
+# Generated logs
+download_logs/
+*.out.log
+*.err.log
+
+# Model artifacts
+checkpoints/
+models/checkpoints/
+*.pt
+*.pth
+*.bin
+*.pkl
