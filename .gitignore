@@ -5,6 +5,12 @@
 *.wav
 *.mat
 
+# Local environment / caches / cluster artifacts (not for version control)
+.venv/
+.hf_cache/
+*.out
+/~/
+
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
