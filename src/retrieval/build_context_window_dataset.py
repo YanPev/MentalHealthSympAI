@@ -41,6 +41,12 @@ ADDED_COLUMNS = [
     "retrieved_context_window_ids_bm25",
     "retrieved_context_bm25_scores",
 ]
+HYBRID_COLUMNS = [
+    "retrieved_context_windows_hybrid_pack",
+    "retrieved_context_windows_hybrid_list",
+    "retrieved_context_window_ids_hybrid",
+    "retrieved_context_hybrid_scores",
+]
 
 
 def normalize_participant_id(value):
@@ -93,6 +99,26 @@ def select_windows_with_word_budget(windows, max_pack_words):
 
 def serialize_json_array(values):
     return json.dumps(values, ensure_ascii=False, separators=(",", ":"))
+
+
+def load_hybrid_retrieval(path):
+    with open(path, "r", encoding="utf-8") as file:
+        records = json.load(file)
+
+    if not isinstance(records, list) or not records:
+        raise ValueError("Hybrid retrieval must be a non-empty JSON list.")
+
+    indexed = {}
+    for record in records:
+        key = (
+            normalize_participant_id(record["participant_id"]),
+            int(record["item_id"]),
+        )
+        if key in indexed:
+            raise ValueError(f"Duplicate hybrid retrieval key: {key}")
+        indexed[key] = record
+
+    return indexed
 
 
 def validate_input_dataset(df):
@@ -249,6 +275,87 @@ def build_context_window_dataset(
     return output_df, zero_score_fallbacks
 
 
+def add_hybrid_columns(
+    output_df,
+    context_window_bank,
+    hybrid_records,
+    max_pack_words,
+):
+    hybrid_packs = []
+    hybrid_lists = []
+    hybrid_ids = []
+    hybrid_scores = []
+
+    for _, row in output_df.iterrows():
+        participant_id = normalize_participant_id(row["participant_id"])
+        item_id = int(row["item_id"])
+        record = hybrid_records.get((participant_id, item_id))
+        if record is None:
+            raise ValueError(
+                "Missing hybrid retrieval record: "
+                f"participant_id={participant_id}, item_id={item_id}"
+            )
+
+        ids = record["retrieved_context_window_ids_hybrid"]
+        scores = record["retrieved_context_hybrid_scores"]
+        if not isinstance(ids, list) or not isinstance(scores, list):
+            raise ValueError(
+                f"Invalid hybrid arrays for {(participant_id, item_id)}"
+            )
+        if len(ids) != len(scores) or not ids:
+            raise ValueError(
+                f"Hybrid ID/score mismatch for {(participant_id, item_id)}"
+            )
+
+        participant_windows = {
+            window["context_window_id"]: window
+            for window in context_window_bank[participant_id]
+        }
+        if any(window_id not in participant_windows for window_id in ids):
+            raise ValueError(
+                "Participant-local hybrid retrieval violation for "
+                f"{(participant_id, item_id)}"
+            )
+
+        ranked_windows = [
+            {
+                **participant_windows[window_id],
+                "hybrid_score": float(score),
+            }
+            for window_id, score in zip(ids, scores)
+        ]
+        included = select_windows_with_word_budget(
+            ranked_windows,
+            max_pack_words=max_pack_words,
+        )
+
+        hybrid_packs.append(
+            pack_windows(window["window_text"] for window in included)
+        )
+        hybrid_lists.append(
+            serialize_json_array(
+                [window["window_text"] for window in included]
+            )
+        )
+        hybrid_ids.append(
+            serialize_json_array(
+                [window["context_window_id"] for window in included]
+            )
+        )
+        hybrid_scores.append(
+            serialize_json_array(
+                [window["hybrid_score"] for window in included]
+            )
+        )
+
+    output_df = output_df.copy()
+    output_df[HYBRID_COLUMNS[0]] = hybrid_packs
+    output_df[HYBRID_COLUMNS[1]] = hybrid_lists
+    output_df[HYBRID_COLUMNS[2]] = hybrid_ids
+    output_df[HYBRID_COLUMNS[3]] = hybrid_scores
+    return output_df
+
+
 def validate_output_dataset(
     input_df,
     output_df,
@@ -329,6 +436,56 @@ def validate_output_dataset(
     return True
 
 
+def validate_hybrid_columns(output_df, context_window_bank, max_pack_words):
+    for row_index, row in output_df.iterrows():
+        participant_id = normalize_participant_id(row["participant_id"])
+        texts = json.loads(row[HYBRID_COLUMNS[1]])
+        window_ids = json.loads(row[HYBRID_COLUMNS[2]])
+        scores = json.loads(row[HYBRID_COLUMNS[3]])
+
+        if not all(
+            isinstance(values, list)
+            for values in (texts, window_ids, scores)
+        ):
+            raise ValueError(
+                f"Invalid hybrid JSON arrays at row_index={row_index}"
+            )
+        if not texts or not (
+            len(texts) == len(window_ids) == len(scores)
+        ):
+            raise ValueError(
+                f"Hybrid array length mismatch at row_index={row_index}"
+            )
+        if len(window_ids) != len(set(window_ids)):
+            raise ValueError(
+                f"Duplicate hybrid IDs at row_index={row_index}"
+            )
+
+        valid_ids = {
+            window["context_window_id"]
+            for window in context_window_bank[participant_id]
+        }
+        if not set(window_ids).issubset(valid_ids):
+            raise ValueError(
+                "Participant-local hybrid violation at "
+                f"row_index={row_index}"
+            )
+
+        expected_pack = pack_windows(texts)
+        if row[HYBRID_COLUMNS[0]] != expected_pack:
+            raise ValueError(
+                f"Hybrid pack/list mismatch at row_index={row_index}"
+            )
+
+        pack_words = count_words(row[HYBRID_COLUMNS[0]])
+        if pack_words > max_pack_words and len(window_ids) > 1:
+            raise ValueError(
+                f"Hybrid pack exceeds budget at row_index={row_index}"
+            )
+
+    return True
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -371,6 +528,11 @@ def parse_args():
         type=int,
         default=350,
     )
+    parser.add_argument(
+        "--hybrid_retrieval_path",
+        type=Path,
+        default=None,
+    )
     return parser.parse_args()
 
 
@@ -401,6 +563,26 @@ def main():
         max_pack_words=args.max_pack_words,
     )
 
+    if args.hybrid_retrieval_path is not None:
+        if not args.hybrid_retrieval_path.exists():
+            raise FileNotFoundError(
+                "Hybrid retrieval does not exist: "
+                f"{args.hybrid_retrieval_path}"
+            )
+        output_df = add_hybrid_columns(
+            output_df=output_df,
+            context_window_bank=context_window_bank,
+            hybrid_records=load_hybrid_retrieval(
+                args.hybrid_retrieval_path
+            ),
+            max_pack_words=args.max_pack_words,
+        )
+        validate_hybrid_columns(
+            output_df=output_df,
+            context_window_bank=context_window_bank,
+            max_pack_words=args.max_pack_words,
+        )
+
     args.output_path.parent.mkdir(parents=True, exist_ok=True)
     output_df.to_csv(args.output_path, index=False)
 
@@ -418,6 +600,10 @@ def main():
     print("Splits preserved: True")
     print("Utterance retrieval columns preserved: True")
     print("Participant-local retrieval: True")
+    print(
+        "Hybrid columns added: "
+        f"{args.hybrid_retrieval_path is not None}"
+    )
 
 
 if __name__ == "__main__":
