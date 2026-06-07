@@ -20,6 +20,7 @@ sys.path.append(str(PROJECT_ROOT))
 from src.retrieval.bm25_context_retriever import (
     load_context_window_bank,
     retrieve_top_k_context_windows_bm25,
+    validate_retrieval_parameters,
 )
 
 
@@ -57,6 +58,39 @@ def pack_windows(window_texts):
     )
 
 
+def count_words(text):
+    return len(str(text).split())
+
+
+def select_windows_with_word_budget(windows, max_pack_words):
+    if max_pack_words <= 0:
+        raise ValueError("max_pack_words must be positive.")
+
+    included = []
+    used_words = 0
+
+    for window in windows:
+        window_words = count_words(window["window_text"])
+        if not included:
+            included.append(window)
+            used_words = window_words
+            continue
+
+        separator_words = count_words(WINDOW_SEPARATOR)
+        if (
+            used_words
+            + separator_words
+            + window_words
+            > max_pack_words
+        ):
+            break
+
+        included.append(window)
+        used_words += separator_words + window_words
+
+    return included
+
+
 def serialize_json_array(values):
     return json.dumps(values, ensure_ascii=False, separators=(",", ":"))
 
@@ -82,9 +116,23 @@ def validate_input_dataset(df):
             raise ValueError(f"{column} contains missing values.")
 
 
-def build_context_window_dataset(input_df, context_window_bank, k):
+def build_context_window_dataset(
+    input_df,
+    context_window_bank,
+    k,
+    max_turn_overlap_ratio,
+    candidate_multiplier,
+    max_pack_words,
+):
     if k <= 0:
         raise ValueError("k must be positive.")
+
+    validate_retrieval_parameters(
+        max_turn_overlap_ratio=max_turn_overlap_ratio,
+        candidate_multiplier=candidate_multiplier,
+    )
+    if max_pack_words <= 0:
+        raise ValueError("max_pack_words must be positive.")
 
     validate_input_dataset(input_df)
     output_df = input_df.copy()
@@ -93,6 +141,7 @@ def build_context_window_dataset(input_df, context_window_bank, k):
     retrieved_packs = []
     retrieved_ids_json = []
     retrieved_scores_json = []
+    zero_score_fallbacks = 0
 
     missing_participants = set()
 
@@ -117,6 +166,14 @@ def build_context_window_dataset(input_df, context_window_bank, k):
             item_text=row["item_text"],
             context_windows=context_windows,
             k=k,
+            max_turn_overlap_ratio=max_turn_overlap_ratio,
+            candidate_multiplier=candidate_multiplier,
+        )
+        zero_score_fallbacks += int(
+            bool(
+                retrieved_windows
+                and retrieved_windows[0]["zero_score_fallback"]
+            )
         )
 
         for window in retrieved_windows:
@@ -127,21 +184,32 @@ def build_context_window_dataset(input_df, context_window_bank, k):
                     f"window={window['participant_id']}"
                 )
 
+        included_baseline_windows = select_windows_with_word_budget(
+            baseline_windows,
+            max_pack_words=max_pack_words,
+        )
+        included_retrieved_windows = select_windows_with_word_budget(
+            retrieved_windows,
+            max_pack_words=max_pack_words,
+        )
+
         baseline_packs.append(
             pack_windows(
-                window["window_text"] for window in baseline_windows
+                window["window_text"]
+                for window in included_baseline_windows
             )
         )
         retrieved_packs.append(
             pack_windows(
-                window["window_text"] for window in retrieved_windows
+                window["window_text"]
+                for window in included_retrieved_windows
             )
         )
         retrieved_ids_json.append(
             serialize_json_array(
                 [
                     window["context_window_id"]
-                    for window in retrieved_windows
+                    for window in included_retrieved_windows
                 ]
             )
         )
@@ -149,7 +217,7 @@ def build_context_window_dataset(input_df, context_window_bank, k):
             serialize_json_array(
                 [
                     float(window["bm25_score"])
-                    for window in retrieved_windows
+                    for window in included_retrieved_windows
                 ]
             )
         )
@@ -178,10 +246,16 @@ def build_context_window_dataset(input_df, context_window_bank, k):
     output_df[ADDED_COLUMNS[2]] = retrieved_ids_json
     output_df[ADDED_COLUMNS[3]] = retrieved_scores_json
 
-    return output_df
+    return output_df, zero_score_fallbacks
 
 
-def validate_output_dataset(input_df, output_df, context_window_bank, k):
+def validate_output_dataset(
+    input_df,
+    output_df,
+    context_window_bank,
+    k,
+    max_pack_words,
+):
     if len(output_df) != len(input_df):
         raise ValueError(
             f"Row count changed: input={len(input_df)}, output={len(output_df)}"
@@ -206,10 +280,17 @@ def validate_output_dataset(input_df, output_df, context_window_bank, k):
         if not isinstance(window_ids, list) or not isinstance(scores, list):
             raise ValueError(f"Invalid JSON arrays at row_index={row_index}")
 
-        expected_count = min(k, len(context_window_bank[participant_id]))
-        if len(window_ids) != expected_count or len(scores) != expected_count:
+        if not 1 <= len(window_ids) <= min(
+            k,
+            len(context_window_bank[participant_id]),
+        ):
             raise ValueError(
                 f"Retrieved array length mismatch at row_index={row_index}"
+            )
+
+        if len(window_ids) != len(scores):
+            raise ValueError(
+                f"ID/score array length mismatch at row_index={row_index}"
             )
 
         if len(window_ids) != len(set(window_ids)):
@@ -235,6 +316,14 @@ def validate_output_dataset(input_df, output_df, context_window_bank, k):
         if not row["retrieved_context_windows_bm25_pack"]:
             raise ValueError(
                 f"Empty retrieved context pack at row_index={row_index}"
+            )
+
+        pack_word_count = count_words(
+            row["retrieved_context_windows_bm25_pack"]
+        )
+        if pack_word_count > max_pack_words and len(window_ids) > 1:
+            raise ValueError(
+                f"Pack exceeds word budget at row_index={row_index}"
             )
 
     return True
@@ -267,6 +356,21 @@ def parse_args():
         type=int,
         default=5,
     )
+    parser.add_argument(
+        "--max_turn_overlap_ratio",
+        type=float,
+        default=0.5,
+    )
+    parser.add_argument(
+        "--candidate_multiplier",
+        type=int,
+        default=5,
+    )
+    parser.add_argument(
+        "--max_pack_words",
+        type=int,
+        default=350,
+    )
     return parser.parse_args()
 
 
@@ -281,16 +385,20 @@ def main():
     context_window_bank = load_context_window_bank(
         args.context_window_bank_path
     )
-    output_df = build_context_window_dataset(
+    output_df, zero_score_fallbacks = build_context_window_dataset(
         input_df=input_df,
         context_window_bank=context_window_bank,
         k=args.k,
+        max_turn_overlap_ratio=args.max_turn_overlap_ratio,
+        candidate_multiplier=args.candidate_multiplier,
+        max_pack_words=args.max_pack_words,
     )
     validate_output_dataset(
         input_df=input_df,
         output_df=output_df,
         context_window_bank=context_window_bank,
         k=args.k,
+        max_pack_words=args.max_pack_words,
     )
 
     args.output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -302,6 +410,10 @@ def main():
     print(f"Rows: {len(output_df)}")
     print(f"Participants: {output_df['participant_id'].nunique()}")
     print(f"k: {args.k}")
+    print(f"Max turn overlap ratio: {args.max_turn_overlap_ratio}")
+    print(f"Candidate multiplier: {args.candidate_multiplier}")
+    print(f"Max pack words: {args.max_pack_words}")
+    print(f"Zero-score fallbacks: {zero_score_fallbacks}")
     print("Labels preserved: True")
     print("Splits preserved: True")
     print("Utterance retrieval columns preserved: True")

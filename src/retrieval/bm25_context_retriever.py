@@ -19,7 +19,32 @@ import pandas as pd
 REQUIRED_WINDOW_FIELDS = {
     "participant_id",
     "context_window_id",
+    "turn_ids",
     "window_text",
+}
+
+ENGLISH_STOPWORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "be",
+    "been",
+    "being",
+    "did",
+    "do",
+    "does",
+    "for",
+    "in",
+    "is",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "was",
+    "were",
+    "with",
 }
 
 
@@ -38,7 +63,14 @@ def tokenize(text):
     cleaned = str(text).lower()
     cleaned = re.sub(r"[^a-z0-9\s']", " ", cleaned)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
-    return cleaned.split() if cleaned else []
+    if not cleaned:
+        return []
+
+    return [
+        token
+        for token in cleaned.split()
+        if token not in ENGLISH_STOPWORDS
+    ]
 
 
 def validate_context_windows(context_windows, participant_id=None):
@@ -79,6 +111,8 @@ def retrieve_top_k_context_windows_bm25(
     item_text,
     context_windows,
     k=5,
+    max_turn_overlap_ratio=0.5,
+    candidate_multiplier=5,
 ):
     """
     Rank one participant's context windows against one PHQ-8 item.
@@ -89,6 +123,10 @@ def retrieve_top_k_context_windows_bm25(
     if k <= 0:
         return []
 
+    validate_retrieval_parameters(
+        max_turn_overlap_ratio=max_turn_overlap_ratio,
+        candidate_multiplier=candidate_multiplier,
+    )
     validate_context_windows(context_windows)
     if not context_windows:
         return []
@@ -116,14 +154,95 @@ def retrieve_top_k_context_windows_bm25(
         key=lambda position: (-float(scores[position]), valid_indices[position]),
     )
 
-    results = []
-    for position in ranked_positions[: min(k, len(ranked_positions))]:
+    candidate_count = min(
+        len(ranked_positions),
+        max(k, k * candidate_multiplier),
+    )
+    candidates = []
+    for position in ranked_positions[:candidate_count]:
         source_index = valid_indices[position]
         result = dict(context_windows[source_index])
         result["bm25_score"] = float(scores[position])
-        results.append(result)
+        result["zero_score_fallback"] = False
+        candidates.append(result)
 
-    return results
+    if candidates and all(
+        candidate["bm25_score"] == 0.0 for candidate in candidates
+    ):
+        fallback_results = []
+        for window in context_windows[: min(k, len(context_windows))]:
+            result = dict(window)
+            result["bm25_score"] = 0.0
+            result["zero_score_fallback"] = True
+            fallback_results.append(result)
+        return fallback_results
+
+    selected = select_diverse_windows(
+        candidates=candidates,
+        k=k,
+        max_turn_overlap_ratio=max_turn_overlap_ratio,
+    )
+    return selected
+
+
+def validate_retrieval_parameters(
+    max_turn_overlap_ratio,
+    candidate_multiplier,
+):
+    if not 0 <= max_turn_overlap_ratio <= 1:
+        raise ValueError(
+            "max_turn_overlap_ratio must be between 0 and 1."
+        )
+
+    if candidate_multiplier <= 0:
+        raise ValueError("candidate_multiplier must be positive.")
+
+
+def turn_overlap_ratio(left_window, right_window):
+    left_turns = set(left_window["turn_ids"])
+    right_turns = set(right_window["turn_ids"])
+
+    smaller_size = min(len(left_turns), len(right_turns))
+    if smaller_size == 0:
+        return 0.0
+
+    return len(left_turns & right_turns) / smaller_size
+
+
+def select_diverse_windows(
+    candidates,
+    k,
+    max_turn_overlap_ratio,
+):
+    selected = []
+    skipped = []
+
+    for candidate in candidates:
+        overlaps_too_much = any(
+            turn_overlap_ratio(candidate, existing)
+            > max_turn_overlap_ratio
+            for existing in selected
+        )
+        if overlaps_too_much:
+            skipped.append(candidate)
+        else:
+            selected.append(candidate)
+
+        if len(selected) == k:
+            return selected
+
+    selected_ids = {
+        window["context_window_id"] for window in selected
+    }
+    for candidate in candidates:
+        if candidate["context_window_id"] in selected_ids:
+            continue
+        selected.append(candidate)
+        selected_ids.add(candidate["context_window_id"])
+        if len(selected) == k:
+            break
+
+    return selected
 
 
 def score_bm25_okapi(query_tokens, documents, k1=1.5, b=0.75):
@@ -196,7 +315,13 @@ def load_context_window_bank(path):
     return normalized_bank
 
 
-def build_retrieval_records(dataset_path, context_window_bank, k):
+def build_retrieval_records(
+    dataset_path,
+    context_window_bank,
+    k,
+    max_turn_overlap_ratio,
+    candidate_multiplier,
+):
     required_columns = {
         "participant_id",
         "item_id",
@@ -223,6 +348,8 @@ def build_retrieval_records(dataset_path, context_window_bank, k):
             item_text=row["item_text"],
             context_windows=windows,
             k=k,
+            max_turn_overlap_ratio=max_turn_overlap_ratio,
+            candidate_multiplier=candidate_multiplier,
         )
         records.append(
             {
@@ -238,6 +365,9 @@ def build_retrieval_records(dataset_path, context_window_bank, k):
                 "retrieved_context_windows_bm25": [
                     window["window_text"] for window in ranked
                 ],
+                "zero_score_fallback": bool(
+                    ranked and ranked[0]["zero_score_fallback"]
+                ),
             }
         )
 
@@ -278,6 +408,16 @@ def parse_args():
         type=int,
         default=5,
     )
+    parser.add_argument(
+        "--max_turn_overlap_ratio",
+        type=float,
+        default=0.5,
+    )
+    parser.add_argument(
+        "--candidate_multiplier",
+        type=int,
+        default=5,
+    )
     return parser.parse_args()
 
 
@@ -287,6 +427,10 @@ def main():
     if args.k <= 0:
         raise ValueError("k must be positive.")
 
+    validate_retrieval_parameters(
+        max_turn_overlap_ratio=args.max_turn_overlap_ratio,
+        candidate_multiplier=args.candidate_multiplier,
+    )
     for path in (args.dataset_path, args.context_window_bank_path):
         if not path.exists():
             raise FileNotFoundError(f"Input does not exist: {path}")
@@ -298,6 +442,8 @@ def main():
         dataset_path=args.dataset_path,
         context_window_bank=context_window_bank,
         k=args.k,
+        max_turn_overlap_ratio=args.max_turn_overlap_ratio,
+        candidate_multiplier=args.candidate_multiplier,
     )
 
     args.output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -312,8 +458,14 @@ def main():
     print(f"Output path: {args.output_path}")
     print(f"Rows: {len(records)}")
     print(f"k: {args.k}")
+    print(f"Max turn overlap ratio: {args.max_turn_overlap_ratio}")
+    print(f"Candidate multiplier: {args.candidate_multiplier}")
     print(f"Min retrieved windows: {min(retrieved_counts)}")
     print(f"Max retrieved windows: {max(retrieved_counts)}")
+    print(
+        "Zero-score fallbacks: "
+        f"{sum(record['zero_score_fallback'] for record in records)}"
+    )
 
 
 if __name__ == "__main__":
