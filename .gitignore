@@ -10,6 +10,10 @@
 .hf_cache/
 *.out
 /~/
+notebooks/results/
+*.safetensors
+*.pt
+*.pth
 
 __pycache__/
 *.pyc
