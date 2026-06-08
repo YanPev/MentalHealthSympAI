@@ -1,0 +1,1562 @@
+[
+  {
+    "label": "BERT-base \u00b7 plain CE",
+    "item": {
+      "n": 1752,
+      "accuracy": 0.4104,
+      "macro_f1": 0.2759,
+      "mae": 0.7854,
+      "qwk": 0.1616,
+      "f1_per_class": {
+        "0": 0.5332,
+        "1": 0.3964,
+        "2": 0.1151,
+        "3": 0.0588
+      },
+      "confusion_4x4": [
+        [
+          430,
+          356,
+          52,
+          14
+        ],
+        [
+          204,
+          262,
+          37,
+          10
+        ],
+        [
+          78,
+          114,
+          21,
+          7
+        ],
+        [
+          49,
+          77,
+          35,
+          6
+        ]
+      ],
+      "top1_accuracy": 0.4104,
+      "top2_accuracy": 0.6878,
+      "off_by_one_rate": 0.7289
+    },
+    "item_binary_0v1_vs_2v3": {
+      "sensitivity": 0.1783,
+      "specificity": 0.9172,
+      "precision": 0.3791,
+      "recall": 0.1783,
+      "f1": 0.2425,
+      "balanced_accuracy": 0.5478,
+      "confusion_2x2": {
+        "tn": 1252,
+        "fp": 113,
+        "fn": 318,
+        "tp": 69
+      },
+      "n_pos": 387,
+      "n_neg": 1365
+    },
+    "per_item": [
+      {
+        "item_id": 1,
+        "item_name": "NoInterest",
+        "accuracy": 0.379,
+        "macro_f1": 0.207,
+        "mae": 0.7123,
+        "qwk": 0.0207
+      },
+      {
+        "item_id": 2,
+        "item_name": "Depressed",
+        "accuracy": 0.4658,
+        "macro_f1": 0.3011,
+        "mae": 0.6575,
+        "qwk": 0.2668
+      },
+      {
+        "item_id": 3,
+        "item_name": "Sleep",
+        "accuracy": 0.2968,
+        "macro_f1": 0.2378,
+        "mae": 0.9954,
+        "qwk": 0.0989
+      },
+      {
+        "item_id": 4,
+        "item_name": "Tired",
+        "accuracy": 0.379,
+        "macro_f1": 0.2639,
+        "mae": 0.8128,
+        "qwk": 0.1014
+      },
+      {
+        "item_id": 5,
+        "item_name": "Appetite",
+        "accuracy": 0.3242,
+        "macro_f1": 0.2387,
+        "mae": 0.9315,
+        "qwk": 0.075
+      },
+      {
+        "item_id": 6,
+        "item_name": "Failure",
+        "accuracy": 0.3059,
+        "macro_f1": 0.2141,
+        "mae": 0.9726,
+        "qwk": -0.0029
+      },
+      {
+        "item_id": 7,
+        "item_name": "Concentrating",
+        "accuracy": 0.4338,
+        "macro_f1": 0.2543,
+        "mae": 0.7808,
+        "qwk": 0.1197
+      },
+      {
+        "item_id": 8,
+        "item_name": "Moving",
+        "accuracy": 0.6986,
+        "macro_f1": 0.2737,
+        "mae": 0.4201,
+        "qwk": 0.08
+      }
+    ],
+    "total": {
+      "n_participants": 219,
+      "total_mae": 5.1781,
+      "total_qwk": 0.1346,
+      "pearson_r": 0.1653,
+      "spearman_rho": 0.1076,
+      "true_mean": 6.64,
+      "pred_mean": 5.53
+    },
+    "total_thresholds": {
+      ">=5": {
+        "sensitivity": 0.5776,
+        "specificity": 0.3883,
+        "precision": 0.5154,
+        "recall": 0.5776,
+        "f1": 0.5447,
+        "balanced_accuracy": 0.483,
+        "confusion_2x2": {
+          "tn": 40,
+          "fp": 63,
+          "fn": 49,
+          "tp": 67
+        },
+        "n_pos": 116,
+        "n_neg": 103
+      },
+      ">=10": {
+        "sensitivity": 0.1846,
+        "specificity": 0.8831,
+        "precision": 0.4,
+        "recall": 0.1846,
+        "f1": 0.2526,
+        "balanced_accuracy": 0.5339,
+        "confusion_2x2": {
+          "tn": 136,
+          "fp": 18,
+          "fn": 53,
+          "tp": 12
+        },
+        "n_pos": 65,
+        "n_neg": 154
+      },
+      ">=15": {
+        "sensitivity": 0.0,
+        "specificity": 0.9894,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.4947,
+        "confusion_2x2": {
+          "tn": 186,
+          "fp": 2,
+          "fn": 31,
+          "tp": 0
+        },
+        "n_pos": 31,
+        "n_neg": 188
+      },
+      ">=20": {
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.5,
+        "confusion_2x2": {
+          "tn": 211,
+          "fp": 0,
+          "fn": 8,
+          "tp": 0
+        },
+        "n_pos": 8,
+        "n_neg": 211
+      }
+    },
+    "severity_bands": {
+      "band_accuracy": 0.3014,
+      "band_qwk": 0.1527,
+      "confusion_5x5": [
+        [
+          29,
+          50,
+          11,
+          1,
+          0
+        ],
+        [
+          13,
+          31,
+          8,
+          1,
+          0
+        ],
+        [
+          15,
+          21,
+          6,
+          0,
+          0
+        ],
+        [
+          3,
+          13,
+          6,
+          0,
+          0
+        ],
+        [
+          2,
+          3,
+          4,
+          2,
+          0
+        ]
+      ],
+      "band_names": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24"
+      ],
+      "true_band_counts": {
+        "0-4": 91,
+        "5-9": 53,
+        "10-14": 42,
+        "15-19": 22,
+        "20-24": 11
+      }
+    },
+    "run_id": "cv/bm25base_bert_ceplain",
+    "model_name": "bert-base-uncased",
+    "loss_type": "plain CE"
+  },
+  {
+    "label": "BERT-base \u00b7 weighted CE",
+    "item": {
+      "n": 1752,
+      "accuracy": 0.4018,
+      "macro_f1": 0.2962,
+      "mae": 0.8505,
+      "qwk": 0.1691,
+      "f1_per_class": {
+        "0": 0.5478,
+        "1": 0.347,
+        "2": 0.1952,
+        "3": 0.0949
+      },
+      "confusion_4x4": [
+        [
+          453,
+          254,
+          114,
+          31
+        ],
+        [
+          221,
+          190,
+          76,
+          26
+        ],
+        [
+          79,
+          75,
+          49,
+          17
+        ],
+        [
+          49,
+          63,
+          43,
+          12
+        ]
+      ],
+      "top1_accuracy": 0.4018,
+      "top2_accuracy": 0.6946,
+      "off_by_one_rate": 0.6546
+    },
+    "item_binary_0v1_vs_2v3": {
+      "sensitivity": 0.3127,
+      "specificity": 0.819,
+      "precision": 0.3288,
+      "recall": 0.3127,
+      "f1": 0.3205,
+      "balanced_accuracy": 0.5659,
+      "confusion_2x2": {
+        "tn": 1118,
+        "fp": 247,
+        "fn": 266,
+        "tp": 121
+      },
+      "n_pos": 387,
+      "n_neg": 1365
+    },
+    "per_item": [
+      {
+        "item_id": 1,
+        "item_name": "NoInterest",
+        "accuracy": 0.3699,
+        "macro_f1": 0.2165,
+        "mae": 0.7854,
+        "qwk": -0.0509
+      },
+      {
+        "item_id": 2,
+        "item_name": "Depressed",
+        "accuracy": 0.4384,
+        "macro_f1": 0.3345,
+        "mae": 0.7123,
+        "qwk": 0.2912
+      },
+      {
+        "item_id": 3,
+        "item_name": "Sleep",
+        "accuracy": 0.3333,
+        "macro_f1": 0.2999,
+        "mae": 1.0685,
+        "qwk": 0.1507
+      },
+      {
+        "item_id": 4,
+        "item_name": "Tired",
+        "accuracy": 0.3288,
+        "macro_f1": 0.2408,
+        "mae": 0.8858,
+        "qwk": 0.1201
+      },
+      {
+        "item_id": 5,
+        "item_name": "Appetite",
+        "accuracy": 0.3196,
+        "macro_f1": 0.2333,
+        "mae": 1.0274,
+        "qwk": 0.0222
+      },
+      {
+        "item_id": 6,
+        "item_name": "Failure",
+        "accuracy": 0.3105,
+        "macro_f1": 0.2294,
+        "mae": 1.0274,
+        "qwk": 0.0172
+      },
+      {
+        "item_id": 7,
+        "item_name": "Concentrating",
+        "accuracy": 0.4018,
+        "macro_f1": 0.2694,
+        "mae": 0.8539,
+        "qwk": 0.1588
+      },
+      {
+        "item_id": 8,
+        "item_name": "Moving",
+        "accuracy": 0.7123,
+        "macro_f1": 0.3021,
+        "mae": 0.4429,
+        "qwk": 0.0314
+      }
+    ],
+    "total": {
+      "n_participants": 219,
+      "total_mae": 5.1507,
+      "total_qwk": 0.1733,
+      "pearson_r": 0.1961,
+      "spearman_rho": 0.1798,
+      "true_mean": 6.64,
+      "pred_mean": 6.41
+    },
+    "total_thresholds": {
+      ">=5": {
+        "sensitivity": 0.7414,
+        "specificity": 0.3981,
+        "precision": 0.5811,
+        "recall": 0.7414,
+        "f1": 0.6515,
+        "balanced_accuracy": 0.5697,
+        "confusion_2x2": {
+          "tn": 41,
+          "fp": 62,
+          "fn": 30,
+          "tp": 86
+        },
+        "n_pos": 116,
+        "n_neg": 103
+      },
+      ">=10": {
+        "sensitivity": 0.2769,
+        "specificity": 0.8052,
+        "precision": 0.375,
+        "recall": 0.2769,
+        "f1": 0.3186,
+        "balanced_accuracy": 0.5411,
+        "confusion_2x2": {
+          "tn": 124,
+          "fp": 30,
+          "fn": 47,
+          "tp": 18
+        },
+        "n_pos": 65,
+        "n_neg": 154
+      },
+      ">=15": {
+        "sensitivity": 0.0323,
+        "specificity": 0.9894,
+        "precision": 0.3333,
+        "recall": 0.0323,
+        "f1": 0.0588,
+        "balanced_accuracy": 0.5108,
+        "confusion_2x2": {
+          "tn": 186,
+          "fp": 2,
+          "fn": 30,
+          "tp": 1
+        },
+        "n_pos": 31,
+        "n_neg": 188
+      },
+      ">=20": {
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.5,
+        "confusion_2x2": {
+          "tn": 211,
+          "fp": 0,
+          "fn": 8,
+          "tp": 0
+        },
+        "n_pos": 8,
+        "n_neg": 211
+      }
+    },
+    "severity_bands": {
+      "band_accuracy": 0.2877,
+      "band_qwk": 0.1382,
+      "confusion_5x5": [
+        [
+          26,
+          41,
+          22,
+          2,
+          0
+        ],
+        [
+          13,
+          25,
+          14,
+          1,
+          0
+        ],
+        [
+          13,
+          18,
+          11,
+          0,
+          0
+        ],
+        [
+          1,
+          11,
+          9,
+          1,
+          0
+        ],
+        [
+          0,
+          7,
+          3,
+          1,
+          0
+        ]
+      ],
+      "band_names": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24"
+      ],
+      "true_band_counts": {
+        "0-4": 91,
+        "5-9": 53,
+        "10-14": 42,
+        "15-19": 22,
+        "20-24": 11
+      }
+    },
+    "run_id": "cv/bm25base_bert_ce",
+    "model_name": "bert-base-uncased",
+    "loss_type": "weighted CE"
+  },
+  {
+    "label": "BERT-base \u00b7 CORN",
+    "item": {
+      "n": 1752,
+      "accuracy": 0.3693,
+      "macro_f1": 0.2568,
+      "mae": 0.8311,
+      "qwk": 0.113,
+      "f1_per_class": {
+        "0": 0.4519,
+        "1": 0.3946,
+        "2": 0.16,
+        "3": 0.0205
+      },
+      "confusion_4x4": [
+        [
+          331,
+          426,
+          83,
+          12
+        ],
+        [
+          174,
+          280,
+          49,
+          10
+        ],
+        [
+          68,
+          114,
+          34,
+          4
+        ],
+        [
+          40,
+          86,
+          39,
+          2
+        ]
+      ],
+      "top1_accuracy": 0.3721,
+      "top2_accuracy": 0.6553,
+      "off_by_one_rate": 0.7227
+    },
+    "item_binary_0v1_vs_2v3": {
+      "sensitivity": 0.2041,
+      "specificity": 0.8872,
+      "precision": 0.3391,
+      "recall": 0.2041,
+      "f1": 0.2548,
+      "balanced_accuracy": 0.5457,
+      "confusion_2x2": {
+        "tn": 1211,
+        "fp": 154,
+        "fn": 308,
+        "tp": 79
+      },
+      "n_pos": 387,
+      "n_neg": 1365
+    },
+    "per_item": [
+      {
+        "item_id": 1,
+        "item_name": "NoInterest",
+        "accuracy": 0.3927,
+        "macro_f1": 0.2415,
+        "mae": 0.7032,
+        "qwk": 0.0388
+      },
+      {
+        "item_id": 2,
+        "item_name": "Depressed",
+        "accuracy": 0.3562,
+        "macro_f1": 0.225,
+        "mae": 0.7626,
+        "qwk": 0.1671
+      },
+      {
+        "item_id": 3,
+        "item_name": "Sleep",
+        "accuracy": 0.2831,
+        "macro_f1": 0.239,
+        "mae": 0.9863,
+        "qwk": 0.1118
+      },
+      {
+        "item_id": 4,
+        "item_name": "Tired",
+        "accuracy": 0.3425,
+        "macro_f1": 0.2183,
+        "mae": 0.8584,
+        "qwk": 0.0506
+      },
+      {
+        "item_id": 5,
+        "item_name": "Appetite",
+        "accuracy": 0.2922,
+        "macro_f1": 0.1945,
+        "mae": 1.0,
+        "qwk": -0.0577
+      },
+      {
+        "item_id": 6,
+        "item_name": "Failure",
+        "accuracy": 0.2694,
+        "macro_f1": 0.1968,
+        "mae": 1.0,
+        "qwk": -0.0169
+      },
+      {
+        "item_id": 7,
+        "item_name": "Concentrating",
+        "accuracy": 0.3881,
+        "macro_f1": 0.255,
+        "mae": 0.8493,
+        "qwk": 0.0195
+      },
+      {
+        "item_id": 8,
+        "item_name": "Moving",
+        "accuracy": 0.6301,
+        "macro_f1": 0.2767,
+        "mae": 0.4886,
+        "qwk": 0.0389
+      }
+    ],
+    "total": {
+      "n_participants": 219,
+      "total_mae": 5.3151,
+      "total_qwk": 0.0675,
+      "pearson_r": 0.086,
+      "spearman_rho": 0.0391,
+      "true_mean": 6.64,
+      "pred_mean": 6.39
+    },
+    "total_thresholds": {
+      ">=5": {
+        "sensitivity": 0.7069,
+        "specificity": 0.301,
+        "precision": 0.5325,
+        "recall": 0.7069,
+        "f1": 0.6074,
+        "balanced_accuracy": 0.5039,
+        "confusion_2x2": {
+          "tn": 31,
+          "fp": 72,
+          "fn": 34,
+          "tp": 82
+        },
+        "n_pos": 116,
+        "n_neg": 103
+      },
+      ">=10": {
+        "sensitivity": 0.1692,
+        "specificity": 0.8571,
+        "precision": 0.3333,
+        "recall": 0.1692,
+        "f1": 0.2245,
+        "balanced_accuracy": 0.5132,
+        "confusion_2x2": {
+          "tn": 132,
+          "fp": 22,
+          "fn": 54,
+          "tp": 11
+        },
+        "n_pos": 65,
+        "n_neg": 154
+      },
+      ">=15": {
+        "sensitivity": 0.0,
+        "specificity": 0.9947,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.4973,
+        "confusion_2x2": {
+          "tn": 187,
+          "fp": 1,
+          "fn": 31,
+          "tp": 0
+        },
+        "n_pos": 31,
+        "n_neg": 188
+      },
+      ">=20": {
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.5,
+        "confusion_2x2": {
+          "tn": 211,
+          "fp": 0,
+          "fn": 8,
+          "tp": 0
+        },
+        "n_pos": 8,
+        "n_neg": 211
+      }
+    },
+    "severity_bands": {
+      "band_accuracy": 0.2374,
+      "band_qwk": 0.0227,
+      "confusion_5x5": [
+        [
+          11,
+          58,
+          21,
+          1,
+          0
+        ],
+        [
+          12,
+          31,
+          9,
+          1,
+          0
+        ],
+        [
+          10,
+          23,
+          9,
+          0,
+          0
+        ],
+        [
+          3,
+          13,
+          5,
+          1,
+          0
+        ],
+        [
+          1,
+          5,
+          5,
+          0,
+          0
+        ]
+      ],
+      "band_names": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24"
+      ],
+      "true_band_counts": {
+        "0-4": 91,
+        "5-9": 53,
+        "10-14": 42,
+        "15-19": 22,
+        "20-24": 11
+      }
+    },
+    "run_id": "cv/bm25base_bert_corn",
+    "model_name": "bert-base-uncased",
+    "loss_type": "CORN"
+  },
+  {
+    "label": "MentalBERT \u00b7 plain CE",
+    "item": {
+      "n": 1752,
+      "accuracy": 0.3933,
+      "macro_f1": 0.2808,
+      "mae": 0.7979,
+      "qwk": 0.1929,
+      "f1_per_class": {
+        "0": 0.5054,
+        "1": 0.4021,
+        "2": 0.1607,
+        "3": 0.055
+      },
+      "confusion_4x4": [
+        [
+          374,
+          385,
+          76,
+          17
+        ],
+        [
+          157,
+          273,
+          68,
+          15
+        ],
+        [
+          59,
+          112,
+          36,
+          13
+        ],
+        [
+          38,
+          75,
+          48,
+          6
+        ]
+      ],
+      "top1_accuracy": 0.3933,
+      "top2_accuracy": 0.665,
+      "off_by_one_rate": 0.7366
+    },
+    "item_binary_0v1_vs_2v3": {
+      "sensitivity": 0.2661,
+      "specificity": 0.8711,
+      "precision": 0.3692,
+      "recall": 0.2661,
+      "f1": 0.3093,
+      "balanced_accuracy": 0.5686,
+      "confusion_2x2": {
+        "tn": 1189,
+        "fp": 176,
+        "fn": 284,
+        "tp": 103
+      },
+      "n_pos": 387,
+      "n_neg": 1365
+    },
+    "per_item": [
+      {
+        "item_id": 1,
+        "item_name": "NoInterest",
+        "accuracy": 0.3836,
+        "macro_f1": 0.2484,
+        "mae": 0.7352,
+        "qwk": 0.0722
+      },
+      {
+        "item_id": 2,
+        "item_name": "Depressed",
+        "accuracy": 0.3653,
+        "macro_f1": 0.2318,
+        "mae": 0.79,
+        "qwk": 0.12
+      },
+      {
+        "item_id": 3,
+        "item_name": "Sleep",
+        "accuracy": 0.2831,
+        "macro_f1": 0.2573,
+        "mae": 0.9863,
+        "qwk": 0.1878
+      },
+      {
+        "item_id": 4,
+        "item_name": "Tired",
+        "accuracy": 0.3607,
+        "macro_f1": 0.2325,
+        "mae": 0.7945,
+        "qwk": 0.1532
+      },
+      {
+        "item_id": 5,
+        "item_name": "Appetite",
+        "accuracy": 0.3333,
+        "macro_f1": 0.241,
+        "mae": 0.9132,
+        "qwk": 0.079
+      },
+      {
+        "item_id": 6,
+        "item_name": "Failure",
+        "accuracy": 0.3151,
+        "macro_f1": 0.2237,
+        "mae": 0.9224,
+        "qwk": 0.0804
+      },
+      {
+        "item_id": 7,
+        "item_name": "Concentrating",
+        "accuracy": 0.4475,
+        "macro_f1": 0.2966,
+        "mae": 0.7717,
+        "qwk": 0.2381
+      },
+      {
+        "item_id": 8,
+        "item_name": "Moving",
+        "accuracy": 0.6575,
+        "macro_f1": 0.2635,
+        "mae": 0.4703,
+        "qwk": 0.0523
+      }
+    ],
+    "total": {
+      "n_participants": 219,
+      "total_mae": 4.9041,
+      "total_qwk": 0.2387,
+      "pearson_r": 0.2884,
+      "spearman_rho": 0.278,
+      "true_mean": 6.64,
+      "pred_mean": 6.64
+    },
+    "total_thresholds": {
+      ">=5": {
+        "sensitivity": 0.7759,
+        "specificity": 0.301,
+        "precision": 0.5556,
+        "recall": 0.7759,
+        "f1": 0.6475,
+        "balanced_accuracy": 0.5384,
+        "confusion_2x2": {
+          "tn": 31,
+          "fp": 72,
+          "fn": 26,
+          "tp": 90
+        },
+        "n_pos": 116,
+        "n_neg": 103
+      },
+      ">=10": {
+        "sensitivity": 0.2923,
+        "specificity": 0.8636,
+        "precision": 0.475,
+        "recall": 0.2923,
+        "f1": 0.3619,
+        "balanced_accuracy": 0.578,
+        "confusion_2x2": {
+          "tn": 133,
+          "fp": 21,
+          "fn": 46,
+          "tp": 19
+        },
+        "n_pos": 65,
+        "n_neg": 154
+      },
+      ">=15": {
+        "sensitivity": 0.0,
+        "specificity": 0.9894,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.4947,
+        "confusion_2x2": {
+          "tn": 186,
+          "fp": 2,
+          "fn": 31,
+          "tp": 0
+        },
+        "n_pos": 31,
+        "n_neg": 188
+      },
+      ">=20": {
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.5,
+        "confusion_2x2": {
+          "tn": 211,
+          "fp": 0,
+          "fn": 8,
+          "tp": 0
+        },
+        "n_pos": 8,
+        "n_neg": 211
+      }
+    },
+    "severity_bands": {
+      "band_accuracy": 0.2968,
+      "band_qwk": 0.2695,
+      "confusion_5x5": [
+        [
+          24,
+          57,
+          10,
+          0,
+          0
+        ],
+        [
+          4,
+          33,
+          14,
+          2,
+          0
+        ],
+        [
+          9,
+          23,
+          8,
+          2,
+          0
+        ],
+        [
+          1,
+          11,
+          10,
+          0,
+          0
+        ],
+        [
+          0,
+          3,
+          8,
+          0,
+          0
+        ]
+      ],
+      "band_names": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24"
+      ],
+      "true_band_counts": {
+        "0-4": 91,
+        "5-9": 53,
+        "10-14": 42,
+        "15-19": 22,
+        "20-24": 11
+      }
+    },
+    "run_id": "cv/bm25base_mbert_ceplain",
+    "model_name": "mental/mental-bert-base-uncased",
+    "loss_type": "plain CE"
+  },
+  {
+    "label": "MentalBERT \u00b7 weighted CE",
+    "item": {
+      "n": 1752,
+      "accuracy": 0.4047,
+      "macro_f1": 0.2944,
+      "mae": 0.7723,
+      "qwk": 0.2363,
+      "f1_per_class": {
+        "0": 0.5107,
+        "1": 0.4238,
+        "2": 0.1688,
+        "3": 0.0744
+      },
+      "confusion_4x4": [
+        [
+          370,
+          385,
+          90,
+          7
+        ],
+        [
+          144,
+          292,
+          63,
+          14
+        ],
+        [
+          52,
+          110,
+          39,
+          19
+        ],
+        [
+          31,
+          78,
+          50,
+          8
+        ]
+      ],
+      "top1_accuracy": 0.4047,
+      "top2_accuracy": 0.7009,
+      "off_by_one_rate": 0.7392
+    },
+    "item_binary_0v1_vs_2v3": {
+      "sensitivity": 0.2997,
+      "specificity": 0.8725,
+      "precision": 0.4,
+      "recall": 0.2997,
+      "f1": 0.3427,
+      "balanced_accuracy": 0.5861,
+      "confusion_2x2": {
+        "tn": 1191,
+        "fp": 174,
+        "fn": 271,
+        "tp": 116
+      },
+      "n_pos": 387,
+      "n_neg": 1365
+    },
+    "per_item": [
+      {
+        "item_id": 1,
+        "item_name": "NoInterest",
+        "accuracy": 0.4155,
+        "macro_f1": 0.2796,
+        "mae": 0.6895,
+        "qwk": 0.1283
+      },
+      {
+        "item_id": 2,
+        "item_name": "Depressed",
+        "accuracy": 0.3744,
+        "macro_f1": 0.2403,
+        "mae": 0.7443,
+        "qwk": 0.1402
+      },
+      {
+        "item_id": 3,
+        "item_name": "Sleep",
+        "accuracy": 0.3151,
+        "macro_f1": 0.2683,
+        "mae": 0.9863,
+        "qwk": 0.1447
+      },
+      {
+        "item_id": 4,
+        "item_name": "Tired",
+        "accuracy": 0.3881,
+        "macro_f1": 0.2789,
+        "mae": 0.7854,
+        "qwk": 0.2094
+      },
+      {
+        "item_id": 5,
+        "item_name": "Appetite",
+        "accuracy": 0.3379,
+        "macro_f1": 0.2499,
+        "mae": 0.8539,
+        "qwk": 0.1909
+      },
+      {
+        "item_id": 6,
+        "item_name": "Failure",
+        "accuracy": 0.3288,
+        "macro_f1": 0.2438,
+        "mae": 0.8721,
+        "qwk": 0.1883
+      },
+      {
+        "item_id": 7,
+        "item_name": "Concentrating",
+        "accuracy": 0.4429,
+        "macro_f1": 0.2993,
+        "mae": 0.758,
+        "qwk": 0.2656
+      },
+      {
+        "item_id": 8,
+        "item_name": "Moving",
+        "accuracy": 0.6347,
+        "macro_f1": 0.2293,
+        "mae": 0.4886,
+        "qwk": 0.0972
+      }
+    ],
+    "total": {
+      "n_participants": 219,
+      "total_mae": 4.6621,
+      "total_qwk": 0.2896,
+      "pearson_r": 0.3523,
+      "spearman_rho": 0.3271,
+      "true_mean": 6.64,
+      "pred_mean": 6.82
+    },
+    "total_thresholds": {
+      ">=5": {
+        "sensitivity": 0.8362,
+        "specificity": 0.2816,
+        "precision": 0.5673,
+        "recall": 0.8362,
+        "f1": 0.676,
+        "balanced_accuracy": 0.5589,
+        "confusion_2x2": {
+          "tn": 29,
+          "fp": 74,
+          "fn": 19,
+          "tp": 97
+        },
+        "n_pos": 116,
+        "n_neg": 103
+      },
+      ">=10": {
+        "sensitivity": 0.2615,
+        "specificity": 0.8831,
+        "precision": 0.4857,
+        "recall": 0.2615,
+        "f1": 0.34,
+        "balanced_accuracy": 0.5723,
+        "confusion_2x2": {
+          "tn": 136,
+          "fp": 18,
+          "fn": 48,
+          "tp": 17
+        },
+        "n_pos": 65,
+        "n_neg": 154
+      },
+      ">=15": {
+        "sensitivity": 0.0645,
+        "specificity": 0.9947,
+        "precision": 0.6667,
+        "recall": 0.0645,
+        "f1": 0.1176,
+        "balanced_accuracy": 0.5296,
+        "confusion_2x2": {
+          "tn": 187,
+          "fp": 1,
+          "fn": 29,
+          "tp": 2
+        },
+        "n_pos": 31,
+        "n_neg": 188
+      },
+      ">=20": {
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.5,
+        "confusion_2x2": {
+          "tn": 211,
+          "fp": 0,
+          "fn": 8,
+          "tp": 0
+        },
+        "n_pos": 8,
+        "n_neg": 211
+      }
+    },
+    "severity_bands": {
+      "band_accuracy": 0.2877,
+      "band_qwk": 0.2773,
+      "confusion_5x5": [
+        [
+          20,
+          56,
+          15,
+          0,
+          0
+        ],
+        [
+          7,
+          27,
+          18,
+          1,
+          0
+        ],
+        [
+          5,
+          25,
+          12,
+          0,
+          0
+        ],
+        [
+          1,
+          10,
+          7,
+          4,
+          0
+        ],
+        [
+          1,
+          2,
+          7,
+          1,
+          0
+        ]
+      ],
+      "band_names": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24"
+      ],
+      "true_band_counts": {
+        "0-4": 91,
+        "5-9": 53,
+        "10-14": 42,
+        "15-19": 22,
+        "20-24": 11
+      }
+    },
+    "run_id": "cv/bm25base_mbert_ce",
+    "model_name": "mental/mental-bert-base-uncased",
+    "loss_type": "weighted CE"
+  },
+  {
+    "label": "MentalBERT \u00b7 CORN",
+    "item": {
+      "n": 1752,
+      "accuracy": 0.4184,
+      "macro_f1": 0.3,
+      "mae": 0.762,
+      "qwk": 0.2183,
+      "f1_per_class": {
+        "0": 0.5329,
+        "1": 0.4218,
+        "2": 0.1579,
+        "3": 0.0874
+      },
+      "confusion_4x4": [
+        [
+          401,
+          371,
+          74,
+          6
+        ],
+        [
+          156,
+          290,
+          61,
+          6
+        ],
+        [
+          62,
+          107,
+          33,
+          18
+        ],
+        [
+          34,
+          94,
+          30,
+          9
+        ]
+      ],
+      "top1_accuracy": 0.4195,
+      "top2_accuracy": 0.6861,
+      "off_by_one_rate": 0.7257
+    },
+    "item_binary_0v1_vs_2v3": {
+      "sensitivity": 0.2326,
+      "specificity": 0.8923,
+      "precision": 0.3797,
+      "recall": 0.2326,
+      "f1": 0.2885,
+      "balanced_accuracy": 0.5624,
+      "confusion_2x2": {
+        "tn": 1218,
+        "fp": 147,
+        "fn": 297,
+        "tp": 90
+      },
+      "n_pos": 387,
+      "n_neg": 1365
+    },
+    "per_item": [
+      {
+        "item_id": 1,
+        "item_name": "NoInterest",
+        "accuracy": 0.3927,
+        "macro_f1": 0.2517,
+        "mae": 0.7169,
+        "qwk": 0.0732
+      },
+      {
+        "item_id": 2,
+        "item_name": "Depressed",
+        "accuracy": 0.4612,
+        "macro_f1": 0.2844,
+        "mae": 0.6575,
+        "qwk": 0.2721
+      },
+      {
+        "item_id": 3,
+        "item_name": "Sleep",
+        "accuracy": 0.3333,
+        "macro_f1": 0.2956,
+        "mae": 0.9269,
+        "qwk": 0.1943
+      },
+      {
+        "item_id": 4,
+        "item_name": "Tired",
+        "accuracy": 0.3379,
+        "macro_f1": 0.2333,
+        "mae": 0.8493,
+        "qwk": 0.1252
+      },
+      {
+        "item_id": 5,
+        "item_name": "Appetite",
+        "accuracy": 0.3607,
+        "macro_f1": 0.2862,
+        "mae": 0.863,
+        "qwk": 0.1206
+      },
+      {
+        "item_id": 6,
+        "item_name": "Failure",
+        "accuracy": 0.3425,
+        "macro_f1": 0.2376,
+        "mae": 0.8767,
+        "qwk": 0.1389
+      },
+      {
+        "item_id": 7,
+        "item_name": "Concentrating",
+        "accuracy": 0.4384,
+        "macro_f1": 0.2877,
+        "mae": 0.7763,
+        "qwk": 0.153
+      },
+      {
+        "item_id": 8,
+        "item_name": "Moving",
+        "accuracy": 0.6804,
+        "macro_f1": 0.2542,
+        "mae": 0.4292,
+        "qwk": 0.0392
+      }
+    ],
+    "total": {
+      "n_participants": 219,
+      "total_mae": 4.7078,
+      "total_qwk": 0.2516,
+      "pearson_r": 0.2947,
+      "spearman_rho": 0.2684,
+      "true_mean": 6.64,
+      "pred_mean": 6.28
+    },
+    "total_thresholds": {
+      ">=5": {
+        "sensitivity": 0.8017,
+        "specificity": 0.3883,
+        "precision": 0.5962,
+        "recall": 0.8017,
+        "f1": 0.6838,
+        "balanced_accuracy": 0.595,
+        "confusion_2x2": {
+          "tn": 40,
+          "fp": 63,
+          "fn": 23,
+          "tp": 93
+        },
+        "n_pos": 116,
+        "n_neg": 103
+      },
+      ">=10": {
+        "sensitivity": 0.2154,
+        "specificity": 0.8831,
+        "precision": 0.4375,
+        "recall": 0.2154,
+        "f1": 0.2887,
+        "balanced_accuracy": 0.5493,
+        "confusion_2x2": {
+          "tn": 136,
+          "fp": 18,
+          "fn": 51,
+          "tp": 14
+        },
+        "n_pos": 65,
+        "n_neg": 154
+      },
+      ">=15": {
+        "sensitivity": 0.0645,
+        "specificity": 0.9787,
+        "precision": 0.3333,
+        "recall": 0.0645,
+        "f1": 0.1081,
+        "balanced_accuracy": 0.5216,
+        "confusion_2x2": {
+          "tn": 184,
+          "fp": 4,
+          "fn": 29,
+          "tp": 2
+        },
+        "n_pos": 31,
+        "n_neg": 188
+      },
+      ">=20": {
+        "sensitivity": 0.0,
+        "specificity": 1.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "balanced_accuracy": 0.5,
+        "confusion_2x2": {
+          "tn": 211,
+          "fp": 0,
+          "fn": 8,
+          "tp": 0
+        },
+        "n_pos": 8,
+        "n_neg": 211
+      }
+    },
+    "severity_bands": {
+      "band_accuracy": 0.2968,
+      "band_qwk": 0.2396,
+      "confusion_5x5": [
+        [
+          29,
+          50,
+          11,
+          1,
+          0
+        ],
+        [
+          12,
+          25,
+          15,
+          1,
+          0
+        ],
+        [
+          8,
+          25,
+          8,
+          1,
+          0
+        ],
+        [
+          2,
+          9,
+          8,
+          3,
+          0
+        ],
+        [
+          1,
+          6,
+          3,
+          1,
+          0
+        ]
+      ],
+      "band_names": [
+        "0-4",
+        "5-9",
+        "10-14",
+        "15-19",
+        "20-24"
+      ],
+      "true_band_counts": {
+        "0-4": 91,
+        "5-9": 53,
+        "10-14": 42,
+        "15-19": 22,
+        "20-24": 11
+      }
+    },
+    "run_id": "cv/bm25base_mbert_corn",
+    "model_name": "mental/mental-bert-base-uncased",
+    "loss_type": "CORN"
+  }
+]

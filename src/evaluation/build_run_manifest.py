@@ -30,6 +30,26 @@ SPLIT_SINGLE = "data/raw/edaic/labels/labels/{train,dev,test}_split.csv (embedde
 SPLIT_CV = "participant-grouped StratifiedGroupKFold (k=5, shuffle, random_state=seed); no external split file"
 
 
+def retrieval_method(dataset_path, evidence_column):
+    """Make the evidence source explicit so baselines on different retrieval
+    pipelines (TF-IDF vs BM25 utterances vs context windows) are never conflated."""
+    ds = Path(dataset_path).name
+    col = evidence_column
+    if col == "transcript_text":
+        return "full transcript (no retrieval)"
+    if col == "baseline_utterances":
+        return "first-K utterances (no retrieval)"
+    if col == "retrieved_utterances":
+        if "full_bm25" in ds:
+            return "BM25 (utterance retrieval)"
+        return "TF-IDF (utterance retrieval)"          # phq8_item_dataset_full.csv
+    if "bm25_pack" in col:
+        return "BM25 (participant-side context windows)"
+    if "hybrid_pack" in col:
+        return "Hybrid: BM25 + semantic (participant-side context windows)"
+    return "unknown"
+
+
 def git_commit():
     try:
         return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT).decode().strip()
@@ -99,6 +119,7 @@ def record(run_id, ts, commit, a, pred_path, kind):
         "dataset_path": a["dataset_path"],
         "split_file": split_file,
         "evidence_column": a["evidence_column"],
+        "retrieval_method": retrieval_method(a["dataset_path"], a["evidence_column"]),
         "model_name": a["model_name"],
         "input_format": INPUT_FORMAT,
         "max_length": a["max_length"],

@@ -274,6 +274,10 @@ def main():
   </div>
   <div class="callout"><b>Winner: Hybrid W3 + CORN.</b> macro-F1 +27%, QWK ~2×, severe-class F1 ~2×, PHQ-8 total QWK 0.07→0.49.
    The gain comes from <b>hybrid (semantic) retrieval</b> — BM25-only windows barely beat the baseline. Use W3 (cheaper; W5 needs max_length=512 to match it).</div>
+  <div class="callout" style="border-left-color:#d97706;background:#fef3c7"><b>⚠ Baseline note — read before cross-comparing.</b>
+   The "Old BM25 utterances" baseline here is <code>phq8_item_dataset_full_bm25.csv</code> = <b>BM25</b> utterance retrieval (per Person A's dataset contract).
+   The <i>earlier</i> project reports (e.g. <code>status_report_v2.html</code>, the BERT≈MentalBERT / CORN-vs-CE study) used <code>phq8_item_dataset_full.csv</code> = <b>TF-IDF</b> utterance retrieval, which scores differently
+   (TF-IDF CORN macro-F1 0.289 / MAE 0.769 vs BM25 CORN 0.274 / 0.847). All comparisons <i>inside this report</i> share the BM25 base and are valid; do not compare these baseline numbers directly against the TF-IDF reports. A unified BM25-baseline set (both models × CE/CORN) is in the manifest under tags <code>bm25base_*</code>.</div>
  </div>
 
  <div class="card"><h2>1 · Run configuration (returned for every run)</h2>
