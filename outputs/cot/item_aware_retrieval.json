@@ -1,0 +1,43 @@
+{
+  "k": 5,
+  "hit_rate_itemaware": {
+    "NoInterest": 0.6757990867579908,
+    "Depressed": 0.7945205479452054,
+    "Sleep": 0.7031963470319634,
+    "Tired": 0.547945205479452,
+    "Appetite": 0.6027397260273972,
+    "Failure": 0.3424657534246575,
+    "Concentrating": 0.639269406392694,
+    "Moving": 0.365296803652968
+  },
+  "hit_rate_bm25_baseline": {
+    "NoInterest": 0.3972602739726027,
+    "Depressed": 0.7077625570776256,
+    "Sleep": 0.4703196347031963,
+    "Tired": 0.502283105022831,
+    "Appetite": 0.3607305936073059,
+    "Failure": 0.2557077625570776,
+    "Concentrating": 0.3378995433789954,
+    "Moving": 0.2876712328767123
+  },
+  "hit_rate_hybrid_existing": {
+    "NoInterest": 0.684931506849315,
+    "Depressed": 0.7579908675799086,
+    "Sleep": 0.9041095890410958,
+    "Tired": 0.5525114155251142,
+    "Appetite": 0.5388127853881278,
+    "Failure": 0.5068493150684932,
+    "Concentrating": 0.4657534246575342,
+    "Moving": 0.3470319634703196
+  },
+  "expand_vocab": {
+    "NoInterest": "interest pleasure enjoy enjoyment hobbies activities fun excited bored unmotivated stopped doing things i used to like care about",
+    "Depressed": "depressed down sad hopeless unhappy crying cry low mood blue empty despair miserable feeling bad",
+    "Sleep": "sleep asleep insomnia falling asleep staying asleep waking up early sleeping too much nights restless tossing turning in bed nap",
+    "Tired": "tired fatigue no energy low energy exhausted lethargic worn out drained sluggish run down",
+    "Appetite": "appetite eating eat food hungry hunger overeating poor appetite weight loss weight gain meals skipping meals eating too much snacking",
+    "Failure": "failure failing failed guilt guilty worthless bad about myself let myself down let my family down disappointed useless ashamed",
+    "Concentrating": "concentrate concentrating focus paying attention distracted forgetful remembering forget reading watching tv mind wandering thoughts",
+    "Moving": "moving slowly speaking slowly slowed down restless fidgety fidget agitated sluggish pacing can't sit still"
+  }
+}
