@@ -138,6 +138,7 @@ def main():
                                        routed_df["prediction"], routed_df["enc_pred"])
 
     best = ensw5["methods"]["severity-routed"]   # the headline best config
+    iad0 = J("item_aware_downstream_metrics")    # for the overview bar
 
     # ===================== figures =====================
     # journey overview
@@ -146,6 +147,7 @@ def main():
         ("CoT 7B (W3 evidence)", cot_w3["macro_f1"], COT_COLOR),
         ("CoT 7B (W5 evidence)", w5["cot"]["macro_f1"], COT_COLOR),
         ("Distilled 1.5B student", dis["methods"]["distilled 1.5B"]["macro_f1"], DIS_COLOR),
+        ("CoT item-aware BM25", iad0["itemaware"]["macro_f1"], "#0891b2"),
         ("Learned stacker", stk["methods"]["stacker (LogReg, nested-CV)"]["macro_f1"], STK_COLOR),
         ("★ Severity-routed ensemble", best["macro_f1"], ENS_COLOR),
     ], "Macro-F1 across every approach we tried (pooled 5-fold OOF, n=1752)", 0.42,
@@ -214,6 +216,47 @@ def main():
                    ("learned stacker", sm["stacker (LogReg, nested-CV)"]["macro_f1"], STK_COLOR)],
                   "Step 6 · learned stacker vs the hand routing rule (macro-F1)", 0.42)
 
+    # ---- retrieval steps 7-9 ----
+    RET = "#0891b2"
+    rwa = J("retrieval_window_analysis")
+    iad = J("item_aware_downstream_metrics")
+
+    def pooled_m(d):
+        df = load_dir(d)
+        return metric_block(df.label.to_numpy(), df.prediction.to_numpy())
+    hia = pooled_m("folds_hybriditemaware")
+    hba = pooled_m("folds_hybridbare")
+
+    # step 7 — retrieval diagnostic
+    s7_hit = bars([(r["item"], r["keyword_hit_rate"], RET)
+                   for r in sorted(rwa["per_item"], key=lambda x: x["keyword_hit_rate"])],
+                  "Step 7 · keyword-hit rate per item (does retrieval surface the symptom?)", 1.0,
+                  note="Fraction of examples whose hybrid windows contain a symptom-relevant term. "
+                       "Sleep 0.90 vs Moving 0.35 — some items rarely retrieve the symptom at all.")
+
+    # step 8 — item-aware BM25
+    s8 = grouped([("macro-F1", iad["itemaware"]["macro_f1"], iad["bm25base"]["macro_f1"]),
+                  ("QWK", iad["itemaware"]["qwk"], iad["bm25base"]["qwk"]),
+                  ("class-3 F1", iad["itemaware"]["f1_per_class"][3], iad["bm25base"]["f1_per_class"][3])],
+                 "Step 8 · item-aware vs bare query — BM25 retrieval (same bank, same k)", 0.45,
+                 legend=("item-aware", "bare item"), cols=(RET, NEU))
+    s8_item = grouped([(it, v["itemaware"], v["bm25base"]) for it, v in iad["per_item_macro_f1"].items()],
+                      "Step 8 · per-item macro-F1 (item-aware vs bare BM25 query)", 0.45,
+                      legend=("item-aware", "bare item"), cols=(RET, NEU))
+
+    # step 9 — item-aware hybrid
+    s9 = grouped([("macro-F1", hia["macro_f1"], hba["macro_f1"]),
+                  ("QWK", hia["qwk"], hba["qwk"]),
+                  ("class-3 F1", hia["f1_per_class"][3], hba["f1_per_class"][3])],
+                 "Step 9 · item-aware vs bare query — within hybrid retrieval", 0.45,
+                 legend=("item-aware hybrid", "bare hybrid"), cols=(RET, NEU))
+    s9_ref = bars([("hybrid bare (mine)", hba["macro_f1"], NEU),
+                   ("hybrid item-aware (mine)", hia["macro_f1"], RET),
+                   ("★ W5-hybrid (production)", w5["cot"]["macro_f1"], COT_COLOR),
+                   ("encoder", enc["macro_f1"], ENC_COLOR)],
+                  "Step 9 · both my hybrid conditions vs the production W5-hybrid CoT (macro-F1)", 0.42,
+                  refs=[(w5["cot"]["macro_f1"], COT_COLOR)])
+
     # ===================== tables =====================
     final_tbl = mtable([
         {"cells": ["Encoder (MentalBERT+CORN)", *fmt(enc)]},
@@ -221,6 +264,8 @@ def main():
         {"cells": ["7B CoT — W5 evidence", *fmt(w5["cot"])]},
         {"cells": ["Self-consistency ×5 (W3)", *fmt(sc["cot"])]},
         {"cells": ["Distilled 1.5B student", *fmt(dm["distilled 1.5B"])]},
+        {"cells": ["CoT item-aware BM25 query", *fmt(iad["itemaware"])]},
+        {"cells": ["CoT item-aware hybrid query", *fmt(hia)]},
         {"cells": ["Learned stacker (nested-CV)", *fmt(sm["stacker (LogReg, nested-CV)"])]},
         {"cells": ["★ Severity-routed ensemble (W5)", *fmt(best)], "hl": True},
     ], ["Configuration", "macro-F1", "QWK", "MAE", "accuracy"])
@@ -254,12 +299,12 @@ def main():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chain-of-Thought for PHQ-8 — full investigation</title><style>{css}</style></head><body>
 <header><h1>Adding Chain-of-Thought reasoning to the PHQ-8 pipeline</h1>
-<div class="sub">A complete, step-by-step investigation: can an LLM's chain-of-thought reasoning improve per-item depression-severity prediction over the tuned MentalBERT+CORN encoder? Feasibility → validation → self-consistency → ensemble → distillation → better evidence → error analysis → stacking.</div>
+<div class="sub">A complete, step-by-step investigation: can an LLM's chain-of-thought reasoning improve per-item depression-severity prediction over the tuned MentalBERT+CORN encoder? Feasibility → validation → self-consistency → ensemble → distillation → better evidence → error analysis → stacking → retrieval diagnostics → item-aware retrieval (BM25 &amp; hybrid).</div>
 <div class="meta"><span>🤖 Qwen2.5-7B-Instruct (teacher) · 1.5B (student)</span><span>🆚 MentalBERT + CORN</span><span>🖥️ RTX 3090 / SLURM (offline)</span><span>📊 participant-grouped 5-fold OOF, n=1752</span></div></header>
 <div class="wrap">
 
 <div class="card"><h2>Executive summary</h2>
-<p>An off-the-shelf LLM doing few-shot chain-of-thought (no training) is <b>genuinely complementary</b> to the trained encoder: it recovers the severe classes the encoder collapses on, while the encoder keeps errors ordinally closer. Neither dominates alone — but a simple <b>severity-routing ensemble</b> beats both parents on the headline metrics. Self-consistency, distillation to a small model, richer evidence, and a learned stacker were all tried; only better evidence nudged the best config further, and an error analysis shows the <b>residual errors are largely a self-report-vs-interview-content ceiling</b>, not a modelling gap.</p>
+<p>An off-the-shelf LLM doing few-shot chain-of-thought (no training) is <b>genuinely complementary</b> to the trained encoder: it recovers the severe classes the encoder collapses on, while the encoder keeps errors ordinally closer. Neither dominates alone — but a simple <b>severity-routing ensemble</b> beats both parents on the headline metrics. Self-consistency, distillation to a small model, richer evidence, and a learned stacker were all tried; only better evidence nudged the best config further. An error analysis then showed the <b>residual errors are largely a self-report-vs-interview-content ceiling</b>, not a modelling gap. A per-item retrieval diagnostic localised that ceiling (some symptoms are barely retrieved at all), and an <b>item-aware retrieval</b> lever was prototyped: it genuinely helps weak (BM25) retrieval (+0.034 macro-F1) but is largely <b>subsumed by good semantic retrieval</b> and did not beat the production hybrid pipeline.</p>
 <div class="verdict"><b>Best result:</b> severity-routed(encoder, 7B-CoT-W5) — <b>macro-F1 {best['macro_f1']:.3f}, QWK {best['qwk']:.3f}</b> vs encoder {enc['macro_f1']:.3f}/{enc['qwk']:.3f} and CoT-alone {cot_w3['macro_f1']:.3f}/{cot_w3['qwk']:.3f}.</div>
 {journey}
 {final_tbl}
@@ -275,6 +320,9 @@ def main():
 <li><a href="#s4">Step 4 — Distillation to a small model</a></li>
 <li><a href="#s5">Step 5 — Better evidence</a></li>
 <li><a href="#s6">Step 6 — Error analysis &amp; learned stacking</a></li>
+<li><a href="#s7">Step 7 — Retrieval diagnostic (per-item)</a></li>
+<li><a href="#s8">Step 8 — Item-aware retrieval (BM25): lever validated</a></li>
+<li><a href="#s9">Step 9 — Item-aware hybrid: didn't beat production</a></li>
 </ul></div>
 
 <a name="s1"></a>{step(1, "Feasibility & 5-fold validation", "GO", GO, f'''
@@ -320,10 +368,27 @@ def main():
 {s6_stk}
 <div class="neg">Learned stacking ≈ but does not dominate severity-routing. The hand rule, motivated directly by the error structure, remains best.</div>''')}
 
+<a name="s7"></a>{step(7, "Retrieval diagnostic — is the evidence even there?", "DIAGNOSE", DIS_COLOR, f'''
+<p>The error analysis pointed upstream: maybe retrieval doesn't surface the symptom for some items. We measured, per item, how often the retrieved windows contain a symptom-relevant term.</p>
+{s7_hit}
+<div class="caveat">Relevance varies sharply: <b>Sleep</b> surfaces a relevant term 90% of the time, <b>Moving</b> only 35%, and <b>Appetite</b> has the weakest retrieval scores. The link to errors is real but confounded by label skew (Moving is ~77% label-0, so easy despite poor retrieval; overall keyword-hit↔far-off r=−0.13). Still, this says part of the difficulty is <b>upstream of reasoning</b> — and suggests one untried lever: query with each symptom's own vocabulary.</div>''')}
+
+<a name="s8"></a>{step(8, "Item-aware retrieval (BM25) — the lever works", "WIN", EV, f'''
+<p>We expand each item's retrieval query with the symptom's vocabulary (synonyms, lay phrasings) and re-retrieve. Tested cleanly downstream: same window bank, same k, <b>only the query differs</b> — so the delta isolates query expansion.</p>
+{s8}
+{s8_item}
+<div class="verdict">Query expansion genuinely helps weak retrieval: macro-F1 <b>{iad['bm25base']['macro_f1']:.3f}→{iad['itemaware']['macro_f1']:.3f}</b> (+{iad['itemaware']['macro_f1']-iad['bm25base']['macro_f1']:.3f}), QWK +{iad['itemaware']['qwk']-iad['bm25base']['qwk']:.3f}, with the per-item gains landing where retrieval relevance improved (Sleep, Failure, Appetite). Caveat: this is BM25; both conditions still trail the production hybrid retrieval ({w5['cot']['macro_f1']:.3f}) — so the question is whether the lever survives on the stronger retriever.</div>''')}
+
+<a name="s9"></a>{step(9, "Item-aware HYBRID retrieval — doesn't beat production", "NO GAIN", NEG, f'''
+<p>We re-implemented hybrid retrieval (MiniLM semantic + BM25 fusion) and ran it with the bare vs item-aware query, then compared to the production W5-hybrid CoT.</p>
+{s9}
+{s9_ref}
+<div class="neg">Within hybrid, item-aware expansion gives <b>no macro-F1 gain</b> ({hba['macro_f1']:.3f}→{hia['macro_f1']:.3f}) — the semantic component already captures topical relevance, so keyword expansion is largely redundant (it still lifts QWK and severe-class F1 but worsens MAE, with large per-item swings). And both my hybrid conditions trail the production W5-hybrid ({w5['cot']['macro_f1']:.3f}/{w5['cot']['qwk']:.3f}). <b>Conclusion: the item-aware lever's value is real for weak retrieval but is subsumed by good semantic retrieval — it does not beat the current pipeline.</b> The standing best is unchanged.</div>''')}
+
 <div class="card"><h2>Conclusion &amp; recommendation</h2>
-<p>The investigation establishes a clean, defensible result: <b>an LLM chain-of-thought component genuinely complements the encoder</b>, and a severity-routing ensemble of the two is the best configuration found — <b>macro-F1 {best['macro_f1']:.3f}, QWK {best['qwk']:.3f}</b>, beating both the tuned encoder and the CoT alone. Self-consistency, naive distillation, and learned stacking did not add value; better evidence gave a small ordinal-metric gain.</p>
-<div class="caveat"><b>Stop tuning the CoT/evidence/combiner frontier.</b> The error analysis shows the remaining errors are mostly a label/self-report ceiling, not a modelling gap. Further gains require <i>different labels/data</i> — clinician severity ratings, or reframing the target toward observable interview behaviour — rather than more LLM engineering. Honesty notes: single seed; participant-grouped 5-fold OOF; DAIC-WOZ is public so the LLM may have seen related data; severe-class counts are small so per-class numbers are high-variance.</div>
-<p class="note" style="margin-top:10px">Code: <code>src/llm/</code> (cot_probe, generate_rationales, distill_student), <code>src/evaluation/</code> (build_cot_report, cot_ensemble, distill_compare, cot_stacker, build_full_cot_report). Run scripts: <code>run_cot_probe*.sbatch</code>, <code>run_distill_*.sbatch</code>. Metrics &amp; per-step reports in <code>outputs/cot/</code>.</p>
+<p>The investigation establishes a clean, defensible result: <b>an LLM chain-of-thought component genuinely complements the encoder</b>, and a severity-routing ensemble of the two is the best configuration found — <b>macro-F1 {best['macro_f1']:.3f}, QWK {best['qwk']:.3f}</b>, beating both the tuned encoder and the CoT alone. Everything else was tested and bounded: self-consistency, naive distillation, and learned stacking added no value; better evidence gave a small ordinal-metric gain; and the item-aware retrieval lever helps weak (BM25) retrieval but is subsumed by good semantic retrieval, so it does not beat the production pipeline. The standing best is unchanged across all nine steps.</p>
+<div class="caveat"><b>The frontier is reached.</b> Two independent lines of evidence — the error analysis (CoT reasoning is faithful; the gold label diverges from interview content) and the retrieval diagnostic (some symptoms are barely verbalised, so no query surfaces them) — point to the same conclusion: the remaining errors are a <b>label/self-report ceiling, not a modelling gap</b>. Further gains require <i>different labels/data</i> — clinician severity ratings, or reframing the target toward observable interview behaviour — not more LLM or retrieval engineering. Honesty notes: single seed; participant-grouped 5-fold OOF; DAIC-WOZ is public so the LLM may have seen related data; severe-class counts are small so per-class numbers are high-variance; the hybrid in Step 9 is a MiniLM reimplementation, weaker than the off-branch production hybrid, so it tests "cheap item-aware hybrid", not item-awareness on the actual production retriever.</div>
+<p class="note" style="margin-top:10px">Code: <code>src/llm/</code> (cot_probe, generate_rationales, distill_student), <code>src/retrieval/</code> (item_aware_retrieval, hybrid_retrieval), <code>src/evaluation/</code> (build_cot_report, cot_ensemble, distill_compare, cot_stacker, retrieval_window_analysis, build_full_cot_report). Run scripts: <code>run_cot_probe*.sbatch</code>, <code>run_distill_*.sbatch</code>, <code>run_cot_itemaware.sbatch</code>, <code>run_cot_hybrid_itemaware.sbatch</code>. Metrics &amp; per-step reports in <code>outputs/cot/</code>.</p>
 </div>
 
 </div></body></html>"""
