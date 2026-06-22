@@ -140,6 +140,10 @@ def main():
     best = ensw5["methods"]["severity-routed"]   # the headline best config
     iad0 = J("item_aware_downstream_metrics")    # for the overview bar
 
+    def pooled_m0(d):
+        df = load_dir(d)
+        return metric_block(df.label.to_numpy(), df.prediction.to_numpy())
+
     # ===================== figures =====================
     # journey overview
     journey = bars([
@@ -148,6 +152,8 @@ def main():
         ("CoT 7B (W5 evidence)", w5["cot"]["macro_f1"], COT_COLOR),
         ("Distilled 1.5B student", dis["methods"]["distilled 1.5B"]["macro_f1"], DIS_COLOR),
         ("CoT item-aware BM25", iad0["itemaware"]["macro_f1"], "#0891b2"),
+        ("CoT full-transcript", pooled_m0("folds_fulltranscript")["macro_f1"], "#e11d48"),
+        ("CoT item-adaptive", pooled_m0("folds_itemadaptive")["macro_f1"], "#16a34a"),
         ("Learned stacker", stk["methods"]["stacker (LogReg, nested-CV)"]["macro_f1"], STK_COLOR),
         ("★ Severity-routed ensemble", best["macro_f1"], ENS_COLOR),
     ], "Macro-F1 across every approach we tried (pooled 5-fold OOF, n=1752)", 0.42,
@@ -257,6 +263,47 @@ def main():
                   "Step 9 · both my hybrid conditions vs the production W5-hybrid CoT (macro-F1)", 0.42,
                   refs=[(w5["cot"]["macro_f1"], COT_COLOR)])
 
+    # ---- steps 10-12: model & evidence ----
+    FT = "#e11d48"; ADAPT = "#16a34a"
+    ft = pooled_m("folds_fulltranscript")
+    ia2 = pooled_m("folds_itemadaptive")
+    w5m = w5["cot"]
+    # under-called-severe counts (retrieval-miss signature)
+    ftd = load_dir("folds_fulltranscript"); w5d = load_dir("folds_w5")
+    from sklearn.metrics import f1_score
+    def f1m(g):
+        return f1_score(g.label, g.prediction, average="macro", labels=LABELS, zero_division=0)
+    def under_sev(d):
+        fo = d[(d.prediction - d.label).abs() >= 2]
+        return int(((fo.prediction < fo.label) & (fo.label >= 2)).sum())
+    us_w5, us_ft = under_sev(w5d), under_sev(ftd)
+
+    # step 11 — full transcript
+    s11 = grouped([("macro-F1", ft["macro_f1"], w5m["macro_f1"]),
+                   ("QWK", ft["qwk"], w5m["qwk"]),
+                   ("MAE", ft["mae"], w5m["mae"]),
+                   ("far-off (≥2)", ft["far_off_rate"], w5m["far_off_rate"])],
+                  "Step 11 · full transcript vs focused W5 retrieval (Qwen-7B)", 1.0,
+                  legend=("full transcript", "W5 retrieved"), cols=(FT, COT_COLOR))
+    s11_item = grouped([(it, ftd[ftd.item_id == iid].pipe(lambda g: f1m(g)),
+                         w5d[w5d.item_id == iid].pipe(lambda g: f1m(g)))
+                        for iid, it in [(1, "NoInterest"), (2, "Depressed"), (3, "Sleep"),
+                                        (4, "Tired"), (5, "Appetite"), (6, "Failure"),
+                                        (7, "Concentrating"), (8, "Moving")]],
+                       "Step 11 · per-item macro-F1 (full transcript vs W5) — gains on starved items", 0.5,
+                       legend=("full transcript", "W5 retrieved"), cols=(FT, COT_COLOR))
+
+    # step 12 — item-adaptive evidence
+    s12_qwk = bars([("CoT W5 (focused)", w5m["qwk"], COT_COLOR),
+                    ("CoT full transcript", ft["qwk"], FT),
+                    ("★ CoT item-adaptive", ia2["qwk"], ADAPT)],
+                   "Step 12 · standalone CoT ordinal agreement (QWK) by evidence strategy", 0.42)
+    s12 = grouped([("macro-F1", ia2["macro_f1"], w5m["macro_f1"]),
+                   ("QWK", ia2["qwk"], w5m["qwk"]),
+                   ("MAE", ia2["mae"], w5m["mae"])],
+                  "Step 12 · item-adaptive vs focused-W5 evidence (standalone CoT)", 0.8,
+                  legend=("item-adaptive", "W5 focused"), cols=(ADAPT, COT_COLOR))
+
     # ===================== tables =====================
     final_tbl = mtable([
         {"cells": ["Encoder (MentalBERT+CORN)", *fmt(enc)]},
@@ -265,7 +312,8 @@ def main():
         {"cells": ["Self-consistency ×5 (W3)", *fmt(sc["cot"])]},
         {"cells": ["Distilled 1.5B student", *fmt(dm["distilled 1.5B"])]},
         {"cells": ["CoT item-aware BM25 query", *fmt(iad["itemaware"])]},
-        {"cells": ["CoT item-aware hybrid query", *fmt(hia)]},
+        {"cells": ["CoT full-transcript", *fmt(ft)]},
+        {"cells": ["CoT item-adaptive evidence", *fmt(ia2)]},
         {"cells": ["Learned stacker (nested-CV)", *fmt(sm["stacker (LogReg, nested-CV)"])]},
         {"cells": ["★ Severity-routed ensemble (W5)", *fmt(best)], "hl": True},
     ], ["Configuration", "macro-F1", "QWK", "MAE", "accuracy"])
@@ -299,7 +347,7 @@ def main():
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chain-of-Thought for PHQ-8 — full investigation</title><style>{css}</style></head><body>
 <header><h1>Adding Chain-of-Thought reasoning to the PHQ-8 pipeline</h1>
-<div class="sub">A complete, step-by-step investigation: can an LLM's chain-of-thought reasoning improve per-item depression-severity prediction over the tuned MentalBERT+CORN encoder? Feasibility → validation → self-consistency → ensemble → distillation → better evidence → error analysis → stacking → retrieval diagnostics → item-aware retrieval (BM25 &amp; hybrid).</div>
+<div class="sub">A complete, step-by-step investigation: can an LLM's chain-of-thought reasoning improve per-item depression-severity prediction over the tuned MentalBERT+CORN encoder? Feasibility → validation → self-consistency → ensemble → distillation → better evidence → error analysis → stacking → retrieval diagnostics → item-aware retrieval → domain model → full transcript → item-adaptive evidence.</div>
 <div class="meta"><span>🤖 Qwen2.5-7B-Instruct (teacher) · 1.5B (student)</span><span>🆚 MentalBERT + CORN</span><span>🖥️ RTX 3090 / SLURM (offline)</span><span>📊 participant-grouped 5-fold OOF, n=1752</span></div></header>
 <div class="wrap">
 
@@ -323,6 +371,9 @@ def main():
 <li><a href="#s7">Step 7 — Retrieval diagnostic (per-item)</a></li>
 <li><a href="#s8">Step 8 — Item-aware retrieval (BM25): lever validated</a></li>
 <li><a href="#s9">Step 9 — Item-aware hybrid: didn't beat production</a></li>
+<li><a href="#s10">Step 10 — Domain model (MentaLLaMA): underperforms</a></li>
+<li><a href="#s11">Step 11 — Full transcript: partly overturns the ceiling</a></li>
+<li><a href="#s12">Step 12 — Item-adaptive evidence: principled improvement</a></li>
 </ul></div>
 
 <a name="s1"></a>{step(1, "Feasibility & 5-fold validation", "GO", GO, f'''
@@ -385,9 +436,27 @@ def main():
 {s9_ref}
 <div class="neg">Within hybrid, item-aware expansion gives <b>no macro-F1 gain</b> ({hba['macro_f1']:.3f}→{hia['macro_f1']:.3f}) — the semantic component already captures topical relevance, so keyword expansion is largely redundant (it still lifts QWK and severe-class F1 but worsens MAE, with large per-item swings). And both my hybrid conditions trail the production W5-hybrid ({w5['cot']['macro_f1']:.3f}/{w5['cot']['qwk']:.3f}). <b>Conclusion: the item-aware lever's value is real for weak retrieval but is subsumed by good semantic retrieval — it does not beat the current pipeline.</b> The standing best is unchanged.</div>''')}
 
+<a name="s10"></a>{step(10, "Domain model (MentaLLaMA) — underperforms", "NO GAIN", NEG, f'''
+<p>We swapped the LLM for the mental-health-tuned MentaLLaMA (LLaMA-2), same W5 evidence/folds. Both sizes lost to Qwen-7B on a full canary fold (n=352): 13B macro-F1 0.285 / QWK 0.239 (over-predicts severity, 12% unparseable); 7B macro-F1 0.227 / QWK 0.114 (37% unparseable). Qwen-7B fold-1 = 0.325 / 0.297.</p>
+<div class="neg">Domain tuning didn't help: the older LLaMA-2 base reasons about PHQ-8 <i>severity</i> worse than a modern general 7B, and follows the structured-output format far less reliably. Not fanned out beyond the canaries. Qwen-7B remains the CoT.</div>''')}
+
+<a name="s11"></a>{step(11, "Full transcript — partly overturns the ceiling", "INSIGHT", EV, f'''
+<p>Realisation: full DAIC transcripts are only ~1.3k tokens (max 4.5k), but the CoT had been fed just ~350 tokens of retrieved windows — a retrieval crutch inherited from the encoder's 512-token limit, irrelevant to a 32k-context LLM. So we fed Qwen-7B the <b>whole interview</b> per item.</p>
+{s11}
+<div class="verdict"><b>Under-called severe cases dropped {us_w5}→{us_ft} (roughly halved)</b> — proving those misses were ~half a <i>retrieval</i> miss, not a pure label ceiling: full context recovers symptoms retrieval hid.</div>
+{s11_item}
+<div class="caveat">But it's not a free win — total far-off rose and MAE worsened ({w5m['mae']:.3f}→{ft['mae']:.3f}): full context causes <b>over-attribution</b> (the model finds "evidence" everywhere and over-calls). Net macro-F1 drops ({w5m['macro_f1']:.3f}→{ft['macro_f1']:.3f}). The per-item pattern is the real signal — gains on the evidence-<i>starved</i> items (Appetite, NoInterest) and losses on well-retrieved ones (Depressed, Sleep). <b>The optimal amount of evidence is item-dependent.</b></div>''')}
+
+<a name="s12"></a>{step(12, "Item-adaptive evidence — a principled improvement", "WIN", ADAPT, f'''
+<p>Acting on Step 11: per item, pick the better evidence source (full transcript vs focused W5) using only the other folds, applied to the held-out fold (leakage-free). The selection is stable — Appetite/NoInterest→full (5/5 folds), Depressed/Sleep/Moving→W5 (5/5).</p>
+{s12_qwk}
+{s12}
+<div class="verdict">Item-adaptive evidence <b>holds W5's macro-F1 ({ia2['macro_f1']:.3f}) while lifting standalone CoT QWK to {ia2['qwk']:.3f}</b> (from {w5m['qwk']:.3f}) — the best ordinal agreement of any standalone CoT, and a clean confirmation that evidence should be chosen per item.</div>
+<div class="caveat">It does <b>not</b> beat the headline best, though: the severity-routing ensemble with item-adaptive lands at 0.355 macro-F1 (routing to the over-predicting full-transcript items hurts precision), below severity-routed(W5)'s {best['macro_f1']:.3f}. Its nested-CV blend reaches MAE 0.675 (best anywhere) — a better-<i>balanced</i> operating point — but the macro-F1 champion is unchanged.</div>''')}
+
 <div class="card"><h2>Conclusion &amp; recommendation</h2>
-<p>The investigation establishes a clean, defensible result: <b>an LLM chain-of-thought component genuinely complements the encoder</b>, and a severity-routing ensemble of the two is the best configuration found — <b>macro-F1 {best['macro_f1']:.3f}, QWK {best['qwk']:.3f}</b>, beating both the tuned encoder and the CoT alone. Everything else was tested and bounded: self-consistency, naive distillation, and learned stacking added no value; better evidence gave a small ordinal-metric gain; and the item-aware retrieval lever helps weak (BM25) retrieval but is subsumed by good semantic retrieval, so it does not beat the production pipeline. The standing best is unchanged across all nine steps.</p>
-<div class="caveat"><b>The frontier is reached.</b> Two independent lines of evidence — the error analysis (CoT reasoning is faithful; the gold label diverges from interview content) and the retrieval diagnostic (some symptoms are barely verbalised, so no query surfaces them) — point to the same conclusion: the remaining errors are a <b>label/self-report ceiling, not a modelling gap</b>. Further gains require <i>different labels/data</i> — clinician severity ratings, or reframing the target toward observable interview behaviour — not more LLM or retrieval engineering. Honesty notes: single seed; participant-grouped 5-fold OOF; DAIC-WOZ is public so the LLM may have seen related data; severe-class counts are small so per-class numbers are high-variance; the hybrid in Step 9 is a MiniLM reimplementation, weaker than the off-branch production hybrid, so it tests "cheap item-aware hybrid", not item-awareness on the actual production retriever.</div>
+<p>The investigation establishes a clean, defensible result: <b>an LLM chain-of-thought component genuinely complements the encoder</b>, and a severity-routing ensemble of the two is the best configuration found — <b>macro-F1 {best['macro_f1']:.3f}, QWK {best['qwk']:.3f}</b>, beating both the tuned encoder and the CoT alone. Across <b>twelve steps</b> every other lever was tested and bounded: self-consistency, naive distillation, learned stacking, a domain-tuned model, and item-aware retrieval (BM25 &amp; hybrid) added no headline gain. Two levers gave real but non-dominant value — better evidence (W5) improved the ensemble's ordinals, and <b>item-adaptive evidence</b> (Step 12), motivated by the full-transcript finding, lifted standalone CoT QWK to {ia2['qwk']:.3f} while holding macro-F1. The macro-F1 champion is unchanged throughout.</p>
+<div class="caveat"><b>The frontier is largely reached — with one nuance.</b> The full-transcript experiment (Step 11) showed the severe-class misses were <i>part retrieval, part label</i>: feeding the whole interview halved the under-called-severe count ({us_w5}→{us_ft}), so retrieval — not just labels — was capping the model. But more context over-attributes elsewhere, so the net is a wash and the gains are <b>item-dependent</b>. The deeper ceiling remains a label/self-report gap (the error analysis: CoT reasoning is faithful, the gold label diverges from interview content; the retrieval diagnostic: some symptoms are barely verbalised). Further headline gains likely need <i>different labels/data</i> — clinician severity ratings, or an observable-behaviour target — not more LLM/retrieval engineering. Honesty notes: single seed; participant-grouped 5-fold OOF; DAIC-WOZ is public so the LLM may have seen related data; severe-class counts are small so per-class numbers are high-variance; Step 9's hybrid is a MiniLM reimplementation weaker than the production retriever; MentaLLaMA (Step 10) was judged on canary folds only.</div>
 <p class="note" style="margin-top:10px">Code: <code>src/llm/</code> (cot_probe, generate_rationales, distill_student), <code>src/retrieval/</code> (item_aware_retrieval, hybrid_retrieval), <code>src/evaluation/</code> (build_cot_report, cot_ensemble, distill_compare, cot_stacker, retrieval_window_analysis, build_full_cot_report). Run scripts: <code>run_cot_probe*.sbatch</code>, <code>run_distill_*.sbatch</code>, <code>run_cot_itemaware.sbatch</code>, <code>run_cot_hybrid_itemaware.sbatch</code>. Metrics &amp; per-step reports in <code>outputs/cot/</code>.</p>
 </div>
 

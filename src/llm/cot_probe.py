@@ -114,6 +114,102 @@ FEWSHOT = [
 ]
 
 
+# --- Full-transcript mode -------------------------------------------------
+# Zero-shot prompt that scores ALL eight PHQ-8 items in one pass from the whole
+# interview transcript. No few-shot exemplars: the transcript is long, so we
+# spend the context budget on the participant's own words instead of crafted
+# snippet demos. This is the natural-advantage setup -- the LLM sees everything,
+# unlike the encoder, which only sees retrieved windows.
+SYSTEM_PROMPT_TRANSCRIPT = (
+    "You are a careful clinical-research assistant. You are given the full "
+    "transcript of a person's interview. Score ALL EIGHT PHQ-8 depression items "
+    "from the transcript.\n\n"
+    "Score each item on the PHQ-8 frequency scale:\n" + ANCHORS + "\n\n"
+    "For each item: briefly note the supporting evidence from the transcript, "
+    "judge whether the symptom is absent, occasional, frequent, or persistent, "
+    "and map it to the closest anchor. Base every score ONLY on what the "
+    "transcript supports -- do not invent symptoms. If an item is never "
+    "discussed, score it 0. When evidence is thin or ambiguous, prefer the "
+    "lower adjacent score.\n\n"
+    "Respond with ONLY a JSON object of this exact form, one entry per item id:\n"
+    '{"scores": [{"id": 1, "reasoning": "...", "label": <0|1|2|3>}, ... id 8]}'
+)
+
+
+def build_transcript_messages(item_lines: str, transcript: str):
+    """One zero-shot turn: the 8 item texts + the full transcript."""
+    user = (f"PHQ-8 items:\n{item_lines}\n\n"
+            f"Interview transcript:\n{transcript}")
+    return [{"role": "system", "content": SYSTEM_PROMPT_TRANSCRIPT},
+            {"role": "user", "content": user}]
+
+
+def coerce_label(value):
+    """Best-effort coerce a model-emitted label into {0,1,2,3} or None."""
+    if isinstance(value, (int, float)):
+        v = int(value)
+        return v if v in (0, 1, 2, 3) else None
+    if isinstance(value, str):
+        d = re.search(r"[0-3]", value)
+        return int(d.group(0)) if d else None
+    return None
+
+
+def parse_transcript_output(text: str, item_ids):
+    """Extract per-item (label, reasoning) from an all-8-items completion.
+    Robust to a ``{"scores": [...]}`` object, a bare list, or a dict keyed by
+    item id. Missing/unparseable items come back as None for the caller to
+    fall back on."""
+    labels = {iid: None for iid in item_ids}
+    reasons = {iid: "" for iid in item_ids}
+    m = re.search(r"\{.*\}", text, flags=re.DOTALL)
+    obj = None
+    if m:
+        try:
+            obj = json.loads(m.group(0))
+        except json.JSONDecodeError:
+            obj = None
+    entries = []
+    if isinstance(obj, dict):
+        if isinstance(obj.get("scores"), list):
+            entries = obj["scores"]
+        else:  # maybe a dict keyed by id: {"1": 2, "2": {...}, ...}
+            for k, v in obj.items():
+                if re.fullmatch(r"\d+", str(k)):
+                    entries.append(v if isinstance(v, dict)
+                                   else {"id": int(k), "label": v})
+                    if isinstance(v, dict):
+                        entries[-1].setdefault("id", int(k))
+    elif isinstance(obj, list):
+        entries = obj
+    for e in entries:
+        if not isinstance(e, dict):
+            continue
+        try:
+            iid = int(e.get("id"))
+        except (TypeError, ValueError):
+            continue
+        if iid in labels:
+            labels[iid] = coerce_label(e.get("label"))
+            reasons[iid] = str(e.get("reasoning", ""))
+    return labels, reasons
+
+
+def fit_transcript(tok, transcript: str, base_overhead: int, max_input: int):
+    """Token-truncate a transcript to fit ``max_input - base_overhead``.
+    Keeps head + tail (interview opening and most recent turns), dropping the
+    middle, since depressive content is spread throughout. Returns
+    (text, n_tokens, was_truncated)."""
+    ids = tok(transcript, add_special_tokens=False)["input_ids"]
+    budget = max(0, max_input - base_overhead)
+    if len(ids) <= budget:
+        return transcript, len(ids), False
+    head = budget // 2
+    tail = budget - head
+    kept = ids[:head] + ids[-tail:]
+    return tok.decode(kept, skip_special_tokens=True), len(kept), True
+
+
 def clean_evidence(raw: str) -> str:
     """Make the retrieved-window pack readable for the LLM."""
     if not isinstance(raw, str):
@@ -193,6 +289,14 @@ def main():
     p = argparse.ArgumentParser(description="Few-shot CoT probe for PHQ-8 severity")
     p.add_argument("--dataset-path", default=str(DEFAULT_DATASET))
     p.add_argument("--evidence-column", default="retrieved_context_windows_hybrid_pack")
+    p.add_argument("--full-transcript", action="store_true",
+                   help="Per-participant zero-shot mode: score all 8 PHQ items in "
+                        "one pass from the whole transcript (instead of per-item "
+                        "retrieved snippets).")
+    p.add_argument("--transcript-column", default="transcript_text")
+    p.add_argument("--max-context", type=int, default=4096,
+                   help="Model context window (LLaMA-2 / MentaLLaMA = 4096). Used "
+                        "to size transcript truncation in --full-transcript mode.")
     p.add_argument("--baseline-oof",
                    default=str(PROJECT_ROOT / "outputs" / "cv" /
                                "oof_predictions_ctxm_corn_hybw3.csv"),
@@ -203,6 +307,8 @@ def main():
     p.add_argument("--n-samples", type=int, default=1,
                    help="1 = greedy (deterministic). >1 = self-consistency vote.")
     p.add_argument("--temperature", type=float, default=0.7)
+    p.add_argument("--load-4bit", action="store_true",
+                   help="Load weights in 4-bit (nf4) — needed to fit 13B/32B on one 3090.")
     p.add_argument("--max-new-tokens", type=int, default=256)
     p.add_argument("--limit", type=int, default=0, help="Debug: cap #examples (0=all).")
     p.add_argument("--output", default=str(PROJECT_ROOT / "outputs" / "cot" /
@@ -230,7 +336,12 @@ def main():
     print("PHQ-8 few-shot CoT feasibility probe")
     print(f"  model        : {args.model_name}")
     print(f"  dataset      : {Path(args.dataset_path).name}")
-    print(f"  evidence col : {args.evidence_column}")
+    if args.full_transcript:
+        print(f"  mode         : full-transcript zero-shot (all 8 items / pass)")
+        print(f"  evidence col : {args.transcript_column}  (max_context={args.max_context})")
+    else:
+        print(f"  mode         : per-item few-shot")
+        print(f"  evidence col : {args.evidence_column}")
     print(f"  eval slice   : fold {args.fold} of {Path(args.baseline_oof).name}")
     print(f"  n examples   : {len(eval_df)}  ({eval_df['participant_id'].nunique()} participants)")
     print(f"  decoding     : {'greedy' if args.n_samples == 1 else f'self-consistency x{args.n_samples} @ T={args.temperature}'}")
@@ -238,9 +349,52 @@ def main():
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     tok = AutoTokenizer.from_pretrained(args.model_name)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model_name, torch_dtype=torch.bfloat16, device_map=device)
+    if tok.pad_token is None:
+        tok.pad_token = tok.eos_token
+    # LLaMA-2-era tokenizers (e.g. MentaLLaMA) ship no chat template; supply the
+    # canonical LLaMA-2 [INST] template so few-shot system/user/assistant turns render.
+    if tok.chat_template is None:
+        tok.chat_template = (
+            "{% if messages[0]['role'] == 'system' %}{% set sys = messages[0]['content'] %}"
+            "{% set messages = messages[1:] %}{% else %}{% set sys = '' %}{% endif %}"
+            "{% for m in messages %}{% if m['role'] == 'user' %}"
+            "{{ bos_token + '[INST] ' + (('<<SYS>>\\n' + sys + '\\n<</SYS>>\\n\\n') if loop.first and sys else '') + m['content'] + ' [/INST]' }}"
+            "{% elif m['role'] == 'assistant' %}{{ ' ' + m['content'] + ' ' + eos_token }}{% endif %}{% endfor %}")
+    if args.load_4bit:
+        from transformers import BitsAndBytesConfig
+        qcfg = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                                  bnb_4bit_compute_dtype=torch.bfloat16,
+                                  bnb_4bit_use_double_quant=True)
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model_name, quantization_config=qcfg, device_map="auto")
+    else:
+        model = AutoModelForCausalLM.from_pretrained(
+            args.model_name, torch_dtype=torch.bfloat16, device_map=device)
     model.eval()
+
+    if args.full_transcript:
+        rows = run_full_transcript(args, eval_df, tok, model)
+    else:
+        rows = run_per_item(args, eval_df, tok, model)
+
+    pred_df = pd.DataFrame(rows)
+    pred_df.to_csv(out_path, index=False)
+    print(f"\nSaved predictions: {out_path}  ({len(pred_df)} rows)")
+
+    # ---- quick metrics (full report comes from the figure script) -----------
+    from sklearn.metrics import (accuracy_score, f1_score,
+                                  mean_absolute_error, cohen_kappa_score)
+    yt, yp = pred_df["label"].to_numpy(), pred_df["prediction"].to_numpy()
+    print("-" * 64)
+    print(f"  accuracy : {accuracy_score(yt, yp):.3f}")
+    print(f"  macro_f1 : {f1_score(yt, yp, average='macro', zero_division=0):.3f}")
+    print(f"  MAE      : {mean_absolute_error(yt, yp):.3f}")
+    print(f"  QWK      : {cohen_kappa_score(yt, yp, weights='quadratic', labels=[0,1,2,3]):.3f}")
+
+
+def run_per_item(args, eval_df, tok, model):
+    import numpy as np
+    import torch
 
     rows = []
     t0 = time.time()
@@ -249,7 +403,8 @@ def main():
         messages = build_messages(r["item_text"], evidence)
         prompt = tok.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True)
-        inputs = tok(prompt, return_tensors="pt").to(device)
+        # chat templates already emit special tokens as text -> don't double-add
+        inputs = tok(prompt, return_tensors="pt", add_special_tokens=False).to(model.device)
 
         gen_kw = dict(max_new_tokens=args.max_new_tokens,
                       pad_token_id=tok.eos_token_id,
@@ -287,20 +442,103 @@ def main():
             rate = (time.time() - t0) / done
             print(f"  {done:4d}/{len(eval_df)}  "
                   f"({rate:.1f}s/ex, ~{rate * (len(eval_df) - done) / 60:.1f} min left)")
+    print(f"  ({time.time() - t0:.0f}s total)")
+    return rows
 
-    pred_df = pd.DataFrame(rows)
-    pred_df.to_csv(out_path, index=False)
-    print(f"\nSaved predictions: {out_path}  ({time.time() - t0:.0f}s total)")
 
-    # ---- quick metrics (full report comes from the figure script) -----------
-    from sklearn.metrics import (accuracy_score, f1_score,
-                                  mean_absolute_error, cohen_kappa_score)
-    yt, yp = pred_df["label"].to_numpy(), pred_df["prediction"].to_numpy()
-    print("-" * 64)
-    print(f"  accuracy : {accuracy_score(yt, yp):.3f}")
-    print(f"  macro_f1 : {f1_score(yt, yp, average='macro', zero_division=0):.3f}")
-    print(f"  MAE      : {mean_absolute_error(yt, yp):.3f}")
-    print(f"  QWK      : {cohen_kappa_score(yt, yp, weights='quadratic', labels=[0,1,2,3]):.3f}")
+def run_full_transcript(args, eval_df, tok, model):
+    """Per-participant, zero-shot: one pass scores all 8 PHQ items from the full
+    transcript. Returns rows in the same schema as the per-item path."""
+    import numpy as np
+    import torch
+
+    # canonical 8 items (id -> text/name), taken from the eval slice itself
+    items = (eval_df.drop_duplicates("item_id")
+             .sort_values("item_id")[["item_id", "item_name", "item_text"]])
+    item_ids = [int(x) for x in items["item_id"].tolist()]
+    name_by_id = dict(zip(items["item_id"].astype(int), items["item_name"]))
+    item_lines = "\n".join(f"{int(r.item_id)}. {r.item_text}"
+                           for r in items.itertuples())
+
+    # base prompt overhead (everything except the transcript) -> truncation budget
+    empty_msgs = build_transcript_messages(item_lines, "")
+    empty_prompt = tok.apply_chat_template(
+        empty_msgs, tokenize=False, add_generation_prompt=True)
+    base_overhead = len(tok(empty_prompt, add_special_tokens=False)["input_ids"])
+    max_input = args.max_context - args.max_new_tokens - 16  # safety margin
+    print(f"  prompt overhead {base_overhead} tok | transcript budget "
+          f"{max(0, max_input - base_overhead)} tok (max_input {max_input})")
+
+    # ground-truth labels: (participant, item) -> label
+    label_by_key = {(str(r.participant_id), int(r.item_id)): int(r.label)
+                    for r in eval_df.itertuples()}
+    transcript_by_pid = (eval_df.drop_duplicates("participant_id")
+                         .set_index("participant_id")["transcript_text"].to_dict())
+    participants = list(transcript_by_pid.keys())
+
+    rows, n_trunc = [], 0
+    t0 = time.time()
+    for pi, pid in enumerate(participants):
+        transcript = str(transcript_by_pid[pid] or "")
+        transcript, ntok, truncated = fit_transcript(
+            tok, transcript, base_overhead, max_input)
+        n_trunc += int(truncated)
+        messages = build_transcript_messages(item_lines, transcript)
+        prompt = tok.apply_chat_template(
+            messages, tokenize=False, add_generation_prompt=True)
+        inputs = tok(prompt, return_tensors="pt",
+                     add_special_tokens=False).to(model.device)
+
+        gen_kw = dict(max_new_tokens=args.max_new_tokens,
+                      pad_token_id=tok.eos_token_id,
+                      num_return_sequences=args.n_samples)
+        if args.n_samples == 1:
+            gen_kw.update(do_sample=False)
+        else:
+            gen_kw.update(do_sample=True, temperature=args.temperature, top_p=0.9)
+        with torch.no_grad():
+            out = model.generate(**inputs, **gen_kw)
+        plen = inputs["input_ids"].shape[1]
+
+        # per-item votes across the N sampled chains (greedy => single chain)
+        votes = {iid: [] for iid in item_ids}
+        reasons = {iid: "" for iid in item_ids}
+        for s in range(out.shape[0]):
+            lbls, rsns = parse_transcript_output(
+                tok.decode(out[s][plen:], skip_special_tokens=True), item_ids)
+            for iid in item_ids:
+                if lbls[iid] is not None:
+                    votes[iid].append(lbls[iid])
+                if s == 0:
+                    reasons[iid] = rsns[iid]
+
+        for iid in item_ids:
+            v = votes[iid]
+            if v:
+                counts = np.bincount(v, minlength=NUM_LABELS).astype(float)
+                prediction = int(counts.argmax())
+                probs = counts / counts.sum()
+                reasoning = reasons[iid]
+            else:  # model never produced a parseable score for this item
+                prediction = 1  # same safe fallback as the per-item path
+                probs = np.zeros(NUM_LABELS); probs[1] = 1.0
+                reasoning = "[no parseable score -> fallback]"
+            rec = {"participant_id": str(pid), "item_id": iid,
+                   "item_name": name_by_id[iid],
+                   "label": label_by_key[(str(pid), iid)],
+                   "prediction": prediction}
+            for c in range(NUM_LABELS):
+                rec[f"prob_{c}"] = float(probs[c])
+            rec["reasoning"] = reasoning
+            rows.append(rec)
+
+        done = pi + 1
+        rate = (time.time() - t0) / done
+        print(f"  {done:3d}/{len(participants)} participants  "
+              f"({rate:.1f}s/part, ~{rate * (len(participants) - done) / 60:.1f} min left)")
+    print(f"  ({time.time() - t0:.0f}s total | {n_trunc}/{len(participants)} "
+          f"transcripts truncated)")
+    return rows
 
 
 if __name__ == "__main__":
