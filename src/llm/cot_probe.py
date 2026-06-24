@@ -114,6 +114,41 @@ FEWSHOT = [
 ]
 
 
+# --- Strict / anti-over-attribution variant -------------------------------
+# Targets the full-transcript failure mode: given a long interview the model
+# finds "evidence" for every symptom and over-calls. This prompt raises the bar
+# for severe scores and gives an explicit abstain-to-0 path.
+STRICT_SYSTEM_PROMPT = (
+    "You are a careful, CONSERVATIVE clinical-research assistant scoring a single "
+    "PHQ-8 depression-screening item from a person's interview evidence.\n\n"
+    "Score the item on the PHQ-8 frequency scale:\n" + ANCHORS + "\n\n"
+    "STRICT scoring rules — most items should be 0 or 1:\n"
+    "- Score 0 unless the evidence specifically discusses THIS symptom. If the "
+    "symptom is never clearly mentioned, score 0.\n"
+    "- Do NOT infer a symptom from general sadness, life hardship, or overall "
+    "tone. Depression elsewhere is NOT evidence for, e.g., appetite or sleep.\n"
+    "- Reserve 2 or 3 ONLY for explicit, repeated, CURRENT evidence that THIS "
+    "specific symptom is frequent/persistent. A single passing mention is at most 1.\n"
+    "- When in doubt, choose the LOWER score.\n\n"
+    "Reason step by step: (1) is THIS symptom specifically discussed? (2) if so, "
+    "how frequent/current is it? (3) map to the closest anchor, defaulting low. "
+    "Respond with ONLY a JSON object: {\"reasoning\": \"...\", \"label\": <0|1|2|3>}."
+)
+
+# Strict few-shot adds an explicit abstention demo (symptom not discussed -> 0).
+STRICT_FEWSHOT = FEWSHOT + [
+    {
+        "item": "Poor appetite or overeating",
+        "evidence": "lost my mother last year /// some days are really hard /// "
+                    "I feel down a lot /// I miss her",
+        "reasoning": "The evidence is about grief and low mood; it never mentions "
+                     "eating, appetite, food, or weight. This symptom is not "
+                     "discussed, so do not infer it from general sadness -> 0.",
+        "label": 0,
+    },
+]
+
+
 # --- Full-transcript mode -------------------------------------------------
 # Zero-shot prompt that scores ALL eight PHQ-8 items in one pass from the whole
 # interview transcript. No few-shot exemplars: the transcript is long, so we
@@ -242,9 +277,9 @@ def format_evidence(value) -> str:
     return clean_evidence(value)
 
 
-def build_messages(item_text: str, evidence: str):
-    msgs = [{"role": "system", "content": SYSTEM_PROMPT}]
-    for ex in FEWSHOT:
+def build_messages(item_text: str, evidence: str, system=SYSTEM_PROMPT, fewshot=FEWSHOT):
+    msgs = [{"role": "system", "content": system}]
+    for ex in fewshot:
         msgs.append({"role": "user", "content":
                      f"PHQ-8 item: {ex['item']}\nEvidence: {ex['evidence']}"})
         msgs.append({"role": "assistant", "content": json.dumps(
@@ -307,6 +342,8 @@ def main():
     p.add_argument("--n-samples", type=int, default=1,
                    help="1 = greedy (deterministic). >1 = self-consistency vote.")
     p.add_argument("--temperature", type=float, default=0.7)
+    p.add_argument("--strict", action="store_true",
+                   help="Anti-over-attribution prompt: conservative scoring + abstain-to-0.")
     p.add_argument("--load-4bit", action="store_true",
                    help="Load weights in 4-bit (nf4) — needed to fit 13B/32B on one 3090.")
     p.add_argument("--max-new-tokens", type=int, default=256)
@@ -400,7 +437,10 @@ def run_per_item(args, eval_df, tok, model):
     t0 = time.time()
     for i, r in eval_df.reset_index(drop=True).iterrows():
         evidence = format_evidence(r[args.evidence_column])
-        messages = build_messages(r["item_text"], evidence)
+        messages = (build_messages(r["item_text"], evidence,
+                                   system=STRICT_SYSTEM_PROMPT, fewshot=STRICT_FEWSHOT)
+                    if getattr(args, "strict", False)
+                    else build_messages(r["item_text"], evidence))
         prompt = tok.apply_chat_template(
             messages, tokenize=False, add_generation_prompt=True)
         # chat templates already emit special tokens as text -> don't double-add

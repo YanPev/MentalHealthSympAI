@@ -40,8 +40,15 @@ def item_f1(df, iid):
 
 
 def main():
-    OUTDIR.mkdir(parents=True, exist_ok=True)
-    w5 = load("folds_w5"); ft = load("folds_fulltranscript")
+    import argparse
+    ap = argparse.ArgumentParser(description="Item-adaptive evidence (per-item source selection)")
+    ap.add_argument("--w5-dir", default="folds_w5")
+    ap.add_argument("--full-dir", default="folds_fulltranscript")
+    ap.add_argument("--out-dir", default=str(OUTDIR))
+    a = ap.parse_args()
+    outdir = Path(a.out_dir)
+    outdir.mkdir(parents=True, exist_ok=True)
+    w5 = load(a.w5_dir); ft = load(a.full_dir)
     fold = pd.read_csv(ENC_OOF)[["participant_id", "item_id", "fold"]]
     fold["participant_id"] = fold["participant_id"].astype(str)
     for d in (w5, ft):
@@ -66,7 +73,7 @@ def main():
         fdf = pd.concat(out_rows[f], ignore_index=True)
         cols = KEY + ["item_name", "label", "prediction"] + \
             [c for c in PROBS if c in fdf] + (["reasoning"] if "reasoning" in fdf else [])
-        fdf[cols].to_csv(OUTDIR / f"cot_probe_qwen_hybw3_fold{f}.csv", index=False)
+        fdf[cols].to_csv(outdir / f"cot_probe_qwen_hybw3_fold{f}.csv", index=False)
         pooled.append(fdf)
     pooled = pd.concat(pooled, ignore_index=True)
 
@@ -90,7 +97,7 @@ def main():
     for iid in range(1, 9):
         votes = [chosen[(f, iid)] for f in folds]
         print(f"  {names[iid]:14s} {'/'.join(votes)}  -> {'FULL' if votes.count('full')>=3 else 'W5'}")
-    print(f"\nWrote item-adaptive OOF to {OUTDIR}")
+    print(f"\nWrote item-adaptive OOF to {outdir}")
 
 
 if __name__ == "__main__":
