@@ -98,8 +98,12 @@ def main():
     p.add_argument("--learning-rate", type=float, default=2e-5)
     p.add_argument("--class-weights", default="balanced", choices=["none", "balanced"])
     p.add_argument("--loss", default="cross_entropy",
-                   choices=["cross_entropy", "corn"],
-                   help="'corn' = rank-consistent ordinal loss (K-1 output head).")
+                   choices=["cross_entropy", "corn", "corn_balanced", "corn_focal"],
+                   help="'corn' = rank-consistent ordinal loss (K-1 head); "
+                        "'corn_balanced' = class-weighted CORN (long-tail / severe); "
+                        "'corn_focal' = focal CORN (hard-example focus).")
+    p.add_argument("--focal-gamma", type=float, default=2.0,
+                   help="Focusing parameter for --loss corn_focal.")
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--output-dir", default=str(PROJECT_ROOT / "outputs" / "cv"))
     p.add_argument("--tag", default=None, help="Filename tag; default from model name.")
@@ -127,14 +131,15 @@ def main():
     print("=" * 64)
 
     # Head / loss / prediction selection.
-    is_corn = args.loss == "corn"
+    is_corn = args.loss.startswith("corn")
     n_out = NUM_LABELS - 1 if is_corn else NUM_LABELS
     if is_corn:
-        from src.models.ordinal import corn_loss, corn_probas, corn_predict
+        from src.models.ordinal import (corn_loss, corn_loss_weighted,
+                                         corn_loss_focal, corn_probas, corn_predict)
         predict_fn = lambda z: corn_predict(z).cpu().numpy()
         prob_fn = corn_probas
-        if args.class_weights == "balanced":
-            print("  [note] class weights ignored for CORN (ordinal loss handles ordering).")
+        if args.loss == "corn" and args.class_weights == "balanced":
+            print("  [note] class weights ignored for plain CORN (ordinal loss handles ordering).")
     else:
         predict_fn = None
         prob_fn = None
@@ -163,8 +168,17 @@ def main():
         model = AutoModelForSequenceClassification.from_pretrained(
             args.model_name, num_labels=n_out).to(device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
-        if is_corn:
+        if args.loss == "corn":
             loss_fn = lambda logits, labels: corn_loss(logits, labels, NUM_LABELS)
+        elif args.loss == "corn_balanced":
+            from sklearn.utils.class_weight import compute_class_weight
+            cw = compute_class_weight("balanced", classes=np.arange(NUM_LABELS),
+                                      y=tr_df["label"].to_numpy())
+            cw_t = torch.tensor(cw, dtype=torch.float, device=device)
+            loss_fn = lambda logits, labels: corn_loss_weighted(logits, labels, NUM_LABELS, cw_t)
+        elif args.loss == "corn_focal":
+            loss_fn = lambda logits, labels: corn_loss_focal(logits, labels, NUM_LABELS,
+                                                             gamma=args.focal_gamma)
         elif args.class_weights == "balanced":
             loss_fn = make_loss_fn(tr_df["label"].to_numpy(), device)
         else:

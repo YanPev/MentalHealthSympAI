@@ -45,6 +45,60 @@ def corn_loss(logits, y_true, num_classes):
     return losses / max(n_total, 1)
 
 
+def corn_loss_weighted(logits, y_true, num_classes, class_weight):
+    """Class-balanced CORN: weight each example's contribution by ``class_weight[y]``.
+
+    Plain CORN treats every example equally, so the rare severe classes (9.5% of
+    items) are drowned out — the near-miss analysis showed severe is *under*-called.
+    Up-weighting tail examples in the conditional binary tasks pushes the decision
+    boundaries toward catching them, while keeping CORN's rank-consistent head.
+
+    Parameters
+    ----------
+    logits : (N, num_classes - 1) float tensor
+    y_true : (N,) long tensor of labels in [0, num_classes - 1]
+    class_weight : (num_classes,) float tensor (e.g. sklearn "balanced" weights)
+    """
+    w_all = class_weight[y_true]                      # (N,) per-example weight
+    total = logits.new_zeros(())
+    wsum = logits.new_zeros(())
+    for k in range(num_classes - 1):
+        mask = y_true > (k - 1)
+        if mask.sum() == 0:
+            continue
+        target = (y_true[mask] > k).float()
+        z = logits[mask, k]
+        w = w_all[mask]
+        bce = -(F.logsigmoid(z) * target + (F.logsigmoid(z) - z) * (1.0 - target))
+        total = total + torch.sum(w * bce)
+        wsum = wsum + torch.sum(w)
+    return total / wsum.clamp(min=1.0)
+
+
+def corn_loss_focal(logits, y_true, num_classes, gamma=2.0):
+    """Focal CORN: down-weight already-easy threshold decisions by ``(1 - p_t)**gamma``.
+
+    Focuses optimisation on the hard, ambiguous boundary cases (Lin et al. 2017)
+    while preserving CORN's ordinal structure. Complementary to class balancing:
+    targets *hard* examples rather than *rare* classes.
+    """
+    total = logits.new_zeros(())
+    n_total = 0
+    for k in range(num_classes - 1):
+        mask = y_true > (k - 1)
+        if mask.sum() == 0:
+            continue
+        target = (y_true[mask] > k).float()
+        z = logits[mask, k]
+        p = torch.sigmoid(z)
+        p_t = p * target + (1.0 - p) * (1.0 - target)        # prob of the true side
+        focal = (1.0 - p_t).clamp(min=0.0) ** gamma
+        bce = -(F.logsigmoid(z) * target + (F.logsigmoid(z) - z) * (1.0 - target))
+        total = total + torch.sum(focal * bce)
+        n_total += int(mask.sum())
+    return total / max(n_total, 1)
+
+
 def corn_probas(logits):
     """Convert CORN logits to a full (N, num_classes) probability distribution.
 
