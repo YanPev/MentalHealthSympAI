@@ -68,9 +68,9 @@ def _disjoint_difficult_from_reasoning(text):
     return {iid: 1.0 for iid in disj}
 
 
-def load_llm(pattern):
-    """Concat LLM OOF folds; ensure a per-row `difficult_frac` (from the column if
-    present, else derived from chain-0 reasoning)."""
+def load_one(pattern):
+    """Concat one LLM run's OOF folds; ensure a per-row `difficult_frac` (from the
+    column if present, else derived from chain-0 reasoning)."""
     files = sorted(glob.glob(pattern))
     if not files:
         sys.exit(f"no LLM fold files match: {pattern}")
@@ -88,8 +88,25 @@ def load_llm(pattern):
         src = "chain-0 reasoning (fallback)"
     else:
         src = "difficult_frac column"
-    print(f"  LLM: {len(df)} rows from {len(files)} folds | difficult signal: {src}")
+    print(f"  run {Path(pattern).parent.name}: {len(df)} rows from {len(files)} folds "
+          f"| difficult signal: {src}")
     return df
+
+
+def load_llm(patterns):
+    """Load one or more LLM runs. With several, POOL them: average the per-item
+    vote distributions (prob_0..3) and the difficult_frac across runs — e.g. two
+    SC×5 runs become a low-variance 10-chain vote. Self-consistency at T>0 has real
+    run-to-run noise (~±0.02 macro-F1), so pooling seeds before quoting matters."""
+    keep = ["participant_id", "item_id", "difficult_frac"] + [f"prob_{c}" for c in range(NUM_LABELS)]
+    dfs = [load_one(p)[keep] for p in patterns]
+    if len(dfs) == 1:
+        return dfs[0]
+    pooled = (pd.concat(dfs, ignore_index=True)
+              .groupby(["participant_id", "item_id"], as_index=False).mean())
+    print(f"  POOLED {len(patterns)} runs -> {len(pooled)} items "
+          f"(averaged vote distributions + difficult_frac)")
+    return pooled
 
 
 def load_encoder(path):
@@ -170,9 +187,10 @@ def _show(rows):
 
 def main():
     ap = argparse.ArgumentParser(description="Confidence-gated CoT→encoder cascade")
-    ap.add_argument("--llm-folds", required=True,
-                    help="glob of LLM-with-confidence OOF fold CSVs (prob_0..3 = "
-                         "vote fractions; optional difficult_frac column).")
+    ap.add_argument("--llm-folds", required=True, nargs="+",
+                    help="glob(s) of LLM-with-confidence OOF fold CSVs (prob_0..3 = "
+                         "vote fractions; optional difficult_frac column). Pass MORE "
+                         "than one run to pool them into a lower-variance vote.")
     ap.add_argument("--encoder-oof", default=str(DEFAULT_ENCODER_OOF))
     ap.add_argument("--gate", choices=["vote", "difficult", "merged"], default="merged")
     ap.add_argument("--tau", type=float, default=0.8,
