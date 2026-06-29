@@ -191,6 +191,30 @@ def parse_staged(text):
     return out
 
 
+def parse_staged_buckets(text):
+    """Return (confident_ids, difficult_ids) the model declared, as int sets.
+    Used to derive the DISJOINT difficult set (difficult − confident) — the items
+    the model singled out as hard, which is the semantic gate the cascade routes on."""
+    m = re.search(r"\{.*\}", text, flags=re.DOTALL)
+    if not m:
+        return set(), set()
+    try:
+        obj = json.loads(m.group(0))
+    except json.JSONDecodeError:
+        return set(), set()
+
+    def ids(key):
+        d = obj.get(key, {})
+        out = set()
+        if isinstance(d, dict):
+            for k in d:
+                ks = re.sub(r"\D", "", str(k))
+                if ks:
+                    out.add(int(ks))
+        return out
+    return ids("confident"), ids("difficult")
+
+
 def build_user(part_df, evidence_column, transcript_items=None, transcript=""):
     """Per-symptom evidence block. For any item id in ``transcript_items`` the
     block points to the full interview transcript (appended once at the end)
@@ -357,8 +381,12 @@ def main():
         with torch.no_grad():
             out = model.generate(**inputs, **gen_kw)
         plen = inputs["input_ids"].shape[1]
-        # tally per-item votes across the N chains (N=1 => a single one-hot vote)
+        # tally per-item votes across the N chains (N=1 => a single one-hot vote).
+        # diff_counts = how many chains placed the item in the DISJOINT difficult set
+        # (difficult − confident) -> the semantic confidence the cascade gates on,
+        # now aggregated over all chains instead of just chain-0.
         votes = {iid: [] for iid in range(1, 9)}
+        diff_counts = {iid: 0 for iid in range(1, 9)}
         first_text = ""
         for s in range(out.shape[0]):
             txt = tok.decode(out[s][plen:], skip_special_tokens=True)
@@ -367,6 +395,10 @@ def main():
             for iid, lbl in parse_scores(txt).items():
                 if 0 <= int(lbl) <= 3:
                     votes[iid].append(int(lbl))
+            conf, diff = parse_staged_buckets(txt)
+            for iid in (diff - conf):
+                if 1 <= iid <= 8:
+                    diff_counts[iid] += 1
         for _, r in pdf.iterrows():
             iid = int(r["item_id"])
             v = votes.get(iid, [])
@@ -382,6 +414,7 @@ def main():
                          "item_name": r["item_name"], "label": int(r["label"]),
                          "prediction": pred if pred >= 0 else 1,
                          **{f"prob_{c}": probs[c] for c in range(NUM_LABELS)},
+                         "difficult_frac": round(diff_counts[iid] / out.shape[0], 4),
                          "reasoning": first_text.strip()[:reasoning_cap]})
     pred_df = pd.DataFrame(rows)
     pred_df.to_csv(out_path, index=False)
