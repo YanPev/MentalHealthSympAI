@@ -1,0 +1,3113 @@
+participant_id,item_id,item_name,label,prediction,prob_0,prob_1,prob_2,prob_3,reasoning
+307,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,2,Depressed,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,4,Tired,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,6,Failure,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+307,8,Moving,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to feeling down, stressed, and lacking energy, but does not seem to exhibit persistent or severe symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 1
+  }
+}"
+309,1,NoInterest,2,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,2,Depressed,1,3,0.0,0.0,0.0,1.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,3,Sleep,3,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,4,Tired,1,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,5,Appetite,1,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,6,Failure,3,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,7,Concentrating,1,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+309,8,Moving,3,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly related to mood swings, sleep disturbances, and feelings of hopelessness."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 3,
+    ""3"": 2,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+319,1,NoInterest,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,2,Depressed,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,3,Sleep,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,4,Tired,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,6,Failure,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,7,Concentrating,3,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+319,8,Moving,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be experiencing significant depressive symptoms, particularly in terms of lack of interest, fatigue, and negative self-perception."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+320,1,NoInterest,1,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,2,Depressed,1,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,3,Sleep,3,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,4,Tired,1,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,5,Appetite,2,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,6,Failure,1,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,7,Concentrating,1,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+320,8,Moving,1,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to have significant depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 1
+  }
+}
+```"
+321,1,NoInterest,2,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,2,Depressed,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,3,Sleep,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,4,Tired,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,5,Appetite,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,6,Failure,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,7,Concentrating,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+321,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of significant depressive symptoms, particularly in terms of low mood, lack of energy, and sleep disturbances."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,2,Depressed,1,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,3,Sleep,1,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,4,Tired,1,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+322,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of loss of interest, feeling down, and trouble concentrating."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+323,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,3,Sleep,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,4,Tired,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,6,Failure,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+323,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience occasional feelings of depression and anxiety, but does not report persistent symptoms of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+327,1,NoInterest,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,2,Depressed,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,3,Sleep,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,4,Tired,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,6,Failure,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,7,Concentrating,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+327,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have moderate depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,2,Depressed,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,3,Sleep,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,4,Tired,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,6,Failure,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+334,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, particularly in terms of lack of interest, feeling down, and fatigue."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+344,1,NoInterest,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,2,Depressed,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,3,Sleep,3,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,4,Tired,3,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,6,Failure,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,7,Concentrating,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+344,8,Moving,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person reports occasional feelings of depression and lack of interest, but these seem to be situational and not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+348,1,NoInterest,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,2,Depressed,3,3,0.0,0.0,0.0,1.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,3,Sleep,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,4,Tired,2,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,5,Appetite,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,6,Failure,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,7,Concentrating,2,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+348,8,Moving,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing moderate levels of depression, showing symptoms such as low mood, fatigue, and difficulty sleeping."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 2, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 0}}"
+358,1,NoInterest,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,2,Depressed,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,3,Sleep,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,4,Tired,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,5,Appetite,2,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,6,Failure,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,7,Concentrating,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+358,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with symptoms including low mood, fatigue, and difficulty concentrating."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+362,1,NoInterest,2,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,2,Depressed,2,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,3,Sleep,3,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,4,Tired,3,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,5,Appetite,3,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,6,Failure,3,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,7,Concentrating,3,1,0.0,1.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+362,8,Moving,1,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns about energy levels, sleep, and self-esteem."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}
+```"
+369,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,4,Tired,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,6,Failure,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+369,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to be generally positive and content, with some occasional struggles related to sleep and energy levels, but no strong signs of depression."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,4,Tired,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,6,Failure,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+370,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have mild depressive symptoms, primarily related to feelings of guilt and potential underachievement, but does not show significant signs of other depressive symptoms."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+373,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,2,Depressed,1,3,0.0,0.0,0.0,1.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,3,Sleep,1,3,0.0,0.0,0.0,1.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,4,Tired,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,5,Appetite,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,6,Failure,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,7,Concentrating,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+373,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience significant depressive symptoms, including persistent feelings of hopelessness, lack of interest, poor sleep quality, fatigue, and negative self-assessment."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 3,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 2,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+377,1,NoInterest,2,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,2,Depressed,2,3,0.0,0.0,0.0,1.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,3,Sleep,1,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,4,Tired,2,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,5,Appetite,3,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,6,Failure,3,2,0.0,0.0,1.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,7,Concentrating,2,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+377,8,Moving,1,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to experience significant depressive symptoms, particularly in terms of feeling down, hopeless, and lacking energy."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 3,
+    ""3"": 0,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+391,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,2,Depressed,2,3,0.0,0.0,0.0,1.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,4,Tired,1,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,6,Failure,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,7,Concentrating,2,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+391,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have moderate depressive symptoms."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 2, ""7"": 0, ""8"": 0}}"
+393,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,4,Tired,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,6,Failure,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+393,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows some signs of mild depression, particularly in terms of feeling down and tired, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,2,Depressed,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,3,Sleep,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,4,Tired,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,6,Failure,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,7,Concentrating,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+400,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depression, with concerns around low mood, fatigue, and reduced interest in activities, but without significant issues in appetite or concentration."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,1,NoInterest,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,2,Depressed,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,3,Sleep,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,4,Tired,3,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,6,Failure,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,7,Concentrating,2,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+409,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of feeling down, having trouble sleeping, and experiencing fatigue, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,2,Depressed,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,3,Sleep,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,4,Tired,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,5,Appetite,2,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,6,Failure,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,7,Concentrating,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+412,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, fatigue, and negative self-perception, but these symptoms seem to vary in intensity."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+413,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,2,Depressed,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,3,Sleep,3,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,4,Tired,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,6,Failure,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+413,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly related to lack of interest, sleep disturbances, and fatigue, but does not show clear signs of significant hopelessness or self-criticism."",
+  ""scores"": {
+    ""1"": 2,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+416,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,2,Depressed,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,4,Tired,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,6,Failure,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+416,8,Moving,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience mild to moderate depressive symptoms, characterized by feelings of hopelessness, low energy, and self-doubt, but without persistent issues in multiple areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 1
+  }
+}"
+431,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,2,Depressed,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,4,Tired,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,6,Failure,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+431,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have occasional feelings of depression and hopelessness, but these do not seem persistent. Fatigue and irritability are noted, but there is no indication of significant sleep disturbances or appetite changes."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+443,1,NoInterest,1,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,4,Tired,0,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+443,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of low mood and fatigue, but the evidence is mixed."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+444,1,NoInterest,1,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,2,Depressed,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,3,Sleep,2,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,4,Tired,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,6,Failure,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,7,Concentrating,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+444,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression, particularly in terms of lack of interest, feeling down, and trouble sleeping, but does not seem to have persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 1, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,4,Tired,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,6,Failure,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+446,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have mild depressive symptoms, with some variability in mood and occasional feelings of frustration and hopelessness."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+454,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,3,Sleep,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,4,Tired,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+454,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and regret, but does not show persistent symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+455,1,NoInterest,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,2,Depressed,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,3,Sleep,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,4,Tired,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,5,Appetite,1,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,6,Failure,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+455,8,Moving,0,0,1.0,0.0,0.0,0.0,"```json
+{
+  ""overall"": ""The person appears to be generally positive and content, with no significant signs of depression."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 0,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}
+```"
+462,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,2,Depressed,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,3,Sleep,2,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,4,Tired,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,5,Appetite,2,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,6,Failure,2,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,7,Concentrating,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+462,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to experience some depressive symptoms, particularly in terms of feeling down, tired, and having trouble concentrating, but the severity seems moderate."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,4,Tired,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,6,Failure,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+464,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild depression, particularly in terms of feeling down and having little interest in activities, but does not exhibit persistent symptoms across all areas."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 0,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,1,NoInterest,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,4,Tired,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,6,Failure,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+465,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have a mix of energetic and reflective moments, but there are some signs of low mood and self-criticism."",
+  ""scores"": {
+    ""1"": 0,
+    ""2"": 1,
+    ""3"": 0,
+    ""4"": 0,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 0,
+    ""8"": 0
+  }
+}"
+468,1,NoInterest,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,4,Tired,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,5,Appetite,1,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,6,Failure,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+468,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to be experiencing some motivational and energy-related issues, but does not seem to have severe depressive symptoms."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 1, ""5"": 0, ""6"": 0, ""7"": 0, ""8"": 0}}"
+469,1,NoInterest,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,2,Depressed,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,4,Tired,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,6,Failure,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+469,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of past depression and current feelings of hopelessness, but also demonstrates resilience and engagement in activities. The symptoms seem to fluctuate and are not persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 1,
+    ""5"": 0,
+    ""6"": 2,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+474,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,3,Sleep,2,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,4,Tired,1,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,5,Appetite,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,6,Failure,1,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,7,Concentrating,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+474,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, trouble sleeping, and concentration issues, but these seem to be occasional rather than persistent."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 1,
+    ""3"": 2,
+    ""4"": 2,
+    ""5"": 1,
+    ""6"": 1,
+    ""7"": 2,
+    ""8"": 0
+  }
+}"
+488,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,2,Depressed,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,4,Tired,0,2,0.0,0.0,1.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,6,Failure,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+488,8,Moving,0,0,1.0,0.0,0.0,0.0,"{
+  ""overall"": ""The person shows signs of mild to moderate depressive symptoms, particularly in terms of feeling down, having trouble concentrating, and experiencing fatigue."",
+  ""scores"": {
+    ""1"": 1,
+    ""2"": 2,
+    ""3"": 1,
+    ""4"": 2,
+    ""5"": 0,
+    ""6"": 1,
+    ""7"": 1,
+    ""8"": 0
+  }
+}"
+660,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,2,Depressed,2,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,4,Tired,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,5,Appetite,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+660,8,Moving,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to experience occasional feelings of depression and negative self-talk, but these do not seem to dominate their daily life."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,1,NoInterest,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,3,Sleep,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,4,Tired,2,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,5,Appetite,1,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+667,8,Moving,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows some signs of depression but the symptoms seem to be somewhat intermittent and not consistently severe."", ""scores"": {""1"": 1, ""2"": 1, ""3"": 1, ""4"": 1, ""5"": 1, ""6"": 1, ""7"": 1, ""8"": 1}}"
+684,1,NoInterest,2,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,2,Depressed,2,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,3,Sleep,2,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,4,Tired,2,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,5,Appetite,2,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,6,Failure,2,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,7,Concentrating,3,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+684,8,Moving,3,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of mild to moderate depression, with symptoms of low mood, lack of interest, fatigue, and occasional negative thoughts."", ""scores"": {""1"": 2, ""2"": 2, ""3"": 1, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,1,NoInterest,0,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,2,Depressed,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,4,Tired,0,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+692,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have some depressive symptoms, particularly in terms of lack of interest, feeling down, and fatigue, but does not seem to experience significant sleep disturbances or poor appetite."", ""scores"": {""1"": 2, ""2"": 1, ""3"": 0, ""4"": 2, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+695,1,NoInterest,0,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,2,Depressed,0,3,0.0,0.0,0.0,1.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,3,Sleep,3,2,0.0,0.0,1.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,4,Tired,3,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,6,Failure,1,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,7,Concentrating,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+695,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person shows signs of persistent low mood and difficulty with daily activities, but the snippets are mixed with moments of positivity and engagement."", ""scores"": {""1"": 2, ""2"": 3, ""3"": 2, ""4"": 1, ""5"": 0, ""6"": 1, ""7"": 1, ""8"": 0}}"
+707,1,NoInterest,1,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,2,Depressed,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,3,Sleep,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,4,Tired,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,5,Appetite,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,6,Failure,0,1,0.0,1.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,7,Concentrating,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
+707,8,Moving,0,0,1.0,0.0,0.0,0.0,"{""overall"": ""The person appears to have occasional symptoms of depression, but they are not persistent."", ""scores"": {""1"": 1, ""2"": 0, ""3"": 0, ""4"": 0, ""5"": 0, ""6"": 1, ""7"": 0, ""8"": 0}}"
