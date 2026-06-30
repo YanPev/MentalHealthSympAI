@@ -1,0 +1,16 @@
+{
+  "n_participants": 219,
+  "n_positive": 65,
+  "threshold_phq8": 10,
+  "auc": 0.7803196803196805,
+  "default_argmax": {
+    "sensitivity": 0.36923076923076925,
+    "specificity": 0.9025974025974026
+  },
+  "tuned_for_screening": {
+    "target_sensitivity": 0.85,
+    "risk_threshold": 5.334700150723717,
+    "sensitivity": 0.8615384615384616,
+    "specificity": 0.525974025974026
+  }
+}

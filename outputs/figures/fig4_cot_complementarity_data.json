@@ -1,0 +1,30 @@
+{
+  "n": 1752,
+  "agreement_rate": 0.4474885844748858,
+  "disagreement_rate": 0.5525114155251142,
+  "encoder_only_correct_by_class": {
+    "0": 98,
+    "1": 194,
+    "2": 29,
+    "3": 6
+  },
+  "cot_only_correct_by_class": {
+    "0": 264,
+    "1": 54,
+    "2": 24,
+    "3": 38
+  },
+  "encoder_only_total": 327,
+  "cot_only_total": 380,
+  "parents_and_blend_macro_f1": {
+    "encoder": 0.3475468910652566,
+    "cot": 0.3733392499887953,
+    "blend_peak": 0.37427768651985627,
+    "blend_peak_w": 0.8,
+    "severity_routed": 0.3763970258644268
+  },
+  "severe_class_f1": {
+    "encoder": 0.1588785046728972,
+    "cot": 0.29518072289156627
+  }
+}

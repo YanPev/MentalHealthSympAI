@@ -1,0 +1,42 @@
+{
+  "n_boot": 2000,
+  "n_participants": 219,
+  "comparisons": [
+    {
+      "label": "Hybrid \u2212 Isolated  \u00b7  macro-F1",
+      "group": "Retrieval (BERT-base)",
+      "delta": 0.07327760400235699,
+      "ci_lo": 0.03202907784202747,
+      "ci_hi": 0.11567428875609008,
+      "p_gt0": 0.9995,
+      "sig": true
+    },
+    {
+      "label": "Hybrid \u2212 Isolated  \u00b7  total-QWK",
+      "group": "Retrieval (BERT-base)",
+      "delta": 0.4071910822716876,
+      "ci_lo": 0.2532965250042451,
+      "ci_hi": 0.5635005890517175,
+      "p_gt0": 1.0,
+      "sig": true
+    },
+    {
+      "label": "CoT \u2212 Encoder  \u00b7  macro-F1",
+      "group": "Fusion (MentalBERT)",
+      "delta": 0.015578538965625778,
+      "ci_lo": -0.021298097326222492,
+      "ci_hi": 0.0525522132041048,
+      "p_gt0": 0.797,
+      "sig": false
+    },
+    {
+      "label": "Severity-routed \u2212 Encoder  \u00b7  macro-F1",
+      "group": "Fusion (MentalBERT)",
+      "delta": 0.02942615112149574,
+      "ci_lo": 0.0013224390182185422,
+      "ci_hi": 0.057832132385618996,
+      "p_gt0": 0.9805,
+      "sig": true
+    }
+  ]
+}

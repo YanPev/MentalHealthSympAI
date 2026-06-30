@@ -1,0 +1,35 @@
+{
+  "baseline": "ctxm_corn_hybw5",
+  "configs": [
+    {
+      "label": "Encoder \u00b7 MentalBERT+CORN+W5  (baseline)",
+      "F1": 0.37246220371100824,
+      "QWK": 0.3899038595067823,
+      "MAE": 0.6638127853881278
+    },
+    {
+      "label": "Severity-routed ensemble",
+      "F1": 0.3851461667884262,
+      "QWK": 0.3943403088078169,
+      "MAE": 0.7271689497716894
+    },
+    {
+      "label": "Cascade \u00b7 merged-gate (\u03c4.8, diff\u2265.5)",
+      "F1": 0.39854959201649154,
+      "QWK": 0.41642804561809077,
+      "MAE": 0.6267123287671232
+    },
+    {
+      "label": "LLM-alone \u00b7 pooled 10-chain SC",
+      "F1": 0.3999559719318305,
+      "QWK": 0.4062585303349342,
+      "MAE": 0.6409817351598174
+    },
+    {
+      "label": "Cascade \u00b7 difficult-gate (semantic)",
+      "F1": 0.4011507703413505,
+      "QWK": 0.40887792338624784,
+      "MAE": 0.6409817351598174
+    }
+  ]
+}

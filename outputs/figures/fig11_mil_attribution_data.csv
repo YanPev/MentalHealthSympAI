@@ -1,0 +1,7 @@
+participant_id,item_name,label,prediction,top_attn,top_window
+641,Failure,3,3,0.634,I'm not the best I'm always [TURN_SEP] nervous and depressed and not happy [TURN_SEP] have you noticed any changes
+641,Depressed,3,3,0.599,nervous and depressed and not happy [TURN_SEP] have you noticed any changes [TURN_SEP] yes
+680,Appetite,3,3,0.59,depressed [TURN_SEP] mood swings [TURN_SEP] high anxiety
+386,Tired,2,2,0.883,tired very tired and hard to focus hard to concentrate it just takes me longer to get things done cuz I don't have my energy also I haven't been exercising I normally try to walk about half an hour a 
+339,Sleep,2,2,0.56,I was diagnosed with depression and my doctor felt that I should probably see the therapist [TURN_SEP] I am [TURN_SEP] it depends if I'm really busy during the week and have a lot of things to do I of
+368,Moving,1,1,0.8,these days you know I play guitar and I taught myself how to play guitar thank you thank you I should actually be doing more of it but I also like to exercise I'm going to die right now but my dad's b

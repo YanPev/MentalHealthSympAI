@@ -1,0 +1,54 @@
+{
+  "items": [
+    "NoInterest",
+    "Depressed",
+    "Sleep",
+    "Tired",
+    "Appetite",
+    "Failure",
+    "Concentrating",
+    "Moving"
+  ],
+  "macro_f1_per_item": {
+    "Encoder \u00b7 MentalBERT+CORN+W5": [
+      0.2819,
+      0.453,
+      0.369,
+      0.2955,
+      0.3636,
+      0.3074,
+      0.324,
+      0.318
+    ],
+    "LLM-alone \u00b7 pooled 10-chain": [
+      0.3487,
+      0.3962,
+      0.4158,
+      0.4072,
+      0.3065,
+      0.4282,
+      0.3302,
+      0.2842
+    ],
+    "Cascade \u00b7 merged-gate": [
+      0.3296,
+      0.4001,
+      0.4156,
+      0.3743,
+      0.3402,
+      0.3831,
+      0.3474,
+      0.3252
+    ],
+    "Cascade \u00b7 difficult-gate": [
+      0.3487,
+      0.3926,
+      0.4137,
+      0.4065,
+      0.3137,
+      0.4282,
+      0.3303,
+      0.2884
+    ]
+  }
+}

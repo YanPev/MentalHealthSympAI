@@ -1,0 +1,110 @@
+{
+  "args": {
+    "dataset_path": "data/processed/phq8_item_dataset_context_windows_hybrid_w3.csv",
+    "evidence_column": "retrieved_context_windows_hybrid_pack",
+    "model_name": "mental/mental-bert-base-uncased",
+    "k_folds": 5,
+    "batch_size": 16,
+    "num_epochs": 8,
+    "max_length": 256,
+    "learning_rate": 2e-05,
+    "class_weights": "balanced",
+    "loss": "corn_balanced",
+    "focal_gamma": 2.0,
+    "seed": 42,
+    "output_dir": "/home/yanivpev/MentalHealthSympAI/outputs/cv",
+    "tag": "ctxm_cornbal_hybw3"
+  },
+  "per_fold_mean_std": {
+    "accuracy": [
+      0.41261892177589854,
+      0.028799760797378105
+    ],
+    "macro_f1": [
+      0.3346568019558973,
+      0.035620159837927524
+    ],
+    "mae": [
+      0.7427061310782241,
+      0.04346560230052595
+    ]
+  },
+  "pooled_oof": {
+    "accuracy": 0.4126712328767123,
+    "macro_f1": 0.3431385651206296,
+    "mae": 0.742579908675799,
+    "confusion_matrix": [
+      [
+        402,
+        338,
+        104,
+        8
+      ],
+      [
+        138,
+        227,
+        133,
+        15
+      ],
+      [
+        44,
+        97,
+        70,
+        9
+      ],
+      [
+        15,
+        63,
+        65,
+        24
+      ]
+    ]
+  },
+  "folds": [
+    {
+      "fold": 1,
+      "n": 352,
+      "loss": 1.2360117896036669,
+      "accuracy": 0.39488636363636365,
+      "macro_f1": 0.294092641133185,
+      "mae": 0.7784090909090909,
+      "seconds": 133.474689245224
+    },
+    {
+      "fold": 2,
+      "n": 344,
+      "loss": 1.1590824889582256,
+      "accuracy": 0.4011627906976744,
+      "macro_f1": 0.35724168201465045,
+      "mae": 0.7703488372093024,
+      "seconds": 133.73405122756958
+    },
+    {
+      "fold": 3,
+      "n": 352,
+      "loss": 1.2509221868081526,
+      "accuracy": 0.45454545454545453,
+      "macro_f1": 0.36028229785866744,
+      "mae": 0.6846590909090909,
+      "seconds": 133.086168050766
+    },
+    {
+      "fold": 4,
+      "n": 352,
+      "loss": 1.2916457246650348,
+      "accuracy": 0.3835227272727273,
+      "macro_f1": 0.36425342548775524,
+      "mae": 0.7727272727272727,
+      "seconds": 133.12359189987183
+    },
+    {
+      "fold": 5,
+      "n": 352,
+      "loss": 1.273331340063702,
+      "accuracy": 0.4289772727272727,
+      "macro_f1": 0.2974139632852284,
+      "mae": 0.7073863636363636,
+      "seconds": 133.15231561660767
+    }
+  ]
+}
