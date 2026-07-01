@@ -1,0 +1,24 @@
+Cascade | LLM=['outputs/cot/folds_tolerant_sc5/*.csv', 'outputs/cot/folds_tolerant_sc5_dv/*.csv'] | encoder=oof_predictions_ctxm_corn_rerank_w3.csv
+  run folds_tolerant_sc5: 1752 rows from 5 folds | difficult signal: chain-0 reasoning (fallback)
+  run folds_tolerant_sc5_dv: 1752 rows from 5 folds | difficult signal: difficult_frac column
+  POOLED 2 runs -> 1752 items (averaged vote distributions + difficult_frac)
+
+=== parents ===
+       config exact macroF1   QWK   MAE err>=2
+    LLM alone 0.513   0.400 0.406 0.641  0.128
+encoder alone 0.444   0.355 0.328 0.697  0.119
+
+=== gate / threshold sweep ===
+                   config exact macroF1   QWK   MAE err>=2  routed%
+                 vote<0.6 0.513   0.403 0.416 0.631  0.122     10.0
+                 vote<0.8 0.508   0.392 0.406 0.631  0.117     36.7
+                 vote<1.0 0.494   0.389 0.418 0.628  0.104     66.3
+           difficult>=0.2 0.513   0.400 0.409 0.640  0.127     13.4
+           difficult>=0.5 0.515   0.402 0.411 0.638  0.128      8.1
+           difficult>=0.8 0.517   0.402 0.411 0.638  0.128      5.9
+merged(tau=0.8,diff>=0.2) 0.506   0.392 0.408 0.632  0.115     44.2
+merged(tau=0.8,diff>=0.5) 0.511   0.394 0.411 0.627  0.115     41.5
+
+=== chosen: gate=merged tau=0.8 diff-thresh=0.5 ===
+         config exact macroF1   QWK   MAE err>=2  routed%
+cascade[merged] 0.511   0.394 0.411 0.627  0.115     41.5

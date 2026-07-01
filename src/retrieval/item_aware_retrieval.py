@@ -28,6 +28,7 @@ import numpy as np
 import pandas as pd
 
 from src.retrieval.bm25_retriever import retrieve_top_k_bm25
+from src.retrieval.symptom_glossary import EXPAND
 from src.evaluation.retrieval_window_analysis import (
     LEXICONS, windows_text, hit_terms, ITEM_COLORS)
 from src.llm.cot_probe import format_evidence
@@ -39,27 +40,6 @@ OUT_CSV = PR / "data" / "processed" / "phq8_item_dataset_itemaware_w3.csv"
 OUT_HTML = PR / "outputs" / "cot" / "item_aware_retrieval_report.html"
 OUT_JSON = PR / "outputs" / "cot" / "item_aware_retrieval.json"
 K = 5
-
-# Query-expansion vocabulary per item: symptom synonyms / lay phrasings / cues.
-# Appended to the item text to form the BM25 query.
-EXPAND = {
-    "NoInterest": "interest pleasure enjoy enjoyment hobbies activities fun excited "
-                  "bored unmotivated stopped doing things i used to like care about",
-    "Depressed": "depressed down sad hopeless unhappy crying cry low mood blue empty "
-                 "despair miserable feeling bad",
-    "Sleep": "sleep asleep insomnia falling asleep staying asleep waking up early "
-             "sleeping too much nights restless tossing turning in bed nap",
-    "Tired": "tired fatigue no energy low energy exhausted lethargic worn out drained "
-             "sluggish run down",
-    "Appetite": "appetite eating eat food hungry hunger overeating poor appetite "
-                "weight loss weight gain meals skipping meals eating too much snacking",
-    "Failure": "failure failing failed guilt guilty worthless bad about myself "
-               "let myself down let my family down disappointed useless ashamed",
-    "Concentrating": "concentrate concentrating focus paying attention distracted "
-                     "forgetful remembering forget reading watching tv mind wandering thoughts",
-    "Moving": "moving slowly speaking slowly slowed down restless fidgety fidget "
-              "agitated sluggish pacing can't sit still",
-}
 
 
 def main():

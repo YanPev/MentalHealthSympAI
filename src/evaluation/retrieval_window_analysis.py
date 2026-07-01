@@ -28,6 +28,10 @@ import re
 
 import numpy as np
 import pandas as pd
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+
+from src.retrieval.bm25_retriever import tokenize
+from src.retrieval.symptom_glossary import EXPAND
 
 PR = Path(__file__).resolve().parents[2]
 DEFAULT_DS = PR / "data" / "processed" / "phq8_item_dataset_context_windows_hybrid_w3.csv"
@@ -35,25 +39,18 @@ COT_W5_DIR = PR / "outputs" / "cot" / "folds_w5"
 OUT_HTML = PR / "outputs" / "cot" / "retrieval_window_analysis.html"
 OUT_JSON = PR / "outputs" / "cot" / "retrieval_window_analysis.json"
 
-# Heuristic item-relevant lexicons (substring match, lowercased). Topical proxy,
-# not ground truth -- a window can be relevant without these exact terms.
+# Item-relevant lexicons (substring match, lowercased), derived from the SAME
+# glossary used to expand BM25 queries in item-aware retrieval (symptom_glossary.
+# EXPAND), tokenized the same way BM25 tokenizes queries, with generic English
+# stopwords ("i", "to", "about", ...) dropped so they don't trivially match every
+# transcript window. This keeps the hit-rate measurement and the retrieval lever
+# it is reporting on aligned to one vocabulary instead of two hand-maintained ones.
+# Still a topical proxy, not ground truth -- a window can be relevant without
+# containing an exact token.
 LEXICONS = {
-    "NoInterest": ["interest", "pleasure", "enjoy", "fun", "hobby", "bored",
-                   "motivat", "care about", "used to", "passion"],
-    "Depressed": ["depress", "down", "hopeless", "sad", "cry", "unhappy", "blue",
-                  "miserable", "despair", "low"],
-    "Sleep": ["sleep", "asleep", "insomnia", "awake", "bed", "nap", "rest",
-              "night", "wake", "toss"],
-    "Tired": ["tired", "energy", "fatigue", "exhaust", "lethargic", "worn",
-              "sluggish", "drained"],
-    "Appetite": ["appetite", "eat", "food", "hungry", "weight", "meal",
-                 "overeat", "diet", "snack", "binge"],
-    "Failure": ["failure", "fail", "guilt", "worthless", "bad about", "let down",
-                "let myself", "disappoint", "useless", "regret"],
-    "Concentrating": ["concentrat", "focus", "attention", "distract", "remember",
-                      "forget", "mind", "thoughts", "clear my", "spacey"],
-    "Moving": ["slow", "restless", "fidget", "agitat", "speak", "pace",
-               "jittery", "sluggish", "moving"],
+    name: sorted({t for t in tokenize(terms)
+                  if t not in ENGLISH_STOP_WORDS and len(t) > 2})
+    for name, terms in EXPAND.items()
 }
 ITEM_COLORS = {"NoInterest": "#0ea5e9", "Depressed": "#7c3aed", "Sleep": "#16a34a",
                "Tired": "#f59e0b", "Appetite": "#dc2626", "Failure": "#db2777",

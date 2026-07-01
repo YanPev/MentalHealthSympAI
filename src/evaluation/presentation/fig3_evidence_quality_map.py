@@ -49,8 +49,8 @@ def main():
     nudge = {
         "Moving": (0.012, -0.004), "Sleep": (0.012, 0.004),
         "Appetite": (0.012, -0.006), "Tired": (-0.012, -0.010),
-        "Concentrating": (0.010, 0.004), "NoInterest": (0.012, 0.0),
-        "Depressed": (0.012, 0.002), "Failure": (0.012, 0.004),
+        "Concentrating": (0.010, 0.004), "NoInterest": (-0.012, -0.014),
+        "Depressed": (0.006, 0.012), "Failure": (0.018, -0.012),
     }
     for _, r in pi.iterrows():
         dx, dy = nudge.get(r["item_name"], (0.012, 0.0))
