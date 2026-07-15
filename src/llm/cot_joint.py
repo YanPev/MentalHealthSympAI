@@ -301,6 +301,11 @@ def main():
                          "per participant and store per-item vote fractions as prob_0..3 "
                          "(the graded confidence the cascade router needs).")
     ap.add_argument("--temperature", type=float, default=0.7)
+    ap.add_argument("--sc-batch-size", type=int, default=0,
+                    help="Generate the N self-consistency chains in micro-batches "
+                         "of this size instead of all N at once (0 = all at once, "
+                         "the original behaviour). Use 1-2 to bound peak GPU memory "
+                         "on long-transcript folds that OOM a 24GB 3090 at N=5.")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--output", default=str(PROJECT_ROOT / "outputs" / "cot" /
                                             "folds_joint" / "cot_joint_fold1.csv"))
@@ -372,15 +377,30 @@ def main():
                                                        transcript_items, transcript)}]
         prompt = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
         inputs = tok(prompt, return_tensors="pt", add_special_tokens=False).to(model.device)
-        gen_kw = dict(max_new_tokens=args.max_new_tokens, pad_token_id=tok.eos_token_id,
-                      num_return_sequences=args.n_samples)
-        if args.n_samples == 1:
-            gen_kw.update(do_sample=False)
-        else:  # self-consistency: N sampled chains share the prompt encoding
-            gen_kw.update(do_sample=True, temperature=args.temperature, top_p=0.9)
-        with torch.no_grad():
-            out = model.generate(**inputs, **gen_kw)
         plen = inputs["input_ids"].shape[1]
+        # Generate the N self-consistency chains in micro-batches so peak GPU
+        # memory tracks the micro-batch size, not N. Five 1100-token chains in
+        # one batch OOM'd long-transcript folds on a 24GB 3090 (jobs 19371881 /
+        # 19376654); the chains are i.i.d. samples, so batching only changes
+        # memory, never the vote distribution.
+        chunk = args.sc_batch_size if args.sc_batch_size > 0 else args.n_samples
+        texts, remaining = [], args.n_samples
+        while remaining > 0:
+            k = min(chunk, remaining)
+            gen_kw = dict(max_new_tokens=args.max_new_tokens,
+                          pad_token_id=tok.eos_token_id, num_return_sequences=k)
+            if args.n_samples == 1:
+                gen_kw.update(do_sample=False)
+            else:  # self-consistency: sampled chains
+                gen_kw.update(do_sample=True, temperature=args.temperature, top_p=0.9)
+            with torch.no_grad():
+                out = model.generate(**inputs, **gen_kw)
+            texts.extend(tok.decode(out[s][plen:], skip_special_tokens=True)
+                         for s in range(out.shape[0]))
+            del out
+            remaining -= k
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
         # tally per-item votes across the N chains (N=1 => a single one-hot vote).
         # diff_counts = how many chains placed the item in the DISJOINT difficult set
         # (difficult − confident) -> the semantic confidence the cascade gates on,
@@ -388,8 +408,7 @@ def main():
         votes = {iid: [] for iid in range(1, 9)}
         diff_counts = {iid: 0 for iid in range(1, 9)}
         first_text = ""
-        for s in range(out.shape[0]):
-            txt = tok.decode(out[s][plen:], skip_special_tokens=True)
+        for s, txt in enumerate(texts):
             if s == 0:
                 first_text = txt
             for iid, lbl in parse_scores(txt).items():
@@ -414,7 +433,7 @@ def main():
                          "item_name": r["item_name"], "label": int(r["label"]),
                          "prediction": pred if pred >= 0 else 1,
                          **{f"prob_{c}": probs[c] for c in range(NUM_LABELS)},
-                         "difficult_frac": round(diff_counts[iid] / out.shape[0], 4),
+                         "difficult_frac": round(diff_counts[iid] / len(texts), 4),
                          "reasoning": first_text.strip()[:reasoning_cap]})
     pred_df = pd.DataFrame(rows)
     pred_df.to_csv(out_path, index=False)

@@ -63,10 +63,24 @@ def _oof_frame(path):
     return pd.read_csv(path)
 
 
+def _llm_folds_complete(globs, enc_path):
+    """A retrieval arm's LLM run must cover ALL CV folds before we compare it to a
+    full-data R0 baseline. Otherwise align()'s inner-join silently restricts R1 to
+    whatever folds finished, and the R1-vs-R0 delta is computed on mismatched
+    participant sets (fold-1-only R1 vs full R0). Require the aligned LLM frame to
+    span every encoder fold and cover >=95% of the encoder OOF rows."""
+    if not any(glob.glob(g) for g in globs) or not Path(enc_path).exists():
+        return False
+    enc = load_encoder(str(enc_path))
+    aligned = align(load_llm(globs), enc)
+    return (aligned["fold"].nunique() == enc["fold"].nunique()
+            and len(aligned) >= 0.95 * len(enc))
+
+
 def _llm_frame(globs, enc_path):
     """LLM-alone predictions (pooled vote argmax), aligned to an encoder OOF so
     the row set + labels + folds match the other configs exactly."""
-    if not any(glob.glob(g) for g in globs) or not Path(enc_path).exists():
+    if not _llm_folds_complete(globs, enc_path):
         return None
     df = align(load_llm(globs), load_encoder(str(enc_path)))
     P = df[[f"llm_{c}" for c in range(NUM_LABELS)]].to_numpy()
@@ -79,7 +93,7 @@ def _llm_frame(globs, enc_path):
 
 
 def _cascade_frame(globs, enc_path):
-    if not any(glob.glob(g) for g in globs) or not Path(enc_path).exists():
+    if not _llm_folds_complete(globs, enc_path):
         return None
     df = align(load_llm(globs), load_encoder(str(enc_path)))
     mask = gate_mask(df, GATE, TAU, DIFF)
