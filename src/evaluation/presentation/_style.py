@@ -47,6 +47,23 @@ RETR_COLORS = {
     "Hybrid": "#0ea5e9",     # sky   = semantic + lexical (the win)
 }
 
+# ----------------------------------------------------------------------------
+# Calm palette -- muted but well-separated tones for the cascade/retrieval-
+# variant figures (fig14-17), which stack 4-5 categories in one plot. First
+# version kept everything in the same cool green/blue/teal family and read as
+# indistinct; this one spaces hues ~70-100 degrees apart (checked against every
+# figure's actual co-occurring subset) while keeping saturation/lightness
+# muted, not neon. Scoped to these figures only; the rest of the deck keeps
+# ENC_COLOR/COT_COLOR/ENS_COLOR unchanged.
+# ----------------------------------------------------------------------------
+CALM_ENC = "#4f9d5c"          # muted forest green = encoder
+CALM_COT = "#8860ac"          # muted violet       = LLM / CoT
+CALM_CASCADE = "#d17a3d"      # muted burnt orange = cascade (merged-gate)
+CALM_CASCADE_ALT = "#3d7fa8"  # muted steel blue   = cascade (difficult-gate)
+CALM_GOLD = "#c9a227"         # muted gold/mustard = a retrieval-processing variant
+CALM_ROSE = "#c14267"         # muted rose/crimson = a retrieval-processing variant
+CALM_SLATE = "#7d8894"        # neutral grey       = baseline / reference series
+
 SEQ_BLUES = plt.cm.Blues  # for confusion-matrix heatmaps
 
 

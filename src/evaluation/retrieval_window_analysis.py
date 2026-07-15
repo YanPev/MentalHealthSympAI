@@ -134,17 +134,41 @@ def main():
     ap.add_argument("--dataset", default=str(DEFAULT_DS))
     ap.add_argument("--samples-per-item", type=int, default=3)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--lexicon", choices=["glossary", "expanded"], default="glossary",
+                    help="glossary = original EXPAND tokens (frozen baseline metric); "
+                         "expanded = tiered symptom_lexicon flat_terms (incl. MWEs)")
+    ap.add_argument("--evidence-column", default="retrieved_context_windows_hybrid_list")
+    ap.add_argument("--scores-column", default="retrieved_context_hybrid_scores")
+    ap.add_argument("--out-tag", default="",
+                    help="suffix for output files; empty writes the original "
+                         "retrieval_window_analysis.{html,json} paths")
     a = ap.parse_args()
+
+    non_default = (a.lexicon != "glossary" or a.dataset != str(DEFAULT_DS)
+                   or a.evidence_column != "retrieved_context_windows_hybrid_list")
+    if non_default and not a.out_tag:
+        raise SystemExit("--out-tag is required for non-default runs so the frozen "
+                         "baseline retrieval_window_analysis.{html,json} is never overwritten")
+
+    if a.lexicon == "expanded":
+        from src.retrieval.symptom_lexicon import flat_terms
+        lexicons = {name: flat_terms(name) for name in EXPAND}
+    else:
+        lexicons = LEXICONS
+    out_html = (OUT_HTML.with_name(f"retrieval_window_analysis_{a.out_tag}.html")
+                if a.out_tag else OUT_HTML)
+    out_json = (OUT_JSON.with_name(f"retrieval_window_analysis_{a.out_tag}.json")
+                if a.out_tag else OUT_JSON)
 
     df = pd.read_csv(a.dataset)
     df["participant_id"] = df["participant_id"].astype(str)
-    df["wins"] = df["retrieved_context_windows_hybrid_list"].apply(parse_list)
-    df["scores"] = df["retrieved_context_hybrid_scores"].apply(parse_list)
+    df["wins"] = df[a.evidence_column].apply(parse_list)
+    df["scores"] = df[a.scores_column].apply(parse_list)
     df["text"] = df["wins"].apply(windows_text)
     df["nchars"] = df["text"].str.len()
     df["nwins"] = df["wins"].apply(len)
     df["topscore"] = df["scores"].apply(lambda s: max(s) if s else 0.0)
-    df["hits"] = df.apply(lambda r: hit_terms(r["text"], LEXICONS.get(r["item_name"], [])), axis=1)
+    df["hits"] = df.apply(lambda r: hit_terms(r["text"], lexicons.get(r["item_name"], [])), axis=1)
     df["nhits"] = df["hits"].apply(len)
     df["any_hit"] = df["nhits"] > 0
 
@@ -175,8 +199,10 @@ def main():
     agg = pd.DataFrame(rows)
     corr_kw_fo = (float(np.corrcoef(agg.keyword_hit_rate, agg.faroff_rate)[0, 1])
                   if faroff_by_item else float("nan"))
-    OUT_JSON.write_text(json.dumps({"dataset": Path(a.dataset).name,
-                                    "lexicons": LEXICONS, "per_item": rows}, indent=2))
+    out_json.write_text(json.dumps({"dataset": Path(a.dataset).name,
+                                    "lexicon": a.lexicon,
+                                    "evidence_column": a.evidence_column,
+                                    "lexicons": lexicons, "per_item": rows}, indent=2))
 
     # ---- figures ----
     hr = agg.sort_values("keyword_hit_rate")
@@ -243,7 +269,7 @@ def main():
                     f'{name} — kw-hit {agg[agg.item==name].keyword_hit_rate.iloc[0]:.2f}, '
                     f'top score {agg[agg.item==name].mean_top_score.iloc[0]:.2f}</h3>'
                     f'<p class="note" style="margin:0 0 6px">lexicon: '
-                    f'{", ".join(LEXICONS[name])}</p>{cards}</div>')
+                    f'{", ".join(lexicons[name])}</p>{cards}</div>')
 
     worst = agg.sort_values("keyword_hit_rate").iloc[0]
     best = agg.sort_values("keyword_hit_rate").iloc[-1]
@@ -281,8 +307,8 @@ def main():
  {gallery}
  <div class="card"><div class="caveat"><b>Takeaway.</b> For several items (notably Failure and Appetite) retrieval frequently returns windows that never mention the symptom — part of the model's difficulty is <b>upstream of reasoning</b>: the evidence (and often the interview itself) lacks the signal. The relationship to far-off errors is confounded by label base rates, so this is supporting evidence, not proof, for the evidence/label ceiling. The one upstream lever still untried is <b>item-aware retrieval</b> (querying with the symptom's own vocabulary) — most promising for the low-hit-rate items.</div></div>
 </div></body></html>"""
-    OUT_HTML.write_text(html)
-    print(f"Saved: {OUT_HTML}")
+    out_html.write_text(html)
+    print(f"Saved: {out_html}")
     print(agg[["item", "n", "keyword_hit_rate", "mean_top_score", "mean_nchars", "faroff_rate"]]
           .sort_values("keyword_hit_rate").to_string(index=False))
 

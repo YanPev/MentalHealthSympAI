@@ -112,7 +112,9 @@ class GatedAttentionMIL(nn.Module):
         return logits, alpha
 
 
-def run_fold(model, train_loader, val_loader, device, epochs, lr):
+def run_fold(model, train_loader, val_loader, device, epochs, lr, loss_fn=None):
+    if loss_fn is None:
+        loss_fn = lambda logits, labels: corn_loss(logits, labels, NUM_LABELS)
     opt = torch.optim.AdamW(model.parameters(), lr=lr)
     scaler = torch.cuda.amp.GradScaler(enabled=device.type == "cuda")
     for ep in range(epochs):
@@ -122,7 +124,7 @@ def run_fold(model, train_loader, val_loader, device, epochs, lr):
             with torch.cuda.amp.autocast(enabled=device.type == "cuda"):
                 logits, _ = model(b["input_ids"].to(device), b["attention_mask"].to(device),
                                   b["token_type_ids"].to(device), b["bag_mask"].to(device))
-                loss = corn_loss(logits, b["label"].to(device), NUM_LABELS)
+                loss = loss_fn(logits, b["label"].to(device))
             scaler.scale(loss).backward()
             scaler.step(opt)
             scaler.update()
@@ -158,6 +160,12 @@ def main():
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--tag", default="mil_hybw3")
     p.add_argument("--output-dir", default=str(PROJECT_ROOT / "outputs" / "cv"))
+    p.add_argument("--missing-policy", default="zero", choices=["zero", "mask", "drop"],
+                   help="Treatment of training rows the evidence judge marked 'none' "
+                        "(see src/models/missing_policy.py); applied after the fold "
+                        "split, training portion only.")
+    p.add_argument("--evidence-status-csv", default=None,
+                   help="evidence_quality_<tag>.csv; required for mask/drop.")
     args = p.parse_args()
 
     set_seed(args.seed)
@@ -166,6 +174,11 @@ def main():
     df = load_item_dataset(args.dataset_path).reset_index(drop=True)
     if LIST_COL not in df.columns:
         raise SystemExit(f"missing column {LIST_COL}")
+    if args.missing_policy != "zero" and not args.evidence_status_csv:
+        raise SystemExit("--evidence-status-csv is required for --missing-policy mask/drop")
+    if args.evidence_status_csv:
+        from src.models.missing_policy import attach_evidence_status
+        df = attach_evidence_status(df, args.evidence_status_csv)
     groups, y = df["participant_id"].to_numpy(), df["label"].to_numpy()
 
     print("=" * 64)
@@ -177,22 +190,37 @@ def main():
     tok = AutoTokenizer.from_pretrained(args.model_name)
     sgkf = StratifiedGroupKFold(n_splits=args.k_folds, shuffle=True, random_state=args.seed)
 
-    oof = df[["participant_id", "item_id", "item_name", "label"]].copy()
+    oof_cols = ["participant_id", "item_id", "item_name", "label"]
+    if "evidence_status" in df.columns:
+        oof_cols.append("evidence_status")
+    oof = df[oof_cols].copy()
     oof["prediction"] = -1; oof["fold"] = -1
     for c in range(NUM_LABELS):
         oof[f"prob_{c}"] = np.nan
     attn_rows = []
     fold_metrics = []
 
+    from src.models.missing_policy import apply_policy, wrap_loss_fn
+
     for fold, (tr, va) in enumerate(sgkf.split(df, y, groups), start=1):
         t0 = time.time()
         assert not (set(df.iloc[tr].participant_id) & set(df.iloc[va].participant_id))
-        tl = DataLoader(MILDataset(df.iloc[tr], tok, args.max_length),
+        # Missing-evidence policy: training portion only; validation untouched.
+        tr_df, policy_stats = apply_policy(df.iloc[tr], args.missing_policy)
+        if args.missing_policy != "zero":
+            print(f"  [policy {args.missing_policy}] no-evidence rows: "
+                  f"{policy_stats['n_no_evidence']}/{policy_stats['n_train']} "
+                  f"(effective train n={policy_stats['n_train_effective']})")
+        loss_fn = lambda logits, labels: corn_loss(logits, labels, NUM_LABELS)
+        if args.missing_policy == "mask":
+            loss_fn = wrap_loss_fn(loss_fn)
+        tl = DataLoader(MILDataset(tr_df, tok, args.max_length),
                         batch_size=args.batch_size, shuffle=True, num_workers=2)
         vl = DataLoader(MILDataset(df.iloc[va], tok, args.max_length),
                         batch_size=args.batch_size, shuffle=False, num_workers=2)
         model = GatedAttentionMIL(args.model_name).to(device)
-        preds, probs, alphas = run_fold(model, tl, vl, device, args.num_epochs, args.learning_rate)
+        preds, probs, alphas = run_fold(model, tl, vl, device, args.num_epochs,
+                                        args.learning_rate, loss_fn=loss_fn)
 
         oof.iloc[va, oof.columns.get_loc("prediction")] = preds
         oof.iloc[va, oof.columns.get_loc("fold")] = fold
@@ -208,7 +236,8 @@ def main():
              "macro_f1": float(f1_score(y[va], preds, average="macro", zero_division=0)),
              "mae": float(mean_absolute_error(y[va], preds))}
         dt = time.time() - t0
-        fold_metrics.append({"fold": fold, "n": int(len(va)), **m, "seconds": dt})
+        fold_metrics.append({"fold": fold, "n": int(len(va)), **m,
+                             "missing_policy": policy_stats, "seconds": dt})
         print(f"Fold {fold}/{args.k_folds} | n={len(va):4d} acc {m['accuracy']:.3f} "
               f"macroF1 {m['macro_f1']:.3f} MAE {m['mae']:.3f} ({dt:.0f}s)")
         del model

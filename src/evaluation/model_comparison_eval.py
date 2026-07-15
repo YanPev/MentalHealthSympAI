@@ -137,6 +137,99 @@ def comprehensive(df):
             "total_thresholds": thresholds, "severity_bands": bands}
 
 
+def _item_level(y, p):
+    """Item-level accuracy / macro-F1 / MAE / QWK / per-class F1 on a subset
+    (no total-reconstruction, so it is safe on an incomplete participant set)."""
+    if len(y) == 0:
+        return {"n": 0}
+    _, _, f1c, _ = precision_recall_fscore_support(y, p, labels=LABELS, zero_division=0)
+    return {
+        "n": int(len(y)),
+        "accuracy": round(float(accuracy_score(y, p)), 4),
+        "macro_f1": round(float(f1_score(y, p, average="macro", labels=LABELS, zero_division=0)), 4),
+        "mae": round(float(mean_absolute_error(y, p)), 4),
+        "qwk": round(float(cohen_kappa_score(y, p, weights="quadratic", labels=LABELS)), 4),
+        "f1_per_class": {str(c): round(float(f1c[c]), 4) for c in LABELS},
+        "confusion_4x4": confusion_matrix(y, p, labels=LABELS).tolist(),
+    }
+
+
+def comprehensive_with_abstention(df):
+    """Evaluation for an abstaining predictor (prediction may be NaN where the
+    model declined to score, e.g. LLM-only with judge status == none).
+
+    Leaves comprehensive() untouched. Reports:
+      * coverage      : overall + per-item fraction of scored (non-NaN) rows.
+      * covered_item  : item-level metrics on the covered subset only (the
+                        model's quality where it chose to answer).
+      * headline      : full comprehensive() with abstained predictions imputed
+                        to 0 (the conservative "no evidence -> score 0" total).
+      * prorated_total: sensitivity variant -- per participant, mean of the
+                        observed (covered) item predictions x 8, vs the full
+                        gold total.
+    Gold labels are always complete, so `label` is never NaN.
+    """
+    df = df.copy()
+    y_all = df["label"].to_numpy()
+    p_raw = pd.to_numeric(df["prediction"], errors="coerce")
+    covered = p_raw.notna().to_numpy()
+
+    # ---- coverage ----
+    per_item_cov = {}
+    for (iid, iname), g in df.assign(_cov=covered).groupby(["item_id", "item_name"]):
+        per_item_cov[iname] = round(float(g["_cov"].mean()), 4)
+    coverage = {
+        "coverage_rate": round(float(covered.mean()), 4),
+        "n_covered": int(covered.sum()),
+        "n_abstained": int((~covered).sum()),
+        "n_total": int(len(covered)),
+        "per_item_coverage": per_item_cov,
+    }
+
+    # ---- covered-subset item metrics ----
+    covered_item = _item_level(y_all[covered], p_raw.to_numpy()[covered].astype(int))
+    covered_per_item = []
+    sub = df[covered].assign(_p=p_raw[covered].astype(int))
+    for (iid, iname), g in sub.groupby(["item_id", "item_name"]):
+        covered_per_item.append({
+            "item_id": int(iid), "item_name": iname,
+            **_item_level(g["label"].to_numpy(), g["_p"].to_numpy()),
+        })
+
+    # ---- headline: 0-impute abstentions, delegate to comprehensive() ----
+    imputed = df.copy()
+    imputed["prediction"] = p_raw.fillna(0).astype(int).to_numpy()
+    headline = comprehensive(imputed)
+
+    # ---- prorated total (sensitivity): mean of observed items x 8 ----
+    g = df.assign(_p=p_raw, _cov=covered).groupby("participant_id")
+    assert (g.size() == 8).all(), "every participant must have all 8 items"
+    true_tot = g["label"].sum().to_numpy().astype(float)
+    obs_mean = g[["_p", "_cov"]].apply(
+        lambda x: x.loc[x["_cov"], "_p"].mean() if x["_cov"].any() else 0.0)
+    pred_tot_prorated = (obs_mean.to_numpy() * 8.0)
+    n_obs = g["_cov"].sum().to_numpy()
+    prorated_total = {
+        "n_participants": int(len(true_tot)),
+        "mean_items_observed": round(float(n_obs.mean()), 2),
+        "total_mae": round(float(mean_absolute_error(true_tot, pred_tot_prorated)), 4),
+        "pearson_r": round(float(pearsonr(true_tot, pred_tot_prorated)[0]), 4)
+                     if np.ptp(pred_tot_prorated) > 0 else None,
+        "spearman_rho": round(float(spearmanr(true_tot, pred_tot_prorated)[0]), 4)
+                        if np.ptp(pred_tot_prorated) > 0 else None,
+        "true_mean": round(float(true_tot.mean()), 2),
+        "pred_mean": round(float(pred_tot_prorated.mean()), 2),
+    }
+
+    return {
+        "coverage": coverage,
+        "covered_item": covered_item,
+        "covered_per_item": covered_per_item,
+        "headline_0imputed": headline,
+        "prorated_total": prorated_total,
+    }
+
+
 def main():
     summary = []
     for tag, label, model, loss in RUNS:

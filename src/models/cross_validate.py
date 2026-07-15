@@ -107,6 +107,16 @@ def main():
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--output-dir", default=str(PROJECT_ROOT / "outputs" / "cv"))
     p.add_argument("--tag", default=None, help="Filename tag; default from model name.")
+    p.add_argument("--missing-policy", default="zero", choices=["zero", "mask", "drop"],
+                   help="Training treatment of rows the evidence judge marked 'none': "
+                        "zero = keep with gold label (status quo); mask = keep in "
+                        "batches but excluded from the loss; drop = removed from the "
+                        "training subset. Applied AFTER the fold split, to the "
+                        "training portion only (folds and OOF identical across policies).")
+    p.add_argument("--evidence-status-csv", default=None,
+                   help="evidence_quality_<tag>.csv from llm_evidence_quality.py; "
+                        "required for --missing-policy mask/drop, optional otherwise "
+                        "(annotates the OOF file).")
     args = p.parse_args()
 
     set_seed(args.seed)
@@ -116,6 +126,11 @@ def main():
     out_dir.mkdir(parents=True, exist_ok=True)
 
     df = load_item_dataset(args.dataset_path).reset_index(drop=True)
+    if args.missing_policy != "zero" and not args.evidence_status_csv:
+        raise SystemExit("--evidence-status-csv is required for --missing-policy mask/drop")
+    if args.evidence_status_csv:
+        from src.models.missing_policy import attach_evidence_status
+        df = attach_evidence_status(df, args.evidence_status_csv)
     groups = df["participant_id"].to_numpy()
     y = df["label"].to_numpy()
 
@@ -127,6 +142,7 @@ def main():
     print(f"  folds           : {args.k_folds} (grouped by participant)")
     print(f"  loss            : {args.loss}")
     print(f"  class weights   : {args.class_weights}")
+    print(f"  missing policy  : {args.missing_policy}")
     print(f"  epochs/fold     : {args.num_epochs}  bs {args.batch_size}  lr {args.learning_rate}")
     print("=" * 64)
 
@@ -147,18 +163,30 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     sgkf = StratifiedGroupKFold(n_splits=args.k_folds, shuffle=True, random_state=args.seed)
 
-    oof = df[["participant_id", "item_id", "item_name", "label"]].copy()
+    oof_cols = ["participant_id", "item_id", "item_name", "label"]
+    if "evidence_status" in df.columns:
+        oof_cols.append("evidence_status")
+    oof = df[oof_cols].copy()
     oof["prediction"] = -1
     oof["fold"] = -1
     for c in range(NUM_LABELS):
         oof[f"prob_{c}"] = np.nan
     fold_metrics = []
 
+    from src.models.missing_policy import apply_policy, training_labels, wrap_loss_fn
+
     for fold, (tr_idx, va_idx) in enumerate(sgkf.split(df, y, groups), start=1):
         t0 = time.time()
         tr_df, va_df = df.iloc[tr_idx], df.iloc[va_idx]
         # Leakage guard: no participant in both sides.
         assert not (set(tr_df["participant_id"]) & set(va_df["participant_id"]))
+
+        # Missing-evidence policy: training portion only; validation untouched.
+        tr_df, policy_stats = apply_policy(tr_df, args.missing_policy)
+        if args.missing_policy != "zero":
+            print(f"  [policy {args.missing_policy}] no-evidence rows: "
+                  f"{policy_stats['n_no_evidence']}/{policy_stats['n_train']} "
+                  f"(effective train n={policy_stats['n_train_effective']})")
 
         train_loader = build_loader(tr_df, tokenizer, args.evidence_column,
                                     args.batch_size, args.max_length, shuffle=True)
@@ -173,16 +201,21 @@ def main():
         elif args.loss == "corn_balanced":
             from sklearn.utils.class_weight import compute_class_weight
             cw = compute_class_weight("balanced", classes=np.arange(NUM_LABELS),
-                                      y=tr_df["label"].to_numpy())
+                                      y=training_labels(tr_df))
             cw_t = torch.tensor(cw, dtype=torch.float, device=device)
             loss_fn = lambda logits, labels: corn_loss_weighted(logits, labels, NUM_LABELS, cw_t)
         elif args.loss == "corn_focal":
             loss_fn = lambda logits, labels: corn_loss_focal(logits, labels, NUM_LABELS,
                                                              gamma=args.focal_gamma)
         elif args.class_weights == "balanced":
-            loss_fn = make_loss_fn(tr_df["label"].to_numpy(), device)
+            loss_fn = make_loss_fn(training_labels(tr_df), device)
         else:
             loss_fn = None
+        if args.missing_policy == "mask":
+            # An explicit loss is required so masked rows can be filtered per batch.
+            if loss_fn is None:
+                loss_fn = torch.nn.CrossEntropyLoss()
+            loss_fn = wrap_loss_fn(loss_fn)
 
         for epoch in range(1, args.num_epochs + 1):
             train_one_epoch(model, train_loader, optimizer, device, loss_fn=loss_fn)
@@ -196,7 +229,8 @@ def main():
             oof.iloc[va_idx, oof.columns.get_loc(f"prob_{c}")] = proba[:, c]
 
         dt = time.time() - t0
-        fold_metrics.append({"fold": fold, "n": int(len(va_df)), **metrics, "seconds": dt})
+        fold_metrics.append({"fold": fold, "n": int(len(va_df)), **metrics,
+                             "missing_policy": policy_stats, "seconds": dt})
         print(f"Fold {fold}/{args.k_folds} | n={len(va_df):4d} "
               f"acc {metrics['accuracy']:.3f} macroF1 {metrics['macro_f1']:.3f} "
               f"MAE {metrics['mae']:.3f} ({dt:.0f}s)")
