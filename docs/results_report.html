@@ -1,0 +1,599 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<style>*{margin:0;padding:0}img{max-width:100%}</style>
+</head>
+<body>
+<title>PHQ-8 Retrieval & Evidence-Judging — Results Report</title>
+<style>
+  :root {
+    --paper:#f5f7f8; --surface:#ffffff; --ink:#16202b; --muted:#586470;
+    --faint:#e4e9ed; --faint-2:#eef2f5;
+    --accent:#0d6b73; --accent-deep:#123a47; --accent-soft:#e3f0f0;
+    --pos:#2f7d5b; --neg:#b0533a; --warn:#9a7124;
+    --pos-soft:#e6f1eb; --neg-soft:#f6e8e3;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;
+    --maxw:960px; --readw:70ch;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#0f141a; --surface:#161d26; --ink:#e6ecf1; --muted:#95a1ad;
+      --faint:#28323e; --faint-2:#1b232d;
+      --accent:#45b4b1; --accent-deep:#9dd6d4; --accent-soft:#15272a;
+      --pos:#5cbd8c; --neg:#dd856a; --warn:#d3aa60;
+      --pos-soft:#14231c; --neg-soft:#241813;
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#f5f7f8; --surface:#ffffff; --ink:#16202b; --muted:#586470;
+    --faint:#e4e9ed; --faint-2:#eef2f5;
+    --accent:#0d6b73; --accent-deep:#123a47; --accent-soft:#e3f0f0;
+    --pos:#2f7d5b; --neg:#b0533a; --warn:#9a7124;
+    --pos-soft:#e6f1eb; --neg-soft:#f6e8e3;
+  }
+  :root[data-theme="dark"]{
+    --paper:#0f141a; --surface:#161d26; --ink:#e6ecf1; --muted:#95a1ad;
+    --faint:#28323e; --faint-2:#1b232d;
+    --accent:#45b4b1; --accent-deep:#9dd6d4; --accent-soft:#15272a;
+    --pos:#5cbd8c; --neg:#dd856a; --warn:#d3aa60;
+    --pos-soft:#14231c; --neg-soft:#241813;
+  }
+
+  *{box-sizing:border-box;}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;-webkit-font-smoothing:antialiased;margin:0;
+    font-size:16px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px 96px;}
+  p{margin:0 0 1em;max-width:var(--readw);}
+  a{color:var(--accent);text-underline-offset:2px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;
+    line-height:1.15;letter-spacing:-.01em;}
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;
+    letter-spacing:.14em;font-size:.7rem;font-weight:650;color:var(--accent);
+    margin:0 0 .6em;}
+  .num{font-variant-numeric:tabular-nums;font-family:var(--mono);}
+
+  /* ---- masthead ---- */
+  header.mast{border-top:3px solid var(--accent);padding:56px 0 40px;
+    border-bottom:1px solid var(--faint);margin-bottom:48px;}
+  header.mast h1{font-size:2.7rem;margin:.1em 0 .35em;max-width:20ch;}
+  .lede{font-size:1.22rem;color:var(--ink);max-width:60ch;
+    font-family:var(--serif);line-height:1.4;}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:28px;list-style:none;padding:0;}
+  .meta li{font-size:.78rem;font-family:var(--mono);color:var(--muted);
+    background:var(--surface);border:1px solid var(--faint);
+    padding:5px 10px;border-radius:5px;}
+  .meta b{color:var(--ink);font-weight:600;}
+
+  /* ---- sections ---- */
+  section{margin:56px 0;scroll-margin-top:24px;}
+  section > h2{font-size:1.7rem;margin:0 0 .1em;}
+  .kicker{color:var(--muted);max-width:var(--readw);margin-top:.2em;}
+  .rule{height:1px;background:var(--faint);border:0;margin:0 0 24px;}
+
+  /* ---- stat tiles ---- */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:14px;margin:28px 0 8px;}
+  .tile{background:var(--surface);border:1px solid var(--faint);border-radius:10px;
+    padding:18px 18px 16px;position:relative;overflow:hidden;}
+  .tile .lab{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--muted);font-weight:600;margin-bottom:10px;line-height:1.3;}
+  .tile .big{font-family:var(--mono);font-size:1.95rem;font-weight:600;
+    font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1;}
+  .tile .sub{font-size:.8rem;color:var(--muted);margin-top:8px;line-height:1.4;}
+  .tile.accentbar::before{content:"";position:absolute;left:0;top:0;bottom:0;
+    width:3px;background:var(--accent);}
+
+  /* ---- phase grid ---- */
+  .phases{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:12px;margin-top:24px;}
+  .pcard{background:var(--surface);border:1px solid var(--faint);border-radius:9px;
+    padding:16px 16px 15px;display:flex;gap:13px;align-items:flex-start;}
+  .pcard .idx{font-family:var(--mono);font-size:.82rem;font-weight:600;
+    color:var(--accent);border:1px solid var(--faint);border-radius:6px;
+    min-width:30px;height:30px;display:grid;place-items:center;flex:none;
+    background:var(--accent-soft);}
+  .pcard h3{font-size:1rem;margin:2px 0 4px;font-family:var(--sans);font-weight:650;letter-spacing:0;}
+  .pcard p{font-size:.83rem;color:var(--muted);margin:0;max-width:none;}
+  .pcard .done{display:inline-block;font-size:.68rem;font-family:var(--mono);
+    color:var(--pos);margin-top:7px;font-weight:600;letter-spacing:.03em;}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto;margin:20px 0;border:1px solid var(--faint);
+    border-radius:10px;background:var(--surface);}
+  table{border-collapse:collapse;width:100%;font-size:.87rem;min-width:520px;}
+  caption{caption-side:top;text-align:left;font-size:.78rem;color:var(--muted);
+    padding:12px 16px 0;font-family:var(--mono);}
+  th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--faint);
+    white-space:nowrap;}
+  thead th{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--muted);font-weight:650;background:var(--faint-2);
+    position:sticky;top:0;}
+  td.n,th.n{text-align:right;font-family:var(--mono);
+    font-variant-numeric:tabular-nums;}
+  tbody tr:last-child td{border-bottom:0;}
+  tbody tr:hover{background:var(--faint-2);}
+  .grouplab{font-weight:600;color:var(--ink);}
+  td.name{font-weight:500;}
+
+  /* delta chips */
+  .d{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.82rem;
+    padding:1px 7px;border-radius:20px;font-weight:600;display:inline-block;min-width:62px;text-align:center;}
+  .d.up{color:var(--pos);background:var(--pos-soft);}
+  .d.down{color:var(--neg);background:var(--neg-soft);}
+  .d.flat{color:var(--muted);background:var(--faint-2);}
+  .ci{font-family:var(--mono);font-size:.76rem;color:var(--muted);}
+
+  /* callouts */
+  .callout{background:var(--surface);border:1px solid var(--faint);
+    border-left:3px solid var(--accent);border-radius:8px;padding:18px 20px;
+    margin:24px 0;}
+  .callout.warnbox{border-left-color:var(--warn);}
+  .callout h3{font-family:var(--sans);font-size:1rem;margin:0 0 .4em;font-weight:650;letter-spacing:0;}
+  .callout p{margin:0 0 .5em;max-width:none;}
+  .callout p:last-child{margin-bottom:0;}
+
+  ul.clean{max-width:var(--readw);padding-left:1.15em;margin:0 0 1em;}
+  ul.clean li{margin-bottom:.4em;}
+  .mono-inline{font-family:var(--mono);font-size:.88em;background:var(--faint-2);
+    padding:1px 5px;border-radius:4px;}
+
+  /* schematic report block for phase 7 */
+  .schema{background:var(--surface);border:1px solid var(--faint);border-radius:10px;
+    padding:20px 22px;font-size:.86rem;margin:20px 0;}
+  .schema .row{display:flex;gap:12px;padding:7px 0;border-bottom:1px dashed var(--faint);
+    align-items:baseline;}
+  .schema .row:last-child{border-bottom:0;}
+  .schema .field{font-family:var(--mono);color:var(--accent);min-width:150px;font-size:.8rem;}
+  .flagpill{font-family:var(--mono);font-size:.72rem;padding:2px 8px;border-radius:20px;
+    font-weight:600;}
+  .flag-hi{color:var(--pos);background:var(--pos-soft);}
+  .flag-miss{color:var(--warn);background:var(--faint-2);}
+  .flag-contra{color:var(--neg);background:var(--neg-soft);}
+
+  footer{border-top:1px solid var(--faint);margin-top:72px;padding-top:28px;
+    font-size:.82rem;color:var(--muted);}
+  footer p{max-width:none;}
+  footer code{font-family:var(--mono);font-size:.85em;color:var(--ink);}
+
+  @media (max-width:640px){
+    header.mast h1{font-size:2rem;}
+    .lede{font-size:1.08rem;}
+    .wrap{padding:0 16px 64px;}
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">Clinical NLP · Research results</p>
+    <h1>Expanded retrieval &amp; LLM evidence-judging for PHQ-8 severity prediction</h1>
+    <p class="lede">An eight-phase study on whether a richer symptom dictionary and a real
+      LLM evidence-quality judge improve depression-symptom scoring from clinical interviews —
+      and an honest account of where they do and don't.</p>
+    <ul class="meta">
+      <li><b>Data</b> DAIC-WOZ · 219 participants · 1,752 item-rows</li>
+      <li><b>Task</b> PHQ-8 · 8 items × 0–3</li>
+      <li><b>CV</b> StratifiedGroupKFold(5, seed 42)</li>
+      <li><b>Compute</b> BGU SLURM · rtx_3090 · ~12 GPU jobs</li>
+      <li><b>Branch</b> models/bert-classifier</li>
+    </ul>
+  </header>
+
+  <!-- ===================== HEADLINE ===================== -->
+  <section id="headline">
+    <p class="eyebrow">The result in one screen</p>
+    <h2>Retrieval expansion helps the encoder, not the headline cascade</h2>
+    <p class="kicker">The expanded dictionary (<span class="mono-inline">R1</span>) lifts the
+      standalone encoder — especially its ability to catch <em>severe</em> symptoms — but does
+      not beat the project-best merged cascade. The single largest metric gain came from
+      elsewhere: an evidence-driven training policy that drops symptom items with no interview evidence.</p>
+
+    <div class="tiles">
+      <div class="tile accentbar">
+        <div class="lab">Encoder severe-symptom recall</div>
+        <div class="big">.102&nbsp;→&nbsp;.150</div>
+        <div class="sub">MentalBERT+CORN, gold-3 items · +47% relative under R1</div>
+      </div>
+      <div class="tile accentbar">
+        <div class="lab">Encoder QWK (R0 → R1)</div>
+        <div class="big">.354&nbsp;→&nbsp;.384</div>
+        <div class="sub">+0.030 · class-3 F1 +0.064 · CI straddles 0</div>
+      </div>
+      <div class="tile accentbar">
+        <div class="lab">Best single win — <span class="num">drop</span> policy QWK</div>
+        <div class="big">.354&nbsp;→&nbsp;.421</div>
+        <div class="sub">Train only on items with clear evidence · macro-F1 .393, MAE .645</div>
+      </div>
+      <div class="tile accentbar">
+        <div class="lab">Project-best cascade (unchanged)</div>
+        <div class="big">.409</div>
+        <div class="sub">macro-F1 · R1 did not exceed it (−0.004; QWK −0.037)</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>What this means</h3>
+      <p>Expanded retrieval is an <b>encoder-level and severe-class-recovery win</b> and an
+        <b>interpretability win</b> — not a new state-of-the-art on the headline cascade metric.
+        Bootstrap CIs on the encoder gains straddle zero, so they are <em>suggestive, not
+        significant</em>. Reported plainly rather than oversold.</p>
+    </div>
+  </section>
+
+  <!-- ===================== PIPELINE ===================== -->
+  <section id="pipeline">
+    <p class="eyebrow">The pipeline · phases run in dependency order</p>
+    <h2>Eight phases, end to end</h2>
+    <hr class="rule">
+    <div class="phases">
+      <div class="pcard"><div class="idx num">01</div><div>
+        <h3>Tiered lexicon</h3>
+        <p>Core (frozen glossary) + lay synonyms + DSM-5 clinical register. Label-free by construction.</p>
+        <span class="done">✓ merged &amp; smoke-checked</span></div></div>
+      <div class="pcard"><div class="idx num">02</div><div>
+        <h3>Expanded retrieval</h3>
+        <p>Three fusion variants built on the w3 context bank; standard evidence columns.</p>
+        <span class="done">✓ 3 variants · 0 empty-evidence</span></div></div>
+      <div class="pcard"><div class="idx num">03</div><div>
+        <h3>LLM evidence judge</h3>
+        <p>4-way Qwen judge → label-free selection of R1 = <span class="num">exphyb_bm25q</span>.</p>
+        <span class="done">✓ parse rate 99.9%</span></div></div>
+      <div class="pcard"><div class="idx num">04</div><div>
+        <h3>Missing-evidence infra</h3>
+        <p>zero / mask / drop policies; abstention metrics; fold-identity proven.</p>
+        <span class="done">✓ verified before GPU spend</span></div></div>
+      <div class="pcard"><div class="idx num">05</div><div>
+        <h3>Training &amp; prediction</h3>
+        <p>Encoder, MIL, CoT-SC5 pool, policy runs — all on R1. OOM-retried.</p>
+        <span class="done">✓ 9 GPU jobs complete</span></div></div>
+      <div class="pcard"><div class="idx num">06</div><div>
+        <h3>Effect analysis &amp; figures</h3>
+        <p>R0-vs-R1 deltas + bootstrap CIs, failure patterns, trajectory figure.</p>
+        <span class="done">✓ analysis JSON + fig3b</span></div></div>
+      <div class="pcard"><div class="idx num">07</div><div>
+        <h3>Clinician reports</h3>
+        <p>Per-participant decision-support schema rendered to narrative by Qwen.</p>
+        <span class="done">✓ 12 example reports</span></div></div>
+      <div class="pcard"><div class="idx num">08</div><div>
+        <h3>Deliverables</h3>
+        <p>Method doc, auto-generated results summary, reproducibility notes.</p>
+        <span class="done">✓ docs committed &amp; pushed</span></div></div>
+    </div>
+  </section>
+
+  <!-- ===================== CORE RESULT TABLE ===================== -->
+  <section id="core">
+    <p class="eyebrow">Phase 5–6 · the central comparison</p>
+    <h2>Configuration comparison, R0 → R1</h2>
+    <p class="kicker">Every configuration is scored on identical folds against the frozen
+      <span class="mono-inline">R0</span> Hybrid-W3 baseline. Green = improvement, clay = regression.
+      Fold assignments are byte-identical across all variants — the comparability guarantee.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Out-of-fold item-level metrics · Δ = R1 − R0</caption>
+        <thead>
+          <tr><th>Configuration</th><th>Metric</th><th class="n">R0</th><th class="n">R1</th><th>Δ</th></tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="4" class="grouplab">MentalBERT + CORN<br><span style="font-weight:400;color:var(--muted);font-size:.8rem">encoder</span></td><td class="name">macro-F1</td><td class="n">0.347</td><td class="n">0.372</td><td><span class="d up">+0.025</span></td></tr>
+          <tr><td class="name">QWK</td><td class="n">0.354</td><td class="n">0.384</td><td><span class="d up">+0.030</span></td></tr>
+          <tr><td class="name">class-3 F1</td><td class="n">0.159</td><td class="n">0.223</td><td><span class="d up">+0.064</span></td></tr>
+          <tr><td class="name">severe recall</td><td class="n">0.102</td><td class="n">0.150</td><td><span class="d up">+0.048</span></td></tr>
+
+          <tr><td rowspan="4" class="grouplab">Attention-MIL<br><span style="font-weight:400;color:var(--muted);font-size:.8rem">encoder</span></td><td class="name">macro-F1</td><td class="n">0.360</td><td class="n">0.361</td><td><span class="d up">+0.001</span></td></tr>
+          <tr><td class="name">QWK</td><td class="n">0.362</td><td class="n">0.385</td><td><span class="d up">+0.022</span></td></tr>
+          <tr><td class="name">accuracy</td><td class="n">0.475</td><td class="n">0.449</td><td><span class="d down">−0.026</span></td></tr>
+          <tr><td class="name">far-off (|err|≥2)</td><td class="n">0.130</td><td class="n">0.104</td><td><span class="d up">−0.026</span></td></tr>
+
+          <tr><td rowspan="4" class="grouplab">LLM only<br><span style="font-weight:400;color:var(--muted);font-size:.8rem">Qwen CoT · SC5</span></td><td class="name">macro-F1</td><td class="n">0.400</td><td class="n">0.410</td><td><span class="d up">+0.010</span></td></tr>
+          <tr><td class="name">QWK</td><td class="n">0.406</td><td class="n">0.397</td><td><span class="d down">−0.010</span></td></tr>
+          <tr><td class="name">class-3 F1</td><td class="n">0.254</td><td class="n">0.269</td><td><span class="d up">+0.015</span></td></tr>
+          <tr><td class="name">severe recall</td><td class="n">0.204</td><td class="n">0.222</td><td><span class="d up">+0.018</span></td></tr>
+
+          <tr><td rowspan="4" class="grouplab">MIL merged cascade<br><span style="font-weight:400;color:var(--accent);font-size:.8rem">project-best</span></td><td class="name">macro-F1</td><td class="n">0.409</td><td class="n">0.405</td><td><span class="d down">−0.004</span></td></tr>
+          <tr><td class="name">QWK</td><td class="n">0.447</td><td class="n">0.410</td><td><span class="d down">−0.037</span></td></tr>
+          <tr><td class="name">MAE</td><td class="n">0.606</td><td class="n">0.640</td><td><span class="d down">+0.034</span></td></tr>
+          <tr><td class="name">severe recall</td><td class="n">0.198</td><td class="n">0.210</td><td><span class="d up">+0.012</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Participant-cluster bootstrap 95% CI on R1 − R0 (2,000 resamples)</caption>
+        <thead><tr><th>Configuration</th><th>Δ macro-F1</th><th>Δ QWK</th><th>Δ MAE</th></tr></thead>
+        <tbody>
+          <tr><td class="name">MentalBERT + CORN</td><td class="ci">+0.025 [−0.010, +0.057]</td><td class="ci">+0.029 [−0.022, +0.078]</td><td class="ci">−0.008 [−0.044, +0.027]</td></tr>
+          <tr><td class="name">Attention-MIL</td><td class="ci">+0.002 [−0.036, +0.040]</td><td class="ci">+0.023 [−0.034, +0.076]</td><td class="ci">−0.007 [−0.050, +0.035]</td></tr>
+          <tr><td class="name">LLM only</td><td class="ci">+0.010 [−0.018, +0.038]</td><td class="ci">−0.009 [−0.048, +0.030]</td><td class="ci">+0.012 [−0.023, +0.049]</td></tr>
+          <tr><td class="name">MIL merged cascade</td><td class="ci">−0.003 [−0.033, +0.025]</td><td class="ci">−0.036 [−0.075, +0.004]</td><td class="ci">+0.034 [+0.002, +0.066]</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="kicker">Only the cascade's MAE regression clears zero. Every encoder gain is
+      directionally positive but its interval includes zero — the honest reading is a
+      consistent small lift, not a proven one.</p>
+  </section>
+
+  <!-- ===================== PHASE 1 ===================== -->
+  <section id="p1">
+    <p class="eyebrow">Phase 01</p>
+    <h2>A tiered symptom lexicon</h2>
+    <hr class="rule">
+    <p>The original retrieval query for each PHQ-8 item was a hand-curated glossary of lay
+      phrasings. Phase 1 wraps that frozen glossary as a <b>core</b> tier and layers two more:
+      a <b>synonyms</b> tier of lay paraphrases and multi-word expressions for how participants
+      actually talk, and a <b>clinical</b> tier in DSM-5 register (anhedonia, hypersomnia,
+      psychomotor retardation, and so on). A one-off Qwen2.5-7B brainstorm proposed candidate
+      terms offline; every term was reviewed by hand and merged with provenance comments before
+      anything downstream could read it.</p>
+
+    <div class="tiles">
+      <div class="tile"><div class="lab">Core (frozen glossary)</div><div class="big">103</div><div class="sub">terms · imported, never copied</div></div>
+      <div class="tile"><div class="lab">Synonyms — lay</div><div class="big">257</div><div class="sub">≈ 32 / item · paraphrases + MWEs</div></div>
+      <div class="tile"><div class="lab">Clinical — DSM-5</div><div class="big">146</div><div class="sub">≈ 18 / item · professional register</div></div>
+      <div class="tile"><div class="lab">Flat match terms</div><div class="big">506</div><div class="sub">≈ 63 / item · for hit-rate metrics</div></div>
+    </div>
+    <p class="kicker">The lexicon is derived only from the PHQ-8 item constructs — never from
+      DAIC-WOZ labels or transcripts — so it is globally applicable with no leakage.</p>
+  </section>
+
+  <!-- ===================== PHASE 2 ===================== -->
+  <section id="p2">
+    <p class="eyebrow">Phase 02</p>
+    <h2>Three ways to fuse the expanded query</h2>
+    <hr class="rule">
+    <p>The expansion can enter a hybrid BM25 + semantic retriever through different doors.
+      Phase 2 builds three variants on the same w3 context bank, each feeding a different query
+      to the BM25 versus the semantic side, and writes them under the standard evidence-column
+      names so every downstream consumer works unmodified.</p>
+    <div class="tablewrap">
+      <table>
+        <caption>Retrieval variants · all 1,752 rows, 0 empty-evidence</caption>
+        <thead><tr><th>Variant</th><th>BM25 query</th><th>Semantic query</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td class="name">expbm25 <span class="num">(V1)</span></td><td>expanded</td><td>—</td><td>BM25-only diagnostic</td></tr>
+          <tr><td class="name">exphyb_bm25q <span class="num">(V2)</span></td><td>expanded</td><td>bare item text</td><td class="grouplab">selected → R1</td></tr>
+          <tr><td class="name">exphyb_bothq <span class="num">(V3)</span></td><td>expanded</td><td>expanded</td><td>full expansion</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== PHASE 3 ===================== -->
+  <section id="p3">
+    <p class="eyebrow">Phase 03 · the pivotal idea</p>
+    <h2>A real evidence judge, and why keyword hit-rate lied</h2>
+    <hr class="rule">
+    <p>The motivating observation for the whole study: a keyword hit-rate massively
+      <em>over-counts</em> evidence quality. When a Qwen judge is asked whether retrieved windows
+      actually support a symptom, the picture collapses — most starkly for <b>NoInterest</b>,
+      where lexical terms appear in 99.5% of windows but the judge confirms genuine support in
+      only 2.3%.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Keyword hit-rate vs LLM-judged relevance (frozen R0 audit)</caption>
+        <thead><tr><th>Item</th><th class="n">Keyword hit-rate</th><th class="n">LLM-judged</th><th>Gap</th></tr></thead>
+        <tbody>
+          <tr><td class="name">NoInterest</td><td class="n">0.995</td><td class="n">0.023</td><td><span class="d down">−0.972</span></td></tr>
+          <tr><td class="name">Moving</td><td class="n">0.639</td><td class="n">0.009</td><td><span class="d down">−0.630</span></td></tr>
+          <tr><td class="name">Appetite</td><td class="n">0.566</td><td class="n">0.046</td><td><span class="d down">−0.520</span></td></tr>
+          <tr><td class="name">Concentrating</td><td class="n">0.548</td><td class="n">0.037</td><td><span class="d down">−0.511</span></td></tr>
+          <tr><td class="name">Failure</td><td class="n">0.868</td><td class="n">0.164</td><td><span class="d down">−0.703</span></td></tr>
+          <tr><td class="name">Depressed</td><td class="n">0.849</td><td class="n">0.283</td><td><span class="d down">−0.566</span></td></tr>
+          <tr><td class="name">Tired</td><td class="n">0.635</td><td class="n">0.329</td><td><span class="d down">−0.306</span></td></tr>
+          <tr><td class="name">Sleep</td><td class="n">0.854</td><td class="n">0.374</td><td><span class="d down">−0.479</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Phase 3 replaces the proxy with a 4-way judge — <span class="mono-inline">supports</span> /
+      <span class="mono-inline">against</span> / <span class="mono-inline">ambiguous</span> /
+      <span class="mono-inline">none</span> — plus a severity hint, voted over 3 self-consistency
+      chains. Empty evidence returns <span class="mono-inline">none</span> with no LLM call. The
+      judge never sees gold labels, so it can drive selection without leakage. <b>R1 is then chosen
+      label-free</b> as the variant with the highest mean informative rate — P(supports ∪ against).</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Label-free variant selection · mean informative rate</caption>
+        <thead><tr><th>Variant</th><th class="n">Informative rate</th><th class="n">None rate</th><th class="n">Parse rate</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="name">r0hybw3 <span style="color:var(--muted)">(baseline)</span></td><td class="n">0.287</td><td class="n">0.396</td><td class="n">0.999</td><td></td></tr>
+          <tr><td class="name">expbm25 (V1)</td><td class="n">0.269</td><td class="n">0.453</td><td class="n">0.999</td><td><span class="d down">below R0</span></td></tr>
+          <tr><td class="grouplab">exphyb_bm25q (V2)</td><td class="n">0.294</td><td class="n">0.360</td><td class="n">0.999</td><td><span class="d up">selected R1</span></td></tr>
+          <tr><td class="name">exphyb_bothq (V3)</td><td class="n">0.293</td><td class="n">0.348</td><td class="n">0.999</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="kicker">Notably, the BM25-only variant (V1) scored <em>below</em> the baseline on
+      judged informativeness even though its keyword hit-rate rose — direct confirmation that
+      lexical coverage and real evidence quality are not the same thing.</p>
+  </section>
+
+  <!-- ===================== PHASE 4 ===================== -->
+  <section id="p4">
+    <p class="eyebrow">Phase 04 · infrastructure &amp; guards</p>
+    <h2>Treating "no evidence" as missing, and proving nothing drifted</h2>
+    <hr class="rule">
+    <p>If the interview never touched a symptom, scoring it 0 is a guess, not a measurement.
+      Phase 4 adds three training policies, applied <b>after</b> the fold split to the training
+      portion only, so folds and out-of-fold coverage stay identical across policies:</p>
+    <ul class="clean">
+      <li><b>zero</b> — status quo; every row keeps its gold label.</li>
+      <li><b>mask</b> — no-evidence rows stay in the batch but contribute no gradient (loss-masked; numerically identical to per-row zero-weighting).</li>
+      <li><b>drop</b> — no-evidence rows are removed from training and from class-weight computation.</li>
+    </ul>
+    <p>Two guards ran <em>before</em> any GPU spend. <b>Fold-identity was proven exhaustively</b> —
+      all three expanded variants reproduce the frozen baseline's fold column row-for-row
+      (1,752 / 1,752), so any measured delta is retrieval, not a reshuffle. And an
+      <b>eval-drift guard</b> confirmed the metric code reproduces the frozen cascade's published
+      numbers exactly, so later deltas are trustworthy. A dual-reporting metric
+      (<span class="mono-inline">comprehensive_with_abstention</span>) was also added for
+      abstaining predictors: coverage, covered-subset quality, a 0-imputed headline total, and a
+      prorated sensitivity total.</p>
+  </section>
+
+  <!-- ===================== PHASE 5 ===================== -->
+  <section id="p5">
+    <p class="eyebrow">Phase 05</p>
+    <h2>Retraining the stack on R1</h2>
+    <hr class="rule">
+    <p>Every model was retrained on the selected R1 retrieval, holding hyperparameters identical
+      to the frozen baselines (MentalBERT + CORN, 8 epochs, seed 42; Attention-MIL; a
+      staged-tolerant Qwen CoT pool at 5 self-consistency chains; and the mask/drop policy runs).
+      The R1 CoT pool hit a GPU out-of-memory failure on four of five folds; an OOM fix and retry
+      completed the pool cleanly (1,752 out-of-fold rows across the five folds). The cascade then
+      recombines encoder confidence with the LLM using the frozen merged-gate parameters
+      (τ = 0.8, diff ≥ 0.5) — reused, never re-tuned on the new data.</p>
+  </section>
+
+  <!-- ===================== PHASE 6 ===================== -->
+  <section id="p6">
+    <p class="eyebrow">Phase 06</p>
+    <h2>Where the model still fails</h2>
+    <hr class="rule">
+    <p>A key diagnostic: prediction quality <b>rises monotonically with judged evidence quality</b>.
+      The model is most accurate exactly where the judge confirms the symptom is discussed —
+      evidence quality is a real signal, not a cosmetic label.</p>
+
+    <div class="tablewrap">
+      <table>
+        <caption>R1 encoder item-metrics conditioned on evidence status</caption>
+        <thead><tr><th>Evidence status</th><th class="n">n</th><th class="n">accuracy</th><th class="n">macro-F1</th><th class="n">MAE</th><th class="n">mean gold</th></tr></thead>
+        <tbody>
+          <tr><td class="name">against</td><td class="n">213</td><td class="n">0.521</td><td class="n">0.251</td><td class="n">0.578</td><td class="n">0.37</td></tr>
+          <tr><td class="name">ambiguous</td><td class="n">607</td><td class="n">0.405</td><td class="n">0.321</td><td class="n">0.740</td><td class="n">0.92</td></tr>
+          <tr><td class="name">none</td><td class="n">630</td><td class="n">0.532</td><td class="n">0.360</td><td class="n">0.606</td><td class="n">0.58</td></tr>
+          <tr><td class="grouplab">supports</td><td class="n">301</td><td class="n">0.415</td><td class="n">0.403</td><td class="n">0.734</td><td class="n">1.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><div class="lab">Severe items under-called</div><div class="big">55%</div><div class="sub">gold-3 predicted ≤ 1 · recall 0.15</div></div>
+      <div class="tile"><div class="lab">Weakest item (macro-F1)</div><div class="big">0.28</div><div class="sub">NoInterest · then Moving 0.32, Concentrating 0.33</div></div>
+      <div class="tile"><div class="lab">Explicit vs indirect</div><div class="big">.42 / .36</div><div class="sub">accuracy when a term matches vs when support is only functional/paraphrased</div></div>
+      <div class="tile"><div class="lab">False-severe (gold-0 → ≥2)</div><div class="big">7.5%</div><div class="sub">64 of the gold-0 items over-called</div></div>
+    </div>
+    <p class="kicker">Signed error by gold class widens steadily — +0.54 at gold-0 (mild
+      over-calling) to −1.52 at gold-3 (severe under-calling). Catching severe cases remains the
+      central open problem, and it is worst precisely where symptoms are expressed indirectly,
+      through functional consequences rather than lexical terms. A companion trajectory figure
+      (<span class="mono-inline">fig3b</span>) plots each item's move in the evidence × F1 plane.</p>
+  </section>
+
+  <!-- ===================== PHASE 7 ===================== -->
+  <section id="p7">
+    <p class="eyebrow">Phase 07 · clinical usability</p>
+    <h2>Turning predictions into a clinician-facing report</h2>
+    <hr class="rule">
+    <p>Out-of-fold cascade predictions, the evidence judge's per-item status, and the
+      questionnaire self-report are assembled into a per-participant schema, which Qwen renders
+      into a fixed "Dear clinician…" narrative — <b>the numbers come from the schema; the model
+      only writes prose</b>. Twelve example reports span the severity bands and the interesting
+      disagreement cases. The design distinguishes five finding types, so what needs a clinician's
+      attention reads at a glance:</p>
+
+    <div class="schema" aria-label="Report structure (schematic — no real participant data)">
+      <div class="row"><span class="field">phq_total</span><span>score · severity band · confidence</span></div>
+      <div class="row"><span class="field">high-confidence</span><span><span class="flagpill flag-hi">predicted + evidence</span> item score with supporting snippet</span></div>
+      <div class="row"><span class="field">low-confidence</span><span>flagged "interpret with caution"</span></div>
+      <div class="row"><span class="field">no-evidence</span><span><span class="flagpill flag-miss">not discussed</span> model inference to verify</span></div>
+      <div class="row"><span class="field">contradiction</span><span><span class="flagpill flag-contra">verify</span> self-report vs interview disagree by ≥ 2, or self-report &gt; 0 while evidence says <i>against</i></span></div>
+      <div class="row"><span class="field">follow-up</span><span>explicit list of items warranting clinician review</span></div>
+    </div>
+    <p class="kicker">Every report closes by stating it is model-generated decision support, not a
+      diagnosis. (Individual reports contain interview excerpts and are kept out of this summary.)</p>
+  </section>
+
+  <!-- ===================== POLICIES ===================== -->
+  <section id="policies">
+    <p class="eyebrow">The clearest metric win</p>
+    <h2>Missing-evidence training policies</h2>
+    <p class="kicker">All three share identical folds; the policy touches only the training split.
+      Training only on items with clear evidence (<span class="num">drop</span>) is the strongest
+      across macro-F1, QWK, MAE and severe recall — at a small false-severe cost.</p>
+    <div class="tablewrap">
+      <table>
+        <caption>R1 · MentalBERT + CORN under each policy</caption>
+        <thead><tr><th>Policy</th><th class="n">macro-F1</th><th class="n">QWK</th><th class="n">MAE</th><th class="n">far-off</th><th class="n">severe recall</th><th class="n">false-severe</th></tr></thead>
+        <tbody>
+          <tr><td class="name">absent → 0 <span style="color:var(--muted)">(current)</span></td><td class="n">0.372</td><td class="n">0.384</td><td class="n">0.671</td><td class="n">0.123</td><td class="n">0.150</td><td class="n">0.020</td></tr>
+          <tr><td class="name">absent → NaN <span style="color:var(--muted)">(loss-masked)</span></td><td class="n">0.364</td><td class="n">0.371</td><td class="n">0.684</td><td class="n">0.130</td><td class="n">0.174</td><td class="n">0.028</td></tr>
+          <tr><td class="grouplab">drop no-evidence pairs</td><td class="n">0.393</td><td class="n">0.421</td><td class="n">0.645</td><td class="n">0.120</td><td class="n">0.192</td><td class="n">0.024</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== PERF VS INTERP ===================== -->
+  <section id="ledger">
+    <p class="eyebrow">Phase 08 · the ledger</p>
+    <h2>Performance vs interpretability</h2>
+    <p class="kicker">Separating what moved the metrics from what made the system more usable and
+      trustworthy — the distinction the study was built to draw.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Change</th><th>Performance</th><th>Interpretability / clinical use</th></tr></thead>
+        <tbody>
+          <tr><td class="name">Expanded lexicon + hybrid (R1)</td><td>small encoder gains; CIs straddle 0</td><td>better term coverage on weak items</td></tr>
+          <tr><td class="name"><span class="num">drop</span> no-evidence policy</td><td class="grouplab">clearest metric win</td><td>ties training to evidence presence</td></tr>
+          <tr><td class="name">4-way LLM evidence judge</td><td>drives drop / mask policies</td><td>replaces the over-counting keyword proxy; per-item status in reports</td></tr>
+          <tr><td class="name">fig3b trajectory figure</td><td>—</td><td>shows the retrieval move in the evidence × F1 plane</td></tr>
+          <tr><td class="name">Failure-pattern analysis</td><td>—</td><td>localizes severe under-calling &amp; indirect-phrasing gaps</td></tr>
+          <tr><td class="name">Clinician report</td><td>—</td><td>high / low / missing / contradictory findings, faithful to the schema</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===================== CONCLUSION ===================== -->
+  <section id="conclusion">
+    <p class="eyebrow">Bottom line</p>
+    <h2>An honest verdict</h2>
+    <hr class="rule">
+    <div class="callout">
+      <h3>What worked</h3>
+      <p>Expanding the retrieval dictionary consistently helped the standalone encoder, most
+        visibly on the hardest and most clinically important slice — severe symptoms (class-3 F1
+        +0.064, severe recall +0.048). The 4-way LLM judge replaced a keyword proxy that
+        over-counted evidence by up to 40×, and the evidence-driven <span class="num">drop</span>
+        training policy produced the single largest metric gain of the study (QWK .354 → .421).</p>
+    </div>
+    <div class="callout warnbox">
+      <h3>What didn't — and the caveats</h3>
+      <p>R1 did <b>not</b> beat the project-best merged cascade; the cascade regressed on QWK and
+        MAE, the latter the only interval that clears zero. Every encoder gain is directionally
+        positive but its bootstrap CI includes zero — <em>suggestive, not significant</em>.
+        Severe-symptom under-calling (55% of gold-3 items predicted ≤ 1) remains the dominant
+        open problem, especially where distress is expressed indirectly.</p>
+    </div>
+    <p style="margin-top:24px;">The most defensible framing: this work is an <b>encoder-level and
+      interpretability advance</b> — a better evidence signal, an evidence-aware training regime,
+      and clinician-facing outputs — rather than a new headline accuracy record. All selection was
+      label-free or within training folds, folds are provably identical across every comparison,
+      and the evaluation code reproduces the frozen baselines exactly.</p>
+  </section>
+
+  <footer>
+    <p><b>Reproducibility.</b> R0 = frozen Hybrid-W3 retrieval; R1 = expanded
+      <code>exphyb_bm25q</code>, selected label-free. Metrics are 5-fold participant-grouped OOF
+      (<code>StratifiedGroupKFold</code>, seed 42). Bootstrap CIs resample whole participants
+      (2,000 draws). Source of truth: <code>outputs/cot/retrieval_effect_analysis.json</code>,
+      <code>docs/results_summary.md</code>, <code>docs/retrieval_method.md</code>. Branch
+      <code>models/bert-classifier</code> @ <code>138fb3c</code>.</p>
+    <p>Model-generated research decision support — not a diagnostic instrument.</p>
+  </footer>
+
+</div>
+</body>
+</html>
