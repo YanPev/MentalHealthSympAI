@@ -1,0 +1,118 @@
+{
+  "cascade_encoder_first_vs_L_FINAL": {
+    "macro_f1": {
+      "delta": -0.0032,
+      "ci95": [
+        -0.0157,
+        0.0094
+      ],
+      "excludes_0": false
+    },
+    "qwk": {
+      "delta": -0.0112,
+      "ci95": [
+        -0.0291,
+        0.008
+      ],
+      "excludes_0": false
+    },
+    "mae": {
+      "delta": -0.0171,
+      "ci95": [
+        -0.032,
+        -0.0023
+      ],
+      "excludes_0": true
+    },
+    "far_off_rate": {
+      "delta": -0.008,
+      "ci95": [
+        -0.0148,
+        -0.0017
+      ],
+      "excludes_0": true
+    },
+    "f1_class3": {
+      "delta": -0.0337,
+      "ci95": [
+        -0.0713,
+        0.0023
+      ],
+      "excludes_0": false
+    },
+    "severe_recall": {
+      "delta": -0.0539,
+      "ci95": [
+        -0.0843,
+        -0.0245
+      ],
+      "excludes_0": true
+    },
+    "false_severe_rate": {
+      "delta": -0.017,
+      "ci95": [
+        -0.0233,
+        -0.0111
+      ],
+      "excludes_0": true
+    }
+  },
+  "cascade_llm_first_vs_L_FINAL": {
+    "macro_f1": {
+      "delta": 0.0144,
+      "ci95": [
+        -0.0023,
+        0.0314
+      ],
+      "excludes_0": false
+    },
+    "qwk": {
+      "delta": 0.0015,
+      "ci95": [
+        -0.0196,
+        0.0237
+      ],
+      "excludes_0": false
+    },
+    "mae": {
+      "delta": -0.0388,
+      "ci95": [
+        -0.0599,
+        -0.0183
+      ],
+      "excludes_0": true
+    },
+    "far_off_rate": {
+      "delta": -0.0137,
+      "ci95": [
+        -0.0223,
+        -0.0051
+      ],
+      "excludes_0": true
+    },
+    "f1_class3": {
+      "delta": -0.0171,
+      "ci95": [
+        -0.0597,
+        0.0242
+      ],
+      "excludes_0": false
+    },
+    "severe_recall": {
+      "delta": -0.0479,
+      "ci95": [
+        -0.0823,
+        -0.0142
+      ],
+      "excludes_0": true
+    },
+    "false_severe_rate": {
+      "delta": -0.0227,
+      "ci95": [
+        -0.0305,
+        -0.0156
+      ],
+      "excludes_0": true
+    }
+  }
+}

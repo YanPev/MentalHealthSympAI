@@ -1,12 +1,12 @@
 {
   "cascade_encoder_first": {
     "accepted": false,
-    "qwk": 0.37721875542719285,
-    "vs_better_qwk": 0.39295215883662893
+    "qwk": 0.39353250604752255,
+    "vs_better_qwk": 0.40470217984912304
   },
   "cascade_llm_first": {
     "accepted": false,
-    "qwk": 0.3789168124053649,
-    "vs_better_qwk": 0.39295215883662893
+    "qwk": 0.40623166121899,
+    "vs_better_qwk": 0.40470217984912304
   }
 }

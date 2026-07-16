@@ -1,6 +1,4 @@
 {
-  "rerunning": true,
-  "interim": "L0_CORE/semantic/top5",
-  "new_r2": "L0_CORE/hybrid_a25/top3",
-  "jobs": "enc 19405517 / llm 19405519"
+  "rerunning": false,
+  "new_r2": "L0_CORE/hybrid_a25/top3"
 }
