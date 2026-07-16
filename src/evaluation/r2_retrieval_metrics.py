@@ -53,8 +53,15 @@ def _concat(pattern):
 def load_inputs():
     rk = pd.read_parquet(RANKINGS)
     rk["participant_id"] = rk["participant_id"].astype(str)
+    # include hybrid rankings + hybrid set-judgments if they were built (Stage G)
+    hyb_rk = RANKINGS.parent / "retrieval_window_scores_hybrid.parquet"
+    if hyb_rk.exists():
+        h = pd.read_parquet(hyb_rk); h["participant_id"] = h["participant_id"].astype(str)
+        rk = pd.concat([rk, h], ignore_index=True)
     win = _concat(JUD / "window_judgments_fold*.csv")
-    st = _concat(JUD / "set_judgments_fold*.csv")
+    set_files = (sorted(glob.glob(str(JUD / "set_judgments_fold*.csv"))) +
+                 sorted(glob.glob(str(JUD / "set_judgments_hybrid_fold*.csv"))))
+    st = pd.concat([pd.read_csv(f) for f in set_files], ignore_index=True) if set_files else None
     for d in (win, st):
         if d is not None:
             d["participant_id"] = d["participant_id"].astype(str)
@@ -268,26 +275,46 @@ def shortlist_lexicons(overall_set, prefix="top5"):
     return best, shortlist
 
 
-def select_r2(overall_set, complementarity_df):
-    """Stage H: pick exactly one R2 (label-free), with the defined tie-breakers.
+def select_r2(overall_set, redundancy_df=None):
+    """Stage H: pick exactly one R2 (label-free), with the predefined hierarchy.
 
     Considers single-retriever candidates here; hybrid candidates (if built) are
     appended to overall_set upstream before calling this.
+
+    Predefined selection hierarchy (docs/r2_retrieval_selection.md):
+      1. highest set informative rate;
+      2. candidates within TIE (0.005) of the best are tied;
+      3. among tied, prefer, in order: lower none rate, lower ambiguous rate,
+         lower redundancy (mean turn overlap), fewer windows (prefix rank),
+         then the simpler retriever.
+    Because ties are "within 0.005 of best", a hybrid is only selected when it
+    beats the best single by >= 0.005 (else the single falls inside the tie band
+    and, being simpler, wins the retriever tie-break).
     """
     cand = overall_set.copy()
+    # attach redundancy (mean_turn_overlap) per (config,retriever,prefix); budget
+    # prefix has no redundancy row -> sentinel so it never wins the redundancy step.
+    if redundancy_df is not None and len(redundancy_df):
+        cand = cand.merge(
+            redundancy_df[["config", "retriever", "prefix", "mean_turn_overlap"]],
+            on=["config", "retriever", "prefix"], how="left")
+    if "mean_turn_overlap" not in cand:
+        cand["mean_turn_overlap"] = np.nan
+    worst_red = float(cand["mean_turn_overlap"].max())
+    worst_red = worst_red + 1.0 if np.isfinite(worst_red) else 1.0
+    cand["_red"] = cand["mean_turn_overlap"].fillna(worst_red)
+
     cand = cand.sort_values("informative_rate", ascending=False).reset_index(drop=True)
     top = cand.iloc[0]
     tied = cand[cand.informative_rate >= top.informative_rate - TIE].copy()
-    # tie-breakers: lower none, lower ambiguous, fewer windows (prefix rank), simpler retriever
     prefix_rank = {"top3": 0, "top5": 1, "budget": 2}
-    retr_rank = {"bm25": 0, "semantic": 1, "hybrid": 2}
+    retr_rank = {"bm25": 0, "semantic": 1, "hybrid_a50": 2, "hybrid_a25": 3, "hybrid_a75": 3}
     tied["_pfx"] = tied.prefix.map(prefix_rank).fillna(9)
     tied["_ret"] = tied.retriever.map(retr_rank).fillna(9)
     tied = tied.sort_values(
-        ["none_rate", "ambiguous_rate", "_pfx", "_ret", "informative_rate"],
-        ascending=[True, True, True, True, False])
+        ["none_rate", "ambiguous_rate", "_red", "_pfx", "_ret", "informative_rate"],
+        ascending=[True, True, True, True, True, False])
     winner = tied.iloc[0]
-    # Top-5 vs budget rule: if within TIE informative and <0.01 none, prefer top5
     return winner, tied
 
 
@@ -320,15 +347,30 @@ def main():
         red.to_csv(RET / "retrieval_redundancy.csv", index=False)
 
     best_lex, shortlist = shortlist_lexicons(overall_set)
-    winner, tied = select_r2(overall_set, comp)
+    winner, tied = select_r2(overall_set, red)
 
     # complementarity summary for the hybrid decision (Top-5)
     hyb_signal = _hybrid_signal(comp, shortlist)
 
+    def _f(x):
+        x = float(x)
+        return None if not np.isfinite(x) else x
+
+    tie_cols = ["config", "retriever", "prefix", "informative_rate", "none_rate",
+                "ambiguous_rate", "mean_turn_overlap"]
+    tie_cols = [c for c in tie_cols if c in tied.columns]
     selection = {
         "primary_criterion": "set informative rate = P(status in {supports, against})",
         "label_free": True,
         "tie_tolerance": TIE,
+        "selection_hierarchy": [
+            "1. highest set informative rate",
+            f"2. candidates within {TIE} of the best are tied",
+            "3. among tied: lower none rate, then lower ambiguous rate, then lower "
+            "redundancy (mean turn overlap), then fewer windows (prefix), then the "
+            "simpler retriever (bm25 < semantic < hybrid)",
+        ],
+        "candidate_pool": sorted(overall_set.retriever.unique().tolist()),
         "lexicon_shortlist": shortlist,
         "lexicon_ranking_top5": best_lex[["config", "retriever", "informative_rate",
                                           "none_rate", "ambiguous_rate"]].to_dict("records"),
@@ -336,13 +378,13 @@ def main():
         "selected_R2": {
             "config": winner["config"], "retriever": winner["retriever"],
             "prefix": winner["prefix"],
-            "informative_rate": float(winner["informative_rate"]),
-            "none_rate": float(winner["none_rate"]),
-            "ambiguous_rate": float(winner["ambiguous_rate"]),
+            "informative_rate": _f(winner["informative_rate"]),
+            "none_rate": _f(winner["none_rate"]),
+            "ambiguous_rate": _f(winner["ambiguous_rate"]),
+            "mean_turn_overlap": _f(winner.get("mean_turn_overlap", np.nan)),
         },
-        "runner_up_tied": tied.head(6)[["config", "retriever", "prefix",
-                                        "informative_rate", "none_rate",
-                                        "ambiguous_rate"]].to_dict("records"),
+        "runner_up_tied": [{k: (_f(v) if isinstance(v, float) else v) for k, v in r.items()}
+                           for r in tied.head(8)[tie_cols].to_dict("records")],
         "note": "Hybrid candidates are considered only if hybrid_signal indicates "
                 "meaningful two-sided unique wins; see docs/r2_retrieval_selection.md.",
     }
