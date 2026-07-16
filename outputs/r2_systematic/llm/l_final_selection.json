@@ -1,0 +1,36 @@
+{
+  "L_FINAL": "L1_keep",
+  "candidates": {
+    "L1_keep": {
+      "qwk": 0.39295215883662893,
+      "macro_f1": 0.39903913207165137,
+      "mae": 0.6649543378995434,
+      "passes_constraints": true
+    },
+    "L2_filter": {
+      "qwk": 0.386848484556071,
+      "macro_f1": 0.3803762530132828,
+      "mae": 0.7300228310502284,
+      "passes_constraints": false
+    },
+    "L3_infofirst": {
+      "qwk": 0.36386118801680456,
+      "macro_f1": 0.37803876812691306,
+      "mae": 0.7460045662100456,
+      "passes_constraints": false
+    },
+    "L4_fallback": {
+      "qwk": 0.39105997435508033,
+      "macro_f1": 0.3703515263323176,
+      "mae": 0.6860730593607306,
+      "passes_constraints": false
+    },
+    "L5_longctx": {
+      "qwk": 0.3636972237573405,
+      "macro_f1": 0.3516162033266238,
+      "mae": 0.7614155251141552,
+      "passes_constraints": false
+    }
+  },
+  "rule": "max QWK then macro-F1 among conditions passing MAE/severe/false-severe constraints"
+}

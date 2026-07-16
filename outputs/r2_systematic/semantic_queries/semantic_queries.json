@@ -1,0 +1,509 @@
+{
+  "NoInterest": {
+    "poles": [
+      "default"
+    ],
+    "bipolar": false,
+    "n_queries": 3,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:default"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:default",
+        "Q2_CLINICAL:default"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default",
+        "Q2_CLINICAL:default"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "default",
+        "text": "The person has little interest or pleasure in doing things, and has lost enjoyment in activities and hobbies they used to like."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "default",
+        "text": "The person doesn't feel like doing anything, has stopped caring about things, and finds that nothing sounds fun or interesting anymore."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "default",
+        "text": "The person shows anhedonia — a marked loss of interest or pleasure — with apathy, social withdrawal, and reduced motivation.",
+        "clinical_terms_used": [
+          "anhedonia",
+          "loss of interest",
+          "apathy",
+          "social withdrawal"
+        ]
+      }
+    ]
+  },
+  "Depressed": {
+    "poles": [
+      "default"
+    ],
+    "bipolar": false,
+    "n_queries": 3,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:default"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:default",
+        "Q2_CLINICAL:default"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default",
+        "Q2_CLINICAL:default"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "default",
+        "text": "The person feels down, depressed, sad, or hopeless, with a persistently low mood."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "default",
+        "text": "The person feels low and tearful, down in the dumps and empty inside, and like there is no hope that things will get better."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "default",
+        "text": "The person has a depressed, dysphoric mood with hopelessness and tearfulness, possibly with melancholic features.",
+        "clinical_terms_used": [
+          "dysphoric",
+          "hopelessness",
+          "tearfulness",
+          "melancholic"
+        ]
+      }
+    ]
+  },
+  "Sleep": {
+    "poles": [
+      "insomnia",
+      "hypersomnia"
+    ],
+    "bipolar": true,
+    "n_queries": 6,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:insomnia",
+        "Q0_ITEM:hypersomnia"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:insomnia",
+        "Q0_ITEM:hypersomnia",
+        "Q1_LAY:insomnia",
+        "Q1_LAY:hypersomnia"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:insomnia",
+        "Q0_ITEM:hypersomnia",
+        "Q2_CLINICAL:insomnia",
+        "Q2_CLINICAL:hypersomnia"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:insomnia",
+        "Q0_ITEM:hypersomnia",
+        "Q1_LAY:insomnia",
+        "Q1_LAY:hypersomnia",
+        "Q2_CLINICAL:insomnia",
+        "Q2_CLINICAL:hypersomnia"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "insomnia",
+        "text": "The person has trouble falling asleep or staying asleep, lying awake at night with disturbed, restless sleep."
+      },
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "hypersomnia",
+        "text": "The person is sleeping too much, oversleeping and spending excessive time asleep during the day."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "insomnia",
+        "text": "The person can't sleep, lies awake tossing and turning, and wakes up in the middle of the night."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "hypersomnia",
+        "text": "The person sleeps all day, oversleeps, and finds it hard to get out of bed."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "insomnia",
+        "text": "The person has insomnia with prolonged sleep latency, early morning awakening, and fragmented, non-restorative sleep.",
+        "clinical_terms_used": [
+          "non-restorative sleep",
+          "sleep latency",
+          "early morning awakening"
+        ]
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "hypersomnia",
+        "text": "The person has hypersomnia with excessive daytime sleepiness and somnolence.",
+        "clinical_terms_used": [
+          "hypersomnia",
+          "excessive daytime sleepiness",
+          "somnolence"
+        ]
+      }
+    ]
+  },
+  "Tired": {
+    "poles": [
+      "default"
+    ],
+    "bipolar": false,
+    "n_queries": 3,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:default"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:default",
+        "Q2_CLINICAL:default"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default",
+        "Q2_CLINICAL:default"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "default",
+        "text": "The person feels tired and has little energy, feeling fatigued and worn out."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "default",
+        "text": "The person feels worn out and drained, with no energy, like everything is an effort and they can barely get going."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "default",
+        "text": "The person has fatigue and loss of energy, with anergia, lethargy, asthenia, and easy fatigability.",
+        "clinical_terms_used": [
+          "loss of energy",
+          "anergia",
+          "asthenia",
+          "fatigability",
+          "lethargy"
+        ]
+      }
+    ]
+  },
+  "Appetite": {
+    "poles": [
+      "poor_appetite",
+      "overeating"
+    ],
+    "bipolar": true,
+    "n_queries": 6,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:poor_appetite",
+        "Q0_ITEM:overeating"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:poor_appetite",
+        "Q0_ITEM:overeating",
+        "Q1_LAY:poor_appetite",
+        "Q1_LAY:overeating"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:poor_appetite",
+        "Q0_ITEM:overeating",
+        "Q2_CLINICAL:poor_appetite",
+        "Q2_CLINICAL:overeating"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:poor_appetite",
+        "Q0_ITEM:overeating",
+        "Q1_LAY:poor_appetite",
+        "Q1_LAY:overeating",
+        "Q2_CLINICAL:poor_appetite",
+        "Q2_CLINICAL:overeating"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "poor_appetite",
+        "text": "The person has a poor appetite, is eating less, and has lost interest in food."
+      },
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "overeating",
+        "text": "The person is overeating and eating more than usual."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "poor_appetite",
+        "text": "The person isn't hungry, skips meals or forgets to eat, and has to force themselves to eat."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "overeating",
+        "text": "The person can't stop eating, snacks constantly, and eats for comfort."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "poor_appetite",
+        "text": "The person has decreased appetite with appetite loss and weight loss, showing anorexia.",
+        "clinical_terms_used": [
+          "decreased appetite",
+          "appetite loss",
+          "anorexia"
+        ]
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "overeating",
+        "text": "The person has increased appetite with hyperphagia, food cravings, and binge or emotional eating.",
+        "clinical_terms_used": [
+          "increased appetite",
+          "hyperphagia",
+          "food craving",
+          "emotional eating"
+        ]
+      }
+    ]
+  },
+  "Failure": {
+    "poles": [
+      "default"
+    ],
+    "bipolar": false,
+    "n_queries": 3,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:default"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:default",
+        "Q2_CLINICAL:default"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default",
+        "Q2_CLINICAL:default"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "default",
+        "text": "The person feels bad about themselves, feels like a failure, or feels they have let themselves or their family down."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "default",
+        "text": "The person hates themselves, feels not good enough and worthless, blames themselves, and feels like a burden."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "default",
+        "text": "The person has feelings of worthlessness and excessive or inappropriate guilt, with self-blame, self-criticism, and low self-worth.",
+        "clinical_terms_used": [
+          "worthlessness",
+          "inappropriate guilt",
+          "low self-worth",
+          "self-blame",
+          "self-criticism"
+        ]
+      }
+    ]
+  },
+  "Concentrating": {
+    "poles": [
+      "default"
+    ],
+    "bipolar": false,
+    "n_queries": 3,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:default"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:default",
+        "Q2_CLINICAL:default"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:default",
+        "Q1_LAY:default",
+        "Q2_CLINICAL:default"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "default",
+        "text": "The person has trouble concentrating on things such as reading or watching television, and struggles to focus or make decisions."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "default",
+        "text": "The person can't focus, their mind wanders and goes blank, they keep forgetting things, and they find it hard to make decisions."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "default",
+        "text": "The person has impaired concentration and a diminished ability to think, with distractibility, inattention, indecisiveness, and cognitive slowing.",
+        "clinical_terms_used": [
+          "impaired concentration",
+          "diminished ability to think",
+          "indecisiveness",
+          "distractibility",
+          "inattention",
+          "cognitive slowing"
+        ]
+      }
+    ]
+  },
+  "Moving": {
+    "poles": [
+      "retardation",
+      "agitation"
+    ],
+    "bipolar": true,
+    "n_queries": 6,
+    "active_by_config": {
+      "L0_CORE": [
+        "Q0_ITEM:retardation",
+        "Q0_ITEM:agitation"
+      ],
+      "L1_CORE_LAY": [
+        "Q0_ITEM:retardation",
+        "Q0_ITEM:agitation",
+        "Q1_LAY:retardation",
+        "Q1_LAY:agitation"
+      ],
+      "L2_CORE_CLINICAL": [
+        "Q0_ITEM:retardation",
+        "Q0_ITEM:agitation",
+        "Q2_CLINICAL:retardation",
+        "Q2_CLINICAL:agitation"
+      ],
+      "L3_FULL": [
+        "Q0_ITEM:retardation",
+        "Q0_ITEM:agitation",
+        "Q1_LAY:retardation",
+        "Q1_LAY:agitation",
+        "Q2_CLINICAL:retardation",
+        "Q2_CLINICAL:agitation"
+      ]
+    },
+    "queries": [
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "retardation",
+        "text": "The person is moving or speaking so slowly that other people could have noticed."
+      },
+      {
+        "id": "Q0_ITEM",
+        "kind": "item",
+        "pole": "agitation",
+        "text": "The person is so fidgety or restless that they have been moving around a lot more than usual."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "retardation",
+        "text": "The person moves slowly, everything takes longer, and they talk slower and drag their feet."
+      },
+      {
+        "id": "Q1_LAY",
+        "kind": "lay",
+        "pole": "agitation",
+        "text": "The person can't sit still, feels antsy and on edge, and paces around fidgeting."
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "retardation",
+        "text": "The person shows psychomotor retardation with motor and cognitive slowing, slowed speech, and increased speech latency.",
+        "clinical_terms_used": [
+          "psychomotor retardation",
+          "motor retardation",
+          "slowed speech",
+          "speech latency"
+        ]
+      },
+      {
+        "id": "Q2_CLINICAL",
+        "kind": "clinical",
+        "pole": "agitation",
+        "text": "The person shows psychomotor agitation with restlessness and excessive, restless motor activity.",
+        "clinical_terms_used": [
+          "psychomotor agitation",
+          "agitation",
+          "restlessness"
+        ]
+      }
+    ]
+  }
+}

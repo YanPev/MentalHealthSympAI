@@ -1,0 +1,147 @@
+item,term,dsm5_construct,source,relation,decision,in_primary_query,reason
+NoInterest,anhedonia,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),MeSH descriptor 'Anhedonia'; DSM-5 A2,direct_construct,keep,yes,canonical construct for loss of interest/pleasure
+NoInterest,loss of interest,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2 wording,direct_construct,keep,yes,criterion wording
+NoInterest,diminished interest,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2 verbatim,direct_construct,keep,yes,criterion wording
+NoInterest,diminished pleasure,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2 ('or pleasure'),direct_construct,keep,yes,criterion wording
+NoInterest,loss of pleasure,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2; anhedonia,direct_construct,keep,yes,criterion wording
+NoInterest,diminished ability to experience pleasure,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2 paraphrase (anhedonia),direct_construct,keep,yes,canonical paraphrase of anhedonia
+NoInterest,hedonic capacity impairment,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),anhedonia research terminology (hedonic capacity),direct_construct,keep,yes,documented anhedonia phrasing
+NoInterest,loss of interest in usual pleasures,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2 paraphrase,direct_construct,keep,yes,criterion paraphrase
+NoInterest,avolition,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),APA Dictionary; psychopathology (negative symptom),manifestation,keep,yes,documented lack of motivation to initiate/persist
+NoInterest,amotivation,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),clinical terminology (amotivational state),manifestation,keep,yes,documented motivational-deficit term tied to interest
+NoInterest,apathy,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),MeSH descriptor 'Apathy'; APA Dictionary,manifestation,keep,yes,recognized diminished-motivation/interest syndrome
+NoInterest,social withdrawal,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),psychopathology (behavioural sign of anhedonia),manifestation,keep,yes,documented behavioural manifestation
+NoInterest,reduced libido,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),DSM-5 A2 examples include loss of sexual interest,manifestation,keep,yes,sexual-interest loss is part of A2
+NoInterest,underarousal,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),LLM brainstorm only,related_nonspecific,remove,no,"arousal is a distinct construct, not anhedonia; no clinical provenance for this usage"
+NoInterest,interest deficit,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),LLM brainstorm only,related_nonspecific,remove,no,non-standard paraphrase; not an established term
+NoInterest,valued activities diminished,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),LLM brainstorm only,related_nonspecific,remove,no,non-standard paraphrase; not an established term
+NoInterest,emotional blunting,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),MeSH-adjacent (affective blunting),related_nonspecific,remove,no,reduced emotional expression is a different construct (schizophrenia/SSRI); not specific to A2
+NoInterest,disengagement,DSM-5 MDD Criterion A2 (markedly diminished interest or pleasure; anhedonia),LLM brainstorm only,related_nonspecific,remove,no,vague; not an established clinical term for anhedonia
+Depressed,depressed mood,DSM-5 MDD Criterion A1 (depressed mood),DSM-5 A1 verbatim,direct_construct,keep,yes,criterion wording
+Depressed,low mood,DSM-5 MDD Criterion A1 (depressed mood),clinical synonym for depressed mood,direct_construct,keep,yes,canonical synonym
+Depressed,dysphoria,DSM-5 MDD Criterion A1 (depressed mood),APA Dictionary; psychopathology,direct_construct,keep,yes,canonical mood construct
+Depressed,dysphoric,DSM-5 MDD Criterion A1 (depressed mood),APA Dictionary (adjective form of dysphoria),direct_construct,keep,yes,canonical mood construct
+Depressed,hopelessness,DSM-5 MDD Criterion A1 (depressed mood),DSM-5 A1 example ('hopeless'); Beck Hopelessness,manifestation,keep,yes,criterion example / documented construct
+Depressed,tearfulness,DSM-5 MDD Criterion A1 (depressed mood),DSM-5 A1 note ('appears tearful'),manifestation,keep,yes,criterion-linked sign
+Depressed,despondent,DSM-5 MDD Criterion A1 (depressed mood),APA Dictionary (dejected/low spirits),manifestation,keep,yes,documented affective descriptor of low mood
+Depressed,melancholy,DSM-5 MDD Criterion A1 (depressed mood),DSM-5 'with melancholic features' specifier,subtype,keep,yes,recognized depressive subtype descriptor
+Depressed,melancholic,DSM-5 MDD Criterion A1 (depressed mood),DSM-5 'with melancholic features' specifier,subtype,keep,yes,recognized depressive subtype
+Depressed,dysthymia,DSM-5 MDD Criterion A1 (depressed mood),DSM-5 persistent depressive disorder (dysthymia),subtype,keep,yes,chronic depressed-mood construct
+Depressed,cynicism,DSM-5 MDD Criterion A1 (depressed mood),LLM brainstorm; burnout/personality construct,related_nonspecific,remove,no,"attitude construct (burnout/personality), not depressed mood"
+Depressed,passivity,DSM-5 MDD Criterion A1 (depressed mood),LLM brainstorm; 'passivity phenomena' is a psychosis term,related_nonspecific,remove,no,non-specific / different construct (psychosis)
+Depressed,flat affect,DSM-5 MDD Criterion A1 (depressed mood),MeSH-adjacent (blunted/flat affect),related_nonspecific,remove,no,"negative-symptom (schizophrenia) construct, not depressed mood"
+Depressed,emotional numbness,DSM-5 MDD Criterion A1 (depressed mood),trauma/dissociation literature,related_nonspecific,remove,no,not specific to A1 (also PTSD/dissociation)
+Depressed,negative affect,DSM-5 MDD Criterion A1 (depressed mood),PANAS dimensional construct,related_nonspecific,remove,no,"broad dimensional trait, not the A1 mood construct"
+Depressed,depressive thinking,DSM-5 MDD Criterion A1 (depressed mood),LLM brainstorm only,related_nonspecific,remove,no,non-standard; conflates cognition with mood
+Depressed,resignation,DSM-5 MDD Criterion A1 (depressed mood),LLM brainstorm only,related_nonspecific,remove,no,non-specific emotional descriptor
+Depressed,unhappiness,DSM-5 MDD Criterion A1 (depressed mood),lay register,related_nonspecific,remove,no,lay synonym (Core already covers 'unhappy'); not a distinct clinical term
+Depressed,wretchedness,DSM-5 MDD Criterion A1 (depressed mood),archaic/literary,related_nonspecific,remove,no,not clinical terminology
+Sleep,hypersomnia,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),MeSH descriptor 'Hypersomnia'; DSM-5 A4,direct_construct,keep,yes,criterion construct (oversleep pole)
+Sleep,sleep disturbance,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),MeSH 'Sleep Wake Disorders'; DSM-5 A4,direct_construct,keep,yes,criterion construct
+Sleep,non-restorative sleep,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),clinical sleep terminology; DSM insomnia note,manifestation,keep,yes,documented sleep-quality manifestation
+Sleep,sleep onset,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),sleep medicine (sleep-onset / initial insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,sleep latency,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),sleep medicine (increased sleep latency),manifestation,keep,yes,documented insomnia sign
+Sleep,early morning awakening,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),clinical (terminal insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,fragmented sleep,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),clinical (sleep-maintenance/middle insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,nocturnal awakening,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),clinical (middle insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,middle insomnia,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),clinical insomnia subtype terminology,subtype,keep,yes,recognized insomnia subtype
+Sleep,terminal insomnia,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),clinical insomnia subtype terminology,subtype,keep,yes,recognized insomnia subtype
+Sleep,excessive daytime sleepiness,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),sleep medicine (EDS),manifestation,keep,yes,documented hypersomnia manifestation
+Sleep,somnolence,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),MeSH 'Disorders of Excessive Somnolence',manifestation,keep,yes,documented hypersomnia manifestation
+Sleep,circadian,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),bare term; circadian-rhythm disorders,related_nonspecific,remove,no,too generic alone; not the insomnia/hypersomnia construct
+Sleep,sleep quality,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),generic descriptor,related_nonspecific,remove,no,non-specific; not a symptom construct by itself
+Sleep,parasomnia,DSM-5 MDD Criterion A4 (insomnia or hypersomnia),"MeSH 'Parasomnias' (sleepwalking, terrors)",related_nonspecific,remove,no,"distinct sleep-disorder class, not MDD insomnia/hypersomnia"
+Tired,loss of energy,DSM-5 MDD Criterion A6 (fatigue or loss of energy),DSM-5 A6 verbatim,direct_construct,keep,yes,criterion wording
+Tired,low energy,DSM-5 MDD Criterion A6 (fatigue or loss of energy),DSM-5 A6,direct_construct,keep,yes,criterion wording
+Tired,lack of energy,DSM-5 MDD Criterion A6 (fatigue or loss of energy),DSM-5 A6 paraphrase,direct_construct,keep,yes,criterion paraphrase
+Tired,decreased energy,DSM-5 MDD Criterion A6 (fatigue or loss of energy),DSM-5 A6 paraphrase,direct_construct,keep,yes,criterion paraphrase
+Tired,diminished energy,DSM-5 MDD Criterion A6 (fatigue or loss of energy),DSM-5 A6 paraphrase,direct_construct,keep,yes,criterion paraphrase
+Tired,anergia,DSM-5 MDD Criterion A6 (fatigue or loss of energy),psychopathology (anergia = lack of energy),direct_construct,keep,yes,canonical low-energy construct
+Tired,asthenia,DSM-5 MDD Criterion A6 (fatigue or loss of energy),MeSH descriptor 'Asthenia',manifestation,keep,yes,documented weakness/lack-of-energy construct
+Tired,fatigability,DSM-5 MDD Criterion A6 (fatigue or loss of energy),clinical terminology (easy fatigability),manifestation,keep,yes,documented fatigue manifestation
+Tired,lethargy,DSM-5 MDD Criterion A6 (fatigue or loss of energy),MeSH descriptor 'Lethargy',manifestation,keep,yes,documented low-energy/drowsiness manifestation
+Tired,exhaustion,DSM-5 MDD Criterion A6 (fatigue or loss of energy),clinical descriptor of severe fatigue,manifestation,keep,yes,documented fatigue manifestation
+Tired,vital exhaustion,DSM-5 MDD Criterion A6 (fatigue or loss of energy),Maastricht Questionnaire construct (vital exhaustion),manifestation,keep,yes,documented fatigue-related construct
+Tired,chronic fatigue,DSM-5 MDD Criterion A6 (fatigue or loss of energy),risk of Chronic Fatigue Syndrome confound,related_nonspecific,remove,no,"'chronic fatigue' strongly evokes CFS, a distinct disorder"
+Tired,malaise,DSM-5 MDD Criterion A6 (fatigue or loss of energy),MeSH-adjacent; general unwellness,related_nonspecific,remove,no,non-specific to depressive fatigue (any illness)
+Tired,debilitation,DSM-5 MDD Criterion A6 (fatigue or loss of energy),LLM brainstorm; non-specific,related_nonspecific,remove,no,"generic enfeeblement, not the A6 construct"
+Tired,prostration,DSM-5 MDD Criterion A6 (fatigue or loss of energy),archaic,related_nonspecific,remove,no,not standard psychiatric terminology
+Tired,reduced vitality,DSM-5 MDD Criterion A6 (fatigue or loss of energy),LLM brainstorm only,related_nonspecific,remove,no,non-standard phrasing
+Tired,weakness,DSM-5 MDD Criterion A6 (fatigue or loss of energy),MeSH 'Muscle Weakness',related_nonspecific,remove,no,physical-weakness term; non-specific (pulls somatic content)
+Tired,vigilance impairment,DSM-5 MDD Criterion A6 (fatigue or loss of energy),vigilance = sustained attention,related_nonspecific,remove,no,"belongs to the concentration domain, not fatigue"
+Appetite,decreased appetite,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),DSM-5 A3 ('decrease in appetite'),direct_construct,keep,yes,criterion wording (reduced pole)
+Appetite,increased appetite,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),DSM-5 A3 ('increase in appetite'),direct_construct,keep,yes,criterion wording (overeating pole)
+Appetite,appetite loss,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),DSM-5 A3; anorexia (symptom),direct_construct,keep,yes,criterion construct (reduced pole)
+Appetite,appetite disturbance,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),DSM-5 A3,direct_construct,keep,yes,criterion construct
+Appetite,appetite change,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),DSM-5 A3,direct_construct,keep,yes,criterion construct
+Appetite,weight change,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),DSM-5 A3 (weight loss or gain),direct_construct,keep,yes,criterion construct
+Appetite,anorexia,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),MeSH descriptor 'Anorexia' (symptom: loss of appetite),direct_construct,keep,yes,canonical reduced-appetite construct
+Appetite,hyperphagia,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),clinical terminology (hyperphagia = overeating),direct_construct,keep,yes,canonical overeating construct
+Appetite,hyporexia,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),clinical terminology (reduced appetite),subtype,keep,yes,documented reduced-appetite term
+Appetite,polyphagia,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),clinical terminology (excessive eating/hunger),subtype,keep,yes,documented overeating term
+Appetite,binge eating,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),MeSH 'Binge-Eating Disorder',manifestation,keep,yes,documented overeating manifestation
+Appetite,psychogenic overeating,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),ICD 'overeating associated with psychological disturbances',manifestation,keep,yes,documented psychiatric overeating manifestation
+Appetite,food craving,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),MeSH descriptor 'Craving',manifestation,keep,yes,documented increased-appetite manifestation
+Appetite,emotional eating,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),eating-behaviour literature,manifestation,keep,yes,documented overeating manifestation
+Appetite,compulsive eating,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),eating-behaviour literature,manifestation,keep,yes,documented overeating manifestation
+Appetite,impulsive eating,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard phrasing; duplicative of binge/compulsive
+Appetite,reactive overeating,DSM-5 MDD Criterion A3 (decrease/increase in appetite or weight),LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard phrasing
+Failure,worthlessness,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),DSM-5 A7 verbatim ('feelings of worthlessness'),direct_construct,keep,yes,criterion wording
+Failure,excessive guilt,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),DSM-5 A7 ('excessive or inappropriate guilt'),direct_construct,keep,yes,criterion wording
+Failure,inappropriate guilt,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),DSM-5 A7 verbatim,direct_construct,keep,yes,criterion wording
+Failure,low self-worth,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),DSM-5 A7 (worthlessness),direct_construct,keep,yes,canonical worthlessness synonym
+Failure,self-blame,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical (guilt cognition),manifestation,keep,yes,documented guilt manifestation
+Failure,self-criticism,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical (self-critical cognition),manifestation,keep,yes,documented worthlessness manifestation
+Failure,self-reproach,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),classic psychopathology (self-reproach),manifestation,keep,yes,documented guilt manifestation
+Failure,negative self-evaluation,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),Beck cognitive model (negative view of self),manifestation,keep,yes,documented cognitive manifestation
+Failure,negative self-schema,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),Beck cognitive theory of depression,manifestation,keep,yes,documented cognitive manifestation
+Failure,inadequacy,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical (feelings of inadequacy),manifestation,keep,yes,documented worthlessness manifestation
+Failure,shame,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),MeSH descriptor 'Shame',manifestation,keep,yes,documented self-conscious affect (worthlessness-adjacent)
+Failure,guilty rumination,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical (ruminative guilt),manifestation,keep,yes,documented guilt manifestation
+Failure,self-deprecation,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical descriptor (self-deprecating),manifestation,keep,yes,documented low-self-worth manifestation
+Failure,self-hatred,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical descriptor,manifestation,keep,yes,documented severe-worthlessness manifestation
+Failure,self-loathing,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),clinical descriptor,manifestation,keep,yes,documented severe-worthlessness manifestation
+Failure,self-contempt,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),self-conscious-affect literature,manifestation,keep,yes,documented worthlessness manifestation
+Failure,self-disgust,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),self-disgust in depression literature (has a scale),manifestation,keep,yes,documented worthlessness manifestation
+Failure,imposter syndrome,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),pop-psychology; 'impostor phenomenon' is not a DSM construct,related_nonspecific,remove,no,not an MDD worthlessness/guilt construct
+Failure,inferiority complex,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),Adlerian/historical,related_nonspecific,remove,no,not an MDD construct
+Failure,internalized criticism,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard phrasing
+Failure,self-defeatism,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard ('self-defeating' is a personality term)
+Failure,self-doubt,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),anxiety/uncertainty construct,related_nonspecific,remove,no,not specific to worthlessness/guilt (also anxiety)
+Failure,self-pity,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),self-focused-sorrow construct,related_nonspecific,remove,no,distinct from worthlessness/guilt
+Failure,self-punishment,DSM-5 MDD Criterion A7 (worthlessness or excessive/inappropriate guilt),ambiguous with self-harm,related_nonspecific,remove,no,ambiguous; risks pulling self-harm content
+Concentrating,impaired concentration,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),DSM-5 A8,direct_construct,keep,yes,criterion wording
+Concentrating,poor concentration,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),DSM-5 A8,direct_construct,keep,yes,criterion wording
+Concentrating,diminished ability to think,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),DSM-5 A8 verbatim,direct_construct,keep,yes,criterion wording
+Concentrating,indecisiveness,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),DSM-5 A8 verbatim ('or indecisiveness'),direct_construct,keep,yes,criterion wording
+Concentrating,cognitive impairment,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),MeSH 'Cognitive Dysfunction'; DSM-5 A8,direct_construct,keep,yes,criterion-linked construct
+Concentrating,distractibility,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),clinical/DSM terminology (distractibility),manifestation,keep,yes,documented attention manifestation
+Concentrating,inattention,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),clinical terminology (inattention),manifestation,keep,yes,documented attention manifestation
+Concentrating,difficulty sustaining attention,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),attention terminology (sustained attention),manifestation,keep,yes,documented attention manifestation
+Concentrating,attentional difficulties,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),clinical descriptor of attention problems,manifestation,keep,yes,documented attention manifestation
+Concentrating,memory complaints,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),clinical (subjective memory complaints),manifestation,keep,yes,documented cognitive manifestation
+Concentrating,cognitive slowing,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),clinical (bradyphrenia / cognitive slowing),manifestation,keep,yes,documented cognitive manifestation
+Concentrating,executive dysfunction,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),neuropsychology (executive function),manifestation,keep,yes,documented cognitive manifestation
+Concentrating,brain fog,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),lay/informal register,related_nonspecific,remove,no,"belongs in the lay tier, not clinical"
+Concentrating,cognitive disorganization,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),schizotypy/psychosis term,related_nonspecific,remove,no,different construct (thought disorder)
+Concentrating,cognitive fatigue,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),overlaps fatigue (Tired),related_nonspecific,remove,no,cross-domain with A6 fatigue
+Concentrating,cognitive interference,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),experimental psych (Stroop) term,related_nonspecific,remove,no,academic; non-specific to A8
+Concentrating,cognitive processing speed reduction,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),verbose paraphrase of cognitive slowing,related_nonspecific,remove,no,non-standard; duplicative of 'cognitive slowing'
+Concentrating,impaired mental clarity,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),LLM brainstorm; ~brain fog,related_nonspecific,remove,no,non-standard/lay phrasing
+Concentrating,poor mental sharpness,DSM-5 MDD Criterion A8 (diminished ability to think or concentrate; indecisiveness),LLM brainstorm; lay,related_nonspecific,remove,no,non-standard/lay phrasing
+Moving,psychomotor retardation,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),DSM-5 A5 verbatim,direct_construct,keep,yes,criterion wording (retardation pole)
+Moving,psychomotor agitation,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),MeSH 'Psychomotor Agitation'; DSM-5 A5,direct_construct,keep,yes,criterion wording (agitation pole)
+Moving,psychomotor slowing,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),clinical synonym of psychomotor retardation,direct_construct,keep,yes,canonical retardation synonym
+Moving,agitation,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),MeSH 'Psychomotor Agitation'; DSM-5 A5,direct_construct,keep,yes,criterion construct (agitation pole)
+Moving,motor retardation,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),clinical synonym (motor slowing),manifestation,keep,yes,documented retardation manifestation
+Moving,restlessness,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),DSM-5 A5 ('fidgety or restless'),manifestation,keep,yes,criterion-linked agitation manifestation
+Moving,motor restlessness,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),clinical (motor restlessness),manifestation,keep,yes,documented agitation manifestation
+Moving,slowed speech,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),DSM-5 A5 ('speaking so slowly'),manifestation,keep,yes,criterion-linked retardation manifestation
+Moving,speech latency,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),clinical (increased speech latency),manifestation,keep,yes,documented retardation sign
+Moving,decreased motor activity,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),clinical descriptor of the retardation pole,manifestation,keep,yes,documented retardation manifestation
+Moving,excessive motor activity,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),DSM-5 A5 ('moving around a lot more than usual'),manifestation,keep,yes,criterion-linked agitation manifestation
+Moving,bradykinesia,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),MeSH 'Bradykinesia'; neurological (Parkinsonism),related_nonspecific,remove,no,"neurological motor slowing, not psychiatric psychomotor retardation"
+Moving,hypokinesia,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),MeSH 'Hypokinesia'; neurological,related_nonspecific,remove,no,"neurological reduced movement, not the A5 construct"
+Moving,hyperactivity,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),ADHD terminology,related_nonspecific,remove,no,"non-specific (ADHD), not psychomotor agitation"
+Moving,akathisia,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),"MeSH 'Akathisia, Drug-Induced'",related_nonspecific,remove,no,drug-induced movement disorder; risks medication-side-effect content
+Moving,motor inhibition,DSM-5 MDD Criterion A5 (psychomotor agitation or retardation),LLM brainstorm; ambiguous,related_nonspecific,remove,no,non-standard; 'inhibition' is ambiguous

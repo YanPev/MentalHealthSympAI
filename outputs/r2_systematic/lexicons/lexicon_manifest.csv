@@ -1,0 +1,412 @@
+item,tier,term,source_type,relation,decision,in_primary_query,reason
+NoInterest,core,interest pleasure enjoy enjoyment hobbies activities fun excited bored unmotivated stopped doing things i used to like care about,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Depressed,core,depressed down sad hopeless unhappy crying cry low mood blue empty despair miserable feeling bad,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Sleep,core,sleep asleep insomnia falling asleep staying asleep waking up early sleeping too much nights restless tossing turning in bed nap,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Tired,core,tired fatigue no energy low energy exhausted lethargic worn out drained sluggish run down,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Appetite,core,appetite eating eat food hungry hunger overeating poor appetite weight loss weight gain meals skipping meals eating too much snacking,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Failure,core,failure failing failed guilt guilty worthless bad about myself let myself down let my family down disappointed useless ashamed,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Concentrating,core,concentrate concentrating focus paying attention distracted forgetful remembering forget reading watching tv mind wandering thoughts,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+Moving,core,moving slowly speaking slowly slowed down restless fidgety fidget agitated sluggish pacing can't sit still,frozen_glossary(EXPAND),direct_construct,accept,yes,byte-identical frozen R0 glossary; kept as-is
+NoInterest,lay,lost interest,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,nothing sounds fun,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,don't enjoy,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,not enjoying,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,can't be bothered,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,no motivation,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,don't feel like doing anything,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,stopped caring,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,couldn't care less,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,gave up,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,no point,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,apathetic,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,indifferent,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,withdrawn,reviewed_lay_expression,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,keep to myself,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,don't go out anymore,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,not fun anymore,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,lost my passion,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,nothing interests me,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,don't look forward to anything,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,activities seem pointless,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,bored with life,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,doesn't care much,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,doesn't seek out activities,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,doesn't get excited about anything,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,feel flat,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,feels detached,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,no enthusiasm,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,just going through the motions,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,no longer interested in friends,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,nothing feels good,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,stop participating,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,lay,uninterested in sex,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,feeling low,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,feel like crying,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,tearful,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,teary,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,gloomy,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,dark place,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,down in the dumps,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,heavy hearted,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,numb,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,empty inside,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,no hope,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,what's the point,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,given up hope,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,can't see things getting better,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,feel awful,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,feel terrible,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,hurting inside,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,broken,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,want to give up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,really down,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,can't find joy,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,dejected,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,down on life,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,downcast,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,downer mood,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,downhearted,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,dreary,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,feeling gloomy,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,feeling lost,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,forlorn,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,morose,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,negative outlook,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,sorrowful,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,sullen,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Depressed,lay,unhappy inside,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,can't sleep,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,couldn't sleep,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,up all night,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,wide awake,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,lie awake,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,lay awake,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,toss and turn,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,barely slept,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,only slept,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,wake up in the middle of the night,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,trouble sleeping,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,hard time sleeping,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,oversleep,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,sleep all day,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,nightmares,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,bad dreams,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,sleeping pills,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,melatonin,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,sleep schedule,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,hard to get up,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,can't stay asleep,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,clock watching,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,day sleeper,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,hit the hay early,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,hit the hay late,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,night owl,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,restless nights,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,stay in bed,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,worn out from lack of sleep,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Sleep,lay,yawn a lot,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,worn out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,wiped out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,burned out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,burnt out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,no energy,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,run down,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,no get up and go,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,can barely move,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,everything is an effort,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,everything takes effort,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,no strength,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,always sleepy,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,sleepy all the time,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,can't get out of bed,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,dragging,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,heavy limbs,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,no stamina,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,out of it,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,always tired,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,can't seem to stay awake,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,dead tired,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,exhausted easily,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,feel heavy,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,just can't muster up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,lack of pep,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,low on fuel,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,need a lot of rest,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,physically drained,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,sleepy most of the time,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,slow start,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,tired even after sleep,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,trouble getting going,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Tired,lay,weak feeling,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,not hungry,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,no appetite,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,don't feel like eating,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,forget to eat,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,skip meals,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,barely eat,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,eating less,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,eating more,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,food doesn't taste,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,lost weight,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,gained weight,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,put on weight,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,comfort eating,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,stress eating,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,binge,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,junk food,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,no interest in food,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,force myself to eat,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,can't stop eating,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,comfort food overload,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,eat everything in sight,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,fill up quickly,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,food coma,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,gorging,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,grazing all day,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,lose interest in cooking,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,munchies,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,nibbling,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,pig out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,snack constantly,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Appetite,lay,stuff my face,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,hate myself,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,not good enough,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,blame myself,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,beat myself up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,screwed up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,messed up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,let everyone down,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,letting people down,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,burden,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,no good at anything,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,hard on myself,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,low self-esteem,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,disappointed in myself,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,embarrassed,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,regret,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feel like a loser,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,everything i do is wrong,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,never do anything right,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,always feeling inadequate,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,can't live up to expectations,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,can't shake off guilt,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,don't measure up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feel inadequate,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feel like a failure,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feel like crap,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feeling worthless,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feeling like a fraud,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,feeling unlovable,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,incompetent,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,my own worst critic,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,poor self-image,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Failure,lay,worthless feeling,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't focus,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,hard to focus,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't concentrate,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,mind goes blank,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,zone out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,zoning out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,spaced out,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,lose my train of thought,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,scatterbrained,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,keep forgetting,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,memory problems,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,bad memory,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,hard to make decisions,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't decide,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,foggy,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,all over the place,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't pay attention,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,lose track,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,lose interest quickly,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't concentrate on books,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't follow a story,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't follow directions,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't hold attention,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't process info,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't stay on topic,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,can't think straight,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,confused mind,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,difficulty with mental tasks,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,hard to concentrate on details,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,hard to grasp ideas,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,lose track of conversations,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Concentrating,lay,mind feels jumbled,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,slow motion,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,everything takes longer,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,can't sit still,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,keyed up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,on edge,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,jittery,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,antsy,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,pace around,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,pacing back and forth,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,wound up,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,leg bouncing,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,talking slower,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,dragging my feet,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,squirming,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,twitchy,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,moving slower,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,slower than usual,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,hard to get going,reviewed_lay_expression_mwe,indirect_manifestation,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,always on the go,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,can't calm down,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,can't relax,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,can't seem to move,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,trouble moving,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,feeling hyper,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,hyperactive,reviewed_lay_expression,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,less active,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,moving like molasses,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,moving less,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,restless legs,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,stiff movements,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+Moving,lay,twitchy hands,reviewed_lay_expression_mwe,direct_paraphrase,accept,yes,"reviewed everyday expression, symptom-specific, not transcript-derived"
+NoInterest,clinical,anhedonia,MeSH descriptor 'Anhedonia'; DSM-5 A2,direct_construct,keep,yes,canonical construct for loss of interest/pleasure
+NoInterest,clinical,loss of interest,DSM-5 A2 wording,direct_construct,keep,yes,criterion wording
+NoInterest,clinical,diminished interest,DSM-5 A2 verbatim,direct_construct,keep,yes,criterion wording
+NoInterest,clinical,diminished pleasure,DSM-5 A2 ('or pleasure'),direct_construct,keep,yes,criterion wording
+NoInterest,clinical,loss of pleasure,DSM-5 A2; anhedonia,direct_construct,keep,yes,criterion wording
+NoInterest,clinical,diminished ability to experience pleasure,DSM-5 A2 paraphrase (anhedonia),direct_construct,keep,yes,canonical paraphrase of anhedonia
+NoInterest,clinical,hedonic capacity impairment,anhedonia research terminology (hedonic capacity),direct_construct,keep,yes,documented anhedonia phrasing
+NoInterest,clinical,loss of interest in usual pleasures,DSM-5 A2 paraphrase,direct_construct,keep,yes,criterion paraphrase
+NoInterest,clinical,avolition,APA Dictionary; psychopathology (negative symptom),manifestation,keep,yes,documented lack of motivation to initiate/persist
+NoInterest,clinical,amotivation,clinical terminology (amotivational state),manifestation,keep,yes,documented motivational-deficit term tied to interest
+NoInterest,clinical,apathy,MeSH descriptor 'Apathy'; APA Dictionary,manifestation,keep,yes,recognized diminished-motivation/interest syndrome
+NoInterest,clinical,social withdrawal,psychopathology (behavioural sign of anhedonia),manifestation,keep,yes,documented behavioural manifestation
+NoInterest,clinical,reduced libido,DSM-5 A2 examples include loss of sexual interest,manifestation,keep,yes,sexual-interest loss is part of A2
+NoInterest,clinical,underarousal,LLM brainstorm only,related_nonspecific,remove,no,"arousal is a distinct construct, not anhedonia; no clinical provenance for this usage"
+NoInterest,clinical,interest deficit,LLM brainstorm only,related_nonspecific,remove,no,non-standard paraphrase; not an established term
+NoInterest,clinical,valued activities diminished,LLM brainstorm only,related_nonspecific,remove,no,non-standard paraphrase; not an established term
+NoInterest,clinical,emotional blunting,MeSH-adjacent (affective blunting),related_nonspecific,remove,no,reduced emotional expression is a different construct (schizophrenia/SSRI); not specific to A2
+NoInterest,clinical,disengagement,LLM brainstorm only,related_nonspecific,remove,no,vague; not an established clinical term for anhedonia
+Depressed,clinical,depressed mood,DSM-5 A1 verbatim,direct_construct,keep,yes,criterion wording
+Depressed,clinical,low mood,clinical synonym for depressed mood,direct_construct,keep,yes,canonical synonym
+Depressed,clinical,dysphoria,APA Dictionary; psychopathology,direct_construct,keep,yes,canonical mood construct
+Depressed,clinical,dysphoric,APA Dictionary (adjective form of dysphoria),direct_construct,keep,yes,canonical mood construct
+Depressed,clinical,hopelessness,DSM-5 A1 example ('hopeless'); Beck Hopelessness,manifestation,keep,yes,criterion example / documented construct
+Depressed,clinical,tearfulness,DSM-5 A1 note ('appears tearful'),manifestation,keep,yes,criterion-linked sign
+Depressed,clinical,despondent,APA Dictionary (dejected/low spirits),manifestation,keep,yes,documented affective descriptor of low mood
+Depressed,clinical,melancholy,DSM-5 'with melancholic features' specifier,subtype,keep,yes,recognized depressive subtype descriptor
+Depressed,clinical,melancholic,DSM-5 'with melancholic features' specifier,subtype,keep,yes,recognized depressive subtype
+Depressed,clinical,dysthymia,DSM-5 persistent depressive disorder (dysthymia),subtype,keep,yes,chronic depressed-mood construct
+Depressed,clinical,cynicism,LLM brainstorm; burnout/personality construct,related_nonspecific,remove,no,"attitude construct (burnout/personality), not depressed mood"
+Depressed,clinical,passivity,LLM brainstorm; 'passivity phenomena' is a psychosis term,related_nonspecific,remove,no,non-specific / different construct (psychosis)
+Depressed,clinical,flat affect,MeSH-adjacent (blunted/flat affect),related_nonspecific,remove,no,"negative-symptom (schizophrenia) construct, not depressed mood"
+Depressed,clinical,emotional numbness,trauma/dissociation literature,related_nonspecific,remove,no,not specific to A1 (also PTSD/dissociation)
+Depressed,clinical,negative affect,PANAS dimensional construct,related_nonspecific,remove,no,"broad dimensional trait, not the A1 mood construct"
+Depressed,clinical,depressive thinking,LLM brainstorm only,related_nonspecific,remove,no,non-standard; conflates cognition with mood
+Depressed,clinical,resignation,LLM brainstorm only,related_nonspecific,remove,no,non-specific emotional descriptor
+Depressed,clinical,unhappiness,lay register,related_nonspecific,remove,no,lay synonym (Core already covers 'unhappy'); not a distinct clinical term
+Depressed,clinical,wretchedness,archaic/literary,related_nonspecific,remove,no,not clinical terminology
+Sleep,clinical,hypersomnia,MeSH descriptor 'Hypersomnia'; DSM-5 A4,direct_construct,keep,yes,criterion construct (oversleep pole)
+Sleep,clinical,sleep disturbance,MeSH 'Sleep Wake Disorders'; DSM-5 A4,direct_construct,keep,yes,criterion construct
+Sleep,clinical,non-restorative sleep,clinical sleep terminology; DSM insomnia note,manifestation,keep,yes,documented sleep-quality manifestation
+Sleep,clinical,sleep onset,sleep medicine (sleep-onset / initial insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,clinical,sleep latency,sleep medicine (increased sleep latency),manifestation,keep,yes,documented insomnia sign
+Sleep,clinical,early morning awakening,clinical (terminal insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,clinical,fragmented sleep,clinical (sleep-maintenance/middle insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,clinical,nocturnal awakening,clinical (middle insomnia),subtype,keep,yes,recognized insomnia subtype
+Sleep,clinical,middle insomnia,clinical insomnia subtype terminology,subtype,keep,yes,recognized insomnia subtype
+Sleep,clinical,terminal insomnia,clinical insomnia subtype terminology,subtype,keep,yes,recognized insomnia subtype
+Sleep,clinical,excessive daytime sleepiness,sleep medicine (EDS),manifestation,keep,yes,documented hypersomnia manifestation
+Sleep,clinical,somnolence,MeSH 'Disorders of Excessive Somnolence',manifestation,keep,yes,documented hypersomnia manifestation
+Sleep,clinical,circadian,bare term; circadian-rhythm disorders,related_nonspecific,remove,no,too generic alone; not the insomnia/hypersomnia construct
+Sleep,clinical,sleep quality,generic descriptor,related_nonspecific,remove,no,non-specific; not a symptom construct by itself
+Sleep,clinical,parasomnia,"MeSH 'Parasomnias' (sleepwalking, terrors)",related_nonspecific,remove,no,"distinct sleep-disorder class, not MDD insomnia/hypersomnia"
+Tired,clinical,loss of energy,DSM-5 A6 verbatim,direct_construct,keep,yes,criterion wording
+Tired,clinical,low energy,DSM-5 A6,direct_construct,keep,yes,criterion wording
+Tired,clinical,lack of energy,DSM-5 A6 paraphrase,direct_construct,keep,yes,criterion paraphrase
+Tired,clinical,decreased energy,DSM-5 A6 paraphrase,direct_construct,keep,yes,criterion paraphrase
+Tired,clinical,diminished energy,DSM-5 A6 paraphrase,direct_construct,keep,yes,criterion paraphrase
+Tired,clinical,anergia,psychopathology (anergia = lack of energy),direct_construct,keep,yes,canonical low-energy construct
+Tired,clinical,asthenia,MeSH descriptor 'Asthenia',manifestation,keep,yes,documented weakness/lack-of-energy construct
+Tired,clinical,fatigability,clinical terminology (easy fatigability),manifestation,keep,yes,documented fatigue manifestation
+Tired,clinical,lethargy,MeSH descriptor 'Lethargy',manifestation,keep,yes,documented low-energy/drowsiness manifestation
+Tired,clinical,exhaustion,clinical descriptor of severe fatigue,manifestation,keep,yes,documented fatigue manifestation
+Tired,clinical,vital exhaustion,Maastricht Questionnaire construct (vital exhaustion),manifestation,keep,yes,documented fatigue-related construct
+Tired,clinical,chronic fatigue,risk of Chronic Fatigue Syndrome confound,related_nonspecific,remove,no,"'chronic fatigue' strongly evokes CFS, a distinct disorder"
+Tired,clinical,malaise,MeSH-adjacent; general unwellness,related_nonspecific,remove,no,non-specific to depressive fatigue (any illness)
+Tired,clinical,debilitation,LLM brainstorm; non-specific,related_nonspecific,remove,no,"generic enfeeblement, not the A6 construct"
+Tired,clinical,prostration,archaic,related_nonspecific,remove,no,not standard psychiatric terminology
+Tired,clinical,reduced vitality,LLM brainstorm only,related_nonspecific,remove,no,non-standard phrasing
+Tired,clinical,weakness,MeSH 'Muscle Weakness',related_nonspecific,remove,no,physical-weakness term; non-specific (pulls somatic content)
+Tired,clinical,vigilance impairment,vigilance = sustained attention,related_nonspecific,remove,no,"belongs to the concentration domain, not fatigue"
+Appetite,clinical,decreased appetite,DSM-5 A3 ('decrease in appetite'),direct_construct,keep,yes,criterion wording (reduced pole)
+Appetite,clinical,increased appetite,DSM-5 A3 ('increase in appetite'),direct_construct,keep,yes,criterion wording (overeating pole)
+Appetite,clinical,appetite loss,DSM-5 A3; anorexia (symptom),direct_construct,keep,yes,criterion construct (reduced pole)
+Appetite,clinical,appetite disturbance,DSM-5 A3,direct_construct,keep,yes,criterion construct
+Appetite,clinical,appetite change,DSM-5 A3,direct_construct,keep,yes,criterion construct
+Appetite,clinical,weight change,DSM-5 A3 (weight loss or gain),direct_construct,keep,yes,criterion construct
+Appetite,clinical,anorexia,MeSH descriptor 'Anorexia' (symptom: loss of appetite),direct_construct,keep,yes,canonical reduced-appetite construct
+Appetite,clinical,hyperphagia,clinical terminology (hyperphagia = overeating),direct_construct,keep,yes,canonical overeating construct
+Appetite,clinical,hyporexia,clinical terminology (reduced appetite),subtype,keep,yes,documented reduced-appetite term
+Appetite,clinical,polyphagia,clinical terminology (excessive eating/hunger),subtype,keep,yes,documented overeating term
+Appetite,clinical,binge eating,MeSH 'Binge-Eating Disorder',manifestation,keep,yes,documented overeating manifestation
+Appetite,clinical,psychogenic overeating,ICD 'overeating associated with psychological disturbances',manifestation,keep,yes,documented psychiatric overeating manifestation
+Appetite,clinical,food craving,MeSH descriptor 'Craving',manifestation,keep,yes,documented increased-appetite manifestation
+Appetite,clinical,emotional eating,eating-behaviour literature,manifestation,keep,yes,documented overeating manifestation
+Appetite,clinical,compulsive eating,eating-behaviour literature,manifestation,keep,yes,documented overeating manifestation
+Appetite,clinical,impulsive eating,LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard phrasing; duplicative of binge/compulsive
+Appetite,clinical,reactive overeating,LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard phrasing
+Failure,clinical,worthlessness,DSM-5 A7 verbatim ('feelings of worthlessness'),direct_construct,keep,yes,criterion wording
+Failure,clinical,excessive guilt,DSM-5 A7 ('excessive or inappropriate guilt'),direct_construct,keep,yes,criterion wording
+Failure,clinical,inappropriate guilt,DSM-5 A7 verbatim,direct_construct,keep,yes,criterion wording
+Failure,clinical,low self-worth,DSM-5 A7 (worthlessness),direct_construct,keep,yes,canonical worthlessness synonym
+Failure,clinical,self-blame,clinical (guilt cognition),manifestation,keep,yes,documented guilt manifestation
+Failure,clinical,self-criticism,clinical (self-critical cognition),manifestation,keep,yes,documented worthlessness manifestation
+Failure,clinical,self-reproach,classic psychopathology (self-reproach),manifestation,keep,yes,documented guilt manifestation
+Failure,clinical,negative self-evaluation,Beck cognitive model (negative view of self),manifestation,keep,yes,documented cognitive manifestation
+Failure,clinical,negative self-schema,Beck cognitive theory of depression,manifestation,keep,yes,documented cognitive manifestation
+Failure,clinical,inadequacy,clinical (feelings of inadequacy),manifestation,keep,yes,documented worthlessness manifestation
+Failure,clinical,shame,MeSH descriptor 'Shame',manifestation,keep,yes,documented self-conscious affect (worthlessness-adjacent)
+Failure,clinical,guilty rumination,clinical (ruminative guilt),manifestation,keep,yes,documented guilt manifestation
+Failure,clinical,self-deprecation,clinical descriptor (self-deprecating),manifestation,keep,yes,documented low-self-worth manifestation
+Failure,clinical,self-hatred,clinical descriptor,manifestation,keep,yes,documented severe-worthlessness manifestation
+Failure,clinical,self-loathing,clinical descriptor,manifestation,keep,yes,documented severe-worthlessness manifestation
+Failure,clinical,self-contempt,self-conscious-affect literature,manifestation,keep,yes,documented worthlessness manifestation
+Failure,clinical,self-disgust,self-disgust in depression literature (has a scale),manifestation,keep,yes,documented worthlessness manifestation
+Failure,clinical,imposter syndrome,pop-psychology; 'impostor phenomenon' is not a DSM construct,related_nonspecific,remove,no,not an MDD worthlessness/guilt construct
+Failure,clinical,inferiority complex,Adlerian/historical,related_nonspecific,remove,no,not an MDD construct
+Failure,clinical,internalized criticism,LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard phrasing
+Failure,clinical,self-defeatism,LLM brainstorm; non-standard,related_nonspecific,remove,no,non-standard ('self-defeating' is a personality term)
+Failure,clinical,self-doubt,anxiety/uncertainty construct,related_nonspecific,remove,no,not specific to worthlessness/guilt (also anxiety)
+Failure,clinical,self-pity,self-focused-sorrow construct,related_nonspecific,remove,no,distinct from worthlessness/guilt
+Failure,clinical,self-punishment,ambiguous with self-harm,related_nonspecific,remove,no,ambiguous; risks pulling self-harm content
+Concentrating,clinical,impaired concentration,DSM-5 A8,direct_construct,keep,yes,criterion wording
+Concentrating,clinical,poor concentration,DSM-5 A8,direct_construct,keep,yes,criterion wording
+Concentrating,clinical,diminished ability to think,DSM-5 A8 verbatim,direct_construct,keep,yes,criterion wording
+Concentrating,clinical,indecisiveness,DSM-5 A8 verbatim ('or indecisiveness'),direct_construct,keep,yes,criterion wording
+Concentrating,clinical,cognitive impairment,MeSH 'Cognitive Dysfunction'; DSM-5 A8,direct_construct,keep,yes,criterion-linked construct
+Concentrating,clinical,distractibility,clinical/DSM terminology (distractibility),manifestation,keep,yes,documented attention manifestation
+Concentrating,clinical,inattention,clinical terminology (inattention),manifestation,keep,yes,documented attention manifestation
+Concentrating,clinical,difficulty sustaining attention,attention terminology (sustained attention),manifestation,keep,yes,documented attention manifestation
+Concentrating,clinical,attentional difficulties,clinical descriptor of attention problems,manifestation,keep,yes,documented attention manifestation
+Concentrating,clinical,memory complaints,clinical (subjective memory complaints),manifestation,keep,yes,documented cognitive manifestation
+Concentrating,clinical,cognitive slowing,clinical (bradyphrenia / cognitive slowing),manifestation,keep,yes,documented cognitive manifestation
+Concentrating,clinical,executive dysfunction,neuropsychology (executive function),manifestation,keep,yes,documented cognitive manifestation
+Concentrating,clinical,brain fog,lay/informal register,related_nonspecific,remove,no,"belongs in the lay tier, not clinical"
+Concentrating,clinical,cognitive disorganization,schizotypy/psychosis term,related_nonspecific,remove,no,different construct (thought disorder)
+Concentrating,clinical,cognitive fatigue,overlaps fatigue (Tired),related_nonspecific,remove,no,cross-domain with A6 fatigue
+Concentrating,clinical,cognitive interference,experimental psych (Stroop) term,related_nonspecific,remove,no,academic; non-specific to A8
+Concentrating,clinical,cognitive processing speed reduction,verbose paraphrase of cognitive slowing,related_nonspecific,remove,no,non-standard; duplicative of 'cognitive slowing'
+Concentrating,clinical,impaired mental clarity,LLM brainstorm; ~brain fog,related_nonspecific,remove,no,non-standard/lay phrasing
+Concentrating,clinical,poor mental sharpness,LLM brainstorm; lay,related_nonspecific,remove,no,non-standard/lay phrasing
+Moving,clinical,psychomotor retardation,DSM-5 A5 verbatim,direct_construct,keep,yes,criterion wording (retardation pole)
+Moving,clinical,psychomotor agitation,MeSH 'Psychomotor Agitation'; DSM-5 A5,direct_construct,keep,yes,criterion wording (agitation pole)
+Moving,clinical,psychomotor slowing,clinical synonym of psychomotor retardation,direct_construct,keep,yes,canonical retardation synonym
+Moving,clinical,agitation,MeSH 'Psychomotor Agitation'; DSM-5 A5,direct_construct,keep,yes,criterion construct (agitation pole)
+Moving,clinical,motor retardation,clinical synonym (motor slowing),manifestation,keep,yes,documented retardation manifestation
+Moving,clinical,restlessness,DSM-5 A5 ('fidgety or restless'),manifestation,keep,yes,criterion-linked agitation manifestation
+Moving,clinical,motor restlessness,clinical (motor restlessness),manifestation,keep,yes,documented agitation manifestation
+Moving,clinical,slowed speech,DSM-5 A5 ('speaking so slowly'),manifestation,keep,yes,criterion-linked retardation manifestation
+Moving,clinical,speech latency,clinical (increased speech latency),manifestation,keep,yes,documented retardation sign
+Moving,clinical,decreased motor activity,clinical descriptor of the retardation pole,manifestation,keep,yes,documented retardation manifestation
+Moving,clinical,excessive motor activity,DSM-5 A5 ('moving around a lot more than usual'),manifestation,keep,yes,criterion-linked agitation manifestation
+Moving,clinical,bradykinesia,MeSH 'Bradykinesia'; neurological (Parkinsonism),related_nonspecific,remove,no,"neurological motor slowing, not psychiatric psychomotor retardation"
+Moving,clinical,hypokinesia,MeSH 'Hypokinesia'; neurological,related_nonspecific,remove,no,"neurological reduced movement, not the A5 construct"
+Moving,clinical,hyperactivity,ADHD terminology,related_nonspecific,remove,no,"non-specific (ADHD), not psychomotor agitation"
+Moving,clinical,akathisia,"MeSH 'Akathisia, Drug-Induced'",related_nonspecific,remove,no,drug-induced movement disorder; risks medication-side-effect content
+Moving,clinical,motor inhibition,LLM brainstorm; ambiguous,related_nonspecific,remove,no,non-standard; 'inhibition' is ambiguous

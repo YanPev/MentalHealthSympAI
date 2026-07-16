@@ -52,8 +52,9 @@ def extract_r2_status(out=ENC / "r2_evidence_status.csv"):
     """evidence_status per (participant,item) for the selected R2 set (budget
     prefix status). Written in cross_validate's expected schema."""
     cfg, ret, pfx = r2_config()
-    st = pd.concat([pd.read_csv(f) for f in sorted(glob.glob(str(JUD / "set_judgments_fold*.csv")))],
-                   ignore_index=True)
+    files = (sorted(glob.glob(str(JUD / "set_judgments_fold*.csv"))) +
+             sorted(glob.glob(str(JUD / "set_judgments_hybrid_fold*.csv"))))
+    st = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
     sub = st[(st.config == cfg) & (st.retriever == ret) & (st.prefix == pfx)]
     sub = sub[["participant_id", "item_id", "status"]].rename(columns={"status": "evidence_status"})
     ENC.mkdir(parents=True, exist_ok=True)

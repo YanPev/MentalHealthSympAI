@@ -1,0 +1,30 @@
+{
+  "E_FINAL": "R2_status_quo",
+  "candidates": {
+    "R2_status_quo": {
+      "qwk": 0.3742593928882302,
+      "macro_f1": 0.3606885990484222,
+      "mae": 0.680365296803653,
+      "severe_recall": 0.15568862275449102,
+      "false_severe_rate": 0.028391167192429023,
+      "passes_constraints": true
+    },
+    "R2_mask_none": {
+      "qwk": 0.35921018977952834,
+      "macro_f1": 0.3637548839220002,
+      "mae": 0.6746575342465754,
+      "severe_recall": 0.1317365269461078,
+      "false_severe_rate": 0.0138801261829653,
+      "passes_constraints": true
+    },
+    "R2_drop_none": {
+      "qwk": 0.40504044665564354,
+      "macro_f1": 0.37891852037639245,
+      "mae": 0.6986301369863014,
+      "severe_recall": 0.25149700598802394,
+      "false_severe_rate": 0.044794952681388014,
+      "passes_constraints": false
+    }
+  },
+  "rule": "max QWK then macro-F1 among policies passing MAE/severe/false-severe constraints"
+}

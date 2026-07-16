@@ -75,6 +75,11 @@ def main():
 
     rk = pd.read_parquet(args.rankings)
     rk["participant_id"] = rk["participant_id"].astype(str)
+    # hybrid retrievers live in a separate parquet -> concat it if present
+    hyb = Path(args.rankings).parent / "retrieval_window_scores_hybrid.parquet"
+    if hyb.exists():
+        h = pd.read_parquet(hyb); h["participant_id"] = h["participant_id"].astype(str)
+        rk = pd.concat([rk, h], ignore_index=True)
     rk = rk[(rk.config == args.config) & (rk.retriever == args.retriever)]
     if rk.empty:
         raise SystemExit(f"no rankings for config={args.config} retriever={args.retriever} "

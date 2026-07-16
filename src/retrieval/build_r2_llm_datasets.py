@@ -42,7 +42,8 @@ def _load_window_status():
 
 def _load_set_status():
     sel = json.loads((RET / "r2_selection.json").read_text())["selected_R2"]
-    files = sorted(glob.glob(str(JUD / "set_judgments_fold*.csv")))
+    files = (sorted(glob.glob(str(JUD / "set_judgments_fold*.csv"))) +
+             sorted(glob.glob(str(JUD / "set_judgments_hybrid_fold*.csv"))))
     s = pd.concat([pd.read_csv(f) for f in files], ignore_index=True)
     s["participant_id"] = s["participant_id"].astype(str)
     s = s[(s.config == sel["config"]) & (s.retriever == sel["retriever"]) & (s.prefix == sel["prefix"])]

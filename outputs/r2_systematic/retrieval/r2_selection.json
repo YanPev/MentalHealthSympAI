@@ -1,0 +1,79 @@
+{
+  "primary_criterion": "set informative rate = P(status in {supports, against})",
+  "label_free": true,
+  "tie_tolerance": 0.005,
+  "selection_hierarchy": [
+    "1. highest set informative rate",
+    "2. candidates within 0.005 of the best are tied",
+    "3. among tied: lower none rate, then lower ambiguous rate, then lower redundancy (mean turn overlap), then fewer windows (prefix), then the simpler retriever (bm25 < semantic < hybrid)"
+  ],
+  "candidate_pool": [
+    "bm25",
+    "hybrid_a25",
+    "hybrid_a50",
+    "hybrid_a75",
+    "semantic"
+  ],
+  "lexicon_shortlist": [
+    "L0_CORE"
+  ],
+  "lexicon_ranking_top5": [
+    {
+      "config": "L0_CORE",
+      "retriever": "hybrid_a25",
+      "informative_rate": 0.3156392694063927,
+      "none_rate": 0.6158675799086758,
+      "ambiguous_rate": 0.0684931506849315
+    },
+    {
+      "config": "L2_CORE_CLINICAL",
+      "retriever": "bm25",
+      "informative_rate": 0.2946943483275663,
+      "none_rate": 0.6585928489042676,
+      "ambiguous_rate": 0.04671280276816609
+    },
+    {
+      "config": "L3_FULL",
+      "retriever": "semantic",
+      "informative_rate": 0.2945205479452055,
+      "none_rate": 0.6461187214611872,
+      "ambiguous_rate": 0.0593607305936073
+    },
+    {
+      "config": "L1_CORE_LAY",
+      "retriever": "semantic",
+      "informative_rate": 0.29337899543379,
+      "none_rate": 0.6381278538812786,
+      "ambiguous_rate": 0.0684931506849315
+    }
+  ],
+  "hybrid_signal": {
+    "L0_CORE": {
+      "bm25_unique_wins": 150,
+      "semantic_unique_wins": 192,
+      "both_informative": 345,
+      "hybrid_justified": true
+    }
+  },
+  "selected_R2": {
+    "config": "L0_CORE",
+    "retriever": "hybrid_a25",
+    "prefix": "top3",
+    "informative_rate": 0.3270547945205479,
+    "none_rate": 0.6084474885844748,
+    "ambiguous_rate": 0.06449771689497717,
+    "mean_turn_overlap": 0.04117199391171993
+  },
+  "runner_up_tied": [
+    {
+      "config": "L0_CORE",
+      "retriever": "hybrid_a25",
+      "prefix": "top3",
+      "informative_rate": 0.3270547945205479,
+      "none_rate": 0.6084474885844748,
+      "ambiguous_rate": 0.06449771689497717,
+      "mean_turn_overlap": 0.04117199391171993
+    }
+  ],
+  "note": "Hybrid candidates are considered only if hybrid_signal indicates meaningful two-sided unique wins; see docs/r2_retrieval_selection.md."
+}
