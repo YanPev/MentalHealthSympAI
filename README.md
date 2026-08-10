@@ -14,7 +14,7 @@ as part of the graduate course *Advanced Artificial Intelligence for Medicine*
 at Ben-Gurion University of the Negev, under the guidance of Prof. Lior Rokach.
 
 - **[Final academic report](docs/Final_Report.pdf)** — full methodology, experiments, results, and analysis
-- **[Public article: “We Improved NLP Retrieval. Why Didn't the Model Get Better?”](https://medium.com/@daniel.sch.bme/we-improved-nlp-retrieval-why-didnt-the-model-get-better-4b271995a102)** — Daniel Schmidt
+- **[Public article: “We Improved NLP Retrieval. Why Didn't the Model Get Better?”](https://medium.com/@daniel.sch.bme/we-improved-nlp-retrieval-why-didnt-the-model-get-better-4b271995a102)** 
 - **[Detailed results](docs/results_summary.md)** — metrics and bootstrap confidence intervals
 
 ---
