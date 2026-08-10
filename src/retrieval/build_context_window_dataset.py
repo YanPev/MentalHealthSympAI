@@ -17,7 +17,7 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.append(str(PROJECT_ROOT))
 
-from src.retrieval.bm25_context_retriever import (
+from src.retrieval.prod_context.bm25_context_retriever import (
     load_context_window_bank,
     retrieve_top_k_context_windows_bm25,
     validate_retrieval_parameters,
