@@ -141,7 +141,6 @@ MentalHealthSympAI/
 │   ├── r2_systematic/      # expanded-retrieval (R1) sweep
 │   └── figures/            # generated figures
 ├── tests/                  # smoke tests
-├── run_*.sbatch            # SLURM job scripts, one per experiment
 └── requirements.txt
 ```
 
@@ -177,16 +176,22 @@ Verify no participant leaks across splits:
 python -m src.data.check_leakage
 ```
 
-Run retrieval and train the encoder with cross-validation:
+Train the encoder with participant-level cross-validation, on the frozen
+Hybrid-W3 retrieval used for the headline results:
 
 ```bash
-sbatch run_context_windows_cv.sbatch
+python -m src.models.cross_validate --model-name bert-base-uncased --k-folds 5 --num-epochs 8 --batch-size 16 --max-length 256 --seed 42 --dataset-path data/processed/phq8_item_dataset_context_windows_hybrid_w3.csv --evidence-column retrieved_context_windows_hybrid_pack --tag ctx_corn_hybw3 --loss corn
 ```
 
-Run the LLM chain-of-thought pipeline:
+Swap `--loss corn` for `--loss cross_entropy --class-weights balanced` to get the
+weighted-CE variant, and change `--dataset-path` / `--evidence-column` to compare
+retrieval conditions.
+
+Run the LLM chain-of-thought pipeline, one fold at a time (folds 1 to 5 make up the
+out-of-fold predictions):
 
 ```bash
-sbatch run_cot_joint.sbatch
+python -m src.llm.cot_joint --fold 1 --dataset-path data/processed/phq8_item_dataset_context_windows_hybrid_w3.csv --evidence-column retrieved_context_windows_hybrid_list --output outputs/cot/folds_joint/cot_joint_fold1.csv
 ```
 
 Regenerate the results summary from the analysis JSONs:
@@ -195,8 +200,16 @@ Regenerate the results summary from the analysis JSONs:
 python -m src.evaluation.build_results_summary
 ```
 
-Experiments are SLURM batch jobs; each `run_*.sbatch` at the root corresponds to one
-configuration. `outputs/run_manifest.json` records what was run.
+The encoder and LLM steps need a GPU. On a cluster node with a pre-populated
+Hugging Face cache, export these before running so nothing reaches for the network:
+
+```bash
+export HF_HOME="$PWD/.hf_cache" HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false
+```
+
+Each command above is one experiment configuration; vary the dataset, evidence
+column and loss flags to reproduce the rest. `outputs/run_manifest.json` records
+which configurations were actually run and where their outputs landed.
 
 ---
 
