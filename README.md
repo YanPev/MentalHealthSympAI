@@ -213,12 +213,17 @@ which configurations were actually run and where their outputs landed.
 
 ---
 
-## Contributors
+## Authors and contributors
 
-| | |
-|---|---|
-| **Yaniv Pevzner** | Modelling, LLM pipeline, evaluation and cascade. |
-| **Daniel Schmidt** | Co-author on the analysis. Data preprocessing, PHQ-8 item dataset, and BM25/semantic/hybrid context-window retrieval. |
+This project was jointly developed by **Daniel Schmidt** and **Yaniv Pevzner** as part of the graduate course *Advanced Artificial Intelligence for Medicine* at Ben-Gurion University of the Negev, under the guidance of Prof. Lior Rokach.
+
+| Contributor        | Main contributions                                                                                                                                                                                                                                                                                                |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Daniel Schmidt** | Project co-author. ML/AI methodology and experimental design; data and PHQ-8 item pipeline; lexical, semantic, and hybrid evidence retrieval; model and LLM experiment design; model evaluation, statistical analysis, and error analysis; methodology development, interpretation, and scientific communication. |
+| **Yaniv Pevzner**  | Project co-author. Primary ML implementation and experiment execution; encoder and LLM pipelines; ordinal and Attention-MIL modelling; cascade and ensemble implementation; evaluation infrastructure and engineering.                                                                                            |
+
+Both authors jointly contributed to the research formulation, algorithmic and experimental design, model-selection decisions, interpretation of results, and development of the final methodology.
+
 
 ---
 
