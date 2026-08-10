@@ -7,6 +7,17 @@ interview transcripts, by retrieving the passages that actually carry symptom
 evidence and reasoning over them with an encoder, an LLM, or a cascade of both.
 
 ---
+## Project resources
+
+This project was jointly developed by **Daniel Schmidt** and **Yaniv Pevzner**
+as part of the graduate course *Advanced Artificial Intelligence for Medicine*
+at Ben-Gurion University of the Negev, under the guidance of Prof. Lior Rokach.
+
+- **[Final academic report](docs/Final_Report.pdf)** — full methodology, experiments, results, and analysis
+- **[Public article: “We Improved NLP Retrieval. Why Didn't the Model Get Better?”](https://medium.com/@daniel.sch.bme/we-improved-nlp-retrieval-why-didnt-the-model-get-better-4b271995a102)** — Daniel Schmidt
+- **[Detailed results](docs/results_summary.md)** — metrics and bootstrap confidence intervals
+
+---
 
 ## The problem
 
@@ -223,7 +234,6 @@ This project was jointly developed by **Daniel Schmidt** and **Yaniv Pevzner** a
 | **Yaniv Pevzner**  | Project co-author. Primary ML implementation and experiment execution; encoder and LLM pipelines; ordinal and Attention-MIL modelling; cascade and ensemble implementation; evaluation infrastructure and engineering.                                                                                            |
 
 Both authors jointly contributed to the research formulation, algorithmic and experimental design, model-selection decisions, interpretation of results, and development of the final methodology.
-
 
 ---
 
