@@ -62,7 +62,7 @@ def build_manifest():
     files = sorted(str(Path(p).relative_to(PR)) for p in
                    glob.glob(str(R2 / "**" / "*"), recursive=True) if Path(p).is_file())
     m = {"experiment": "R2 corrective retrieval experiment",
-         "judge_model": "Qwen/Qwen2.5-7B-Instruct (constraint 11 relaxed per user; MentaLLaMA-7B/13B failed validation)",
+         "judge_model": "Qwen/Qwen2.5-7B-Instruct (SC3 @ T=0.4, 96 new tokens; constraint 11 relaxed per user; MentaLLaMA-7B/13B failed validation)",
          "judge_limitation": "judge shares the predictor's model family -> gap G7 (judge/predictor independence) NOT fixed",
          "encoder": "mental/mental-bert-base-uncased + CORN (5-fold seed42, 8ep, bs16, maxlen256)",
          "llm": "Qwen2.5-7B-Instruct staged-tolerant CoT SC5 @ T0.7",
