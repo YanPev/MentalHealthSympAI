@@ -1,0 +1,27 @@
+# Canonicalises author identities for git shortlog / log --use-mailmap.
+#
+# Two problems this fixes:
+#   1. Daniel's commit 0600116 was authored with a typo'd domain
+#      (post.bgu.ca.il instead of post.bgu.ac.il), splitting her into two
+#      contributors.
+#   2. Commits made on SLURM nodes take an auto-generated <user@node> address,
+#      so one person appears as a dozen contributors, one per compute node.
+#
+# NOTE: GitHub's Contributors graph does NOT read .mailmap. It matches commits
+# to accounts by author email, and it only counts the DEFAULT branch. This file
+# fixes local git tooling; see README/git notes for the branch-merge fix.
+
+Daniel Schmidt <schmidtd@post.bgu.ac.il> <schmidtd@post.bgu.ca.il>
+
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@cs-cpu-06.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@cs-cpu-09.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu128-01.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu128-14.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu256-06.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu256-08.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu256-17.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu256-18.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu-intl-10.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu-intl-22.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@ise-cpu-intl-23.auth.ad.bgu.ac.il>
+YanPev <131339815+YanPev@users.noreply.github.com> <yanivpev@slurm-login-01.auth.ad.bgu.ac.il>
