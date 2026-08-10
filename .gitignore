@@ -212,3 +212,6 @@ checkpoints/
 models/checkpoints/
 *.bin
 *.pkl
+
+# SLURM job scripts (kept locally, not tracked)
+*.sbatch
